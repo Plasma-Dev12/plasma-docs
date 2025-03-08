@@ -70,7 +70,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col justify-center items-center p-[32px] md:pt-[150px]">
         <div className="max-w-[1044px] h-full w-full border-2 border-[#8C93FB] bg-[#26215b94] p-[5px] md:p-[12] lg:p-[16] rounded-[16px] shadow-[0px_0px_149.8px_-31px_#6D60C1]">
-          <div className="bg-[#0D1117] rounded-[16px] h-[349px] p-2 flex justify-center items-center">
+          <div className="bg-[#0D1117] rounded-[16px] h-[460px] md:h-[515px] p-2 flex justify-center items-center">
             {selectedOption.component}
           </div>
         </div>

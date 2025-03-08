@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
 
-
+::selection {
+  background-color: rgba(126, 116, 192, 0.3);
+}
 
 body {
   font-family: "Mona Sans", sans-serif;
@@ -17,6 +19,41 @@ body {
   -webkit-text-fill-color: transparent;
   animation: textAnimation 10s linear infinite;
   text-shadow: 0px 4px 40px rgba(109, 96, 193, 0.3);
+}
+
+#otherTitle {
+  background: linear-gradient(
+    89deg,
+    #1eff00,
+    #22c50d,
+    #1dac0a,
+    #1e920f,
+    #1f8b11,
+    #1eff00,
+    #22c50d,
+    #1dac0a,
+    #1e920f,
+    #1f8b11
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textAnimation 10s linear infinite;
+  text-shadow: 0px 4px 40px rgba(109, 96, 193, 0.3);
+}
+
+#plasmaLogoDevelopers {
+  animation: spin 100s linear infinite;
+}
+
+#imageDeveloper {
+  filter: drop-shadow(0px 0px 30px rgba(154, 84, 175, 0.993)); /* Exemplo de sombra */
+}
+
+.no-drag {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 #logoPlasmaDocs {
