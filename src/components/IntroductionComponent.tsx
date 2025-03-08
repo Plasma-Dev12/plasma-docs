@@ -10,11 +10,11 @@ export default function IntroductionComponent() {
         alt="Octocat teacher"
       />
       <p className="font-normal text-[#FEDEFB] text-[14px] text-justify max-w-[350px] md:max-w-[300px] md:text-xl lg:max-w-[400px]">
-        Nesta documentação você irá aprender algumas funcionalidades básicas e
-        avançadas do <span className="font-bold">github</span>, algum atalhos
-        que podem te ajudar a economizar tempo, como utilizar a plataforma de
-        uma maneira inteligente e iremos abordar um pouco sobre o{" "}
-        <span className="font-bold text-[#A486FF]">github cli (gh)</span>.
+        Nesta documentação, você aprenderá desde as funcionalidades básicas até
+        os recursos mais avançados do <span className="font-bold text-[#A486FF]">GITHUB</span>. Exploraremos atalhos que podem
+        otimizar seu tempo, além de estratégias para usar a plataforma de forma
+        mais eficiente. Também abordaremos o <span className="font-bold text-[#A486FF]">Github CLI (gh)</span> e como ele pode
+        facilitar seu fluxo de trabalho.
       </p>
     </div>
   );
