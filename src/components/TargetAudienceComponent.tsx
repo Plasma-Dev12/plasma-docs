@@ -18,9 +18,10 @@ export default function TargetAudienceComponent() {
             Não definido
           </h2>
           <p className="font-normal text-[#FEDEFB] text-[14px] text-justify max-w-[350px] md:max-w-[300px] md:text-xl lg:max-w-[400px]">
-            O <span className="font-bold text-[#A486FF]">github</span> pode ser utilizado por
-            todas as idades que se interessam pela programação, porém, não é
-            comum ver pessoas com menos de 13 anos utilizando a plataforma.
+            O <span className="font-bold text-[#A486FF]">GITHUB</span> é uma plataforma acessível para pessoas de todas as idades
+            interessadas em programação. No entanto, seu uso por crianças com
+            menos de 13 anos é menos comum, devido à complexidade das
+            ferramentas e à necessidade de compreensão de conceitos técnicos.
           </p>
         </div>
       </div>
