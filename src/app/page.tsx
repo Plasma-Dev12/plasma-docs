@@ -42,10 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <div
-        id="bgbanner"
-        className="bg-gradient-to-b from-[#28225F] to-[#0D1117] h-screen p-5 md:relative"
-      >
+      <div className="bg-gradient-to-b from-[#28225F] to-[#0D1117] h-[600px] min-h-[600px] md:h-screen p-5 md:relative">
         <div className="mt-10 flex flex-col justify-center items-center md:h-[350px] md:w-auto md:mx-auto lg:h-[550px] 2xl:h-[750px]">
           <div className="text-center md:w-[500px] md:ml-[10%] xl:w-[600px] 2xl:w-[720px]">
             <h1
@@ -70,7 +67,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col justify-center items-center p-[32px] md:pt-[150px]">
         <div className="max-w-[1044px] h-full w-full border-2 border-[#8C93FB] bg-[#26215b94] p-[5px] md:p-[12] lg:p-[16] rounded-[16px] shadow-[0px_0px_149.8px_-31px_#6D60C1]">
-          <div className="bg-[#0D1117] rounded-[16px] h-[460px] md:h-[515px] p-2 flex justify-center items-center">
+          <div className="bg-[#0D1117] rounded-[16px] h-[530px] md:h-[515px] p-2 flex justify-center items-center">
             {selectedOption.component}
           </div>
         </div>
