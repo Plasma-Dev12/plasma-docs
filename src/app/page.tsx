@@ -123,6 +123,7 @@ export default function Home() {
           <GithubLoginComponent />
         </div>
       </div>
+      
     </>
   );
 }

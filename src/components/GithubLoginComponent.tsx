@@ -130,6 +130,8 @@ export default function GithubLoginComponent() {
             clique em <span className="text-purple-300">sign up</span>
           </h3>
         </div>
+
+        
       </div>
     </>
   );
