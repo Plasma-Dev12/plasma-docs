@@ -8,6 +8,8 @@ import IntroductionComponent from "@/components/IntroductionComponent";
 import TargetAudienceComponent from "@/components/TargetAudienceComponent";
 import ObjectivesComponent from "@/components/ObjectivesComponent";
 import DevelopersComponent from "@/components/DevelopersComponent";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 export default function Home() {
   const options = [
@@ -123,7 +125,15 @@ export default function Home() {
           <GithubLoginComponent />
         </div>
       </div>
-      
+      <div className="flex justify-center items-center w-full my-56">
+        <span id="buttonGradient">
+          <Link href={"/docs"}>
+            <Button variant="primary" outline={false}>
+              <p id="title">Ir para a documentação</p>
+            </Button>
+          </Link>
+        </span>
+      </div>
     </>
   );
 }
