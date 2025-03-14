@@ -19,7 +19,13 @@ export default function AnchorLinks() {
   return (
     <nav className="mt-16 mr-12 w-[200px]">
       <div className="w-[200px] fixed">
-        <span className="text-white text-xl font-bold">Neste artigo</span>
+        <span
+          className={`text-white text-xl font-bold ${
+            headings.length === 0 && "hidden"
+          }`}
+        >
+          Neste artigo
+        </span>
         <ul className="flex flex-col mt-3 gap-1">
           {headings.map((heading) => (
             <li key={heading.id} className="text-white/70 hover:text-[#A486FF]">

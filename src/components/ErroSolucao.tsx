@@ -17,11 +17,11 @@ export default function ErroSolucao({ content }: ErrosSolucoesProps) {
   return (
     <article className="flex flex-col items-center justify-center border-2 border-[#8C93FB] bg-[#100d26] rounded-2xl text-center gap-y-2 shadow-lg shadow-[#342C80]">
       <div
-        className="flex flex-row items-center justify-between w-full p-4 cursor-pointer hover:bg-[#171439] rounded-2xl"
+        className="flex flex-row items-center justify-between w-full p-4 cursor-pointer hover:bg-[#171439] rounded-2xl gap-4"
         onClick={() => setMostrarSolucoes(!mostrarSolucoes)}
       >
         <div className="flex flex-col items-start gap-1">
-          <h4 className="text-red-300 font-mono text-xl text-center font-bold">
+          <h4 className="text-red-300 font-mono text-xl text-start font-bold">
             {content.erro}
           </h4>
           <p className="text-white text-justify text">
