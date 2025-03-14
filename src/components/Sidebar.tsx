@@ -22,7 +22,7 @@ export default function Sidebar() {
       </div>
       </Link>
       <div className="text-white mt-8">
-        <h2 className="font-bold text-xl">Github</h2>
+        <span className="font-bold text-xl">Github</span>
         <details className="cursor-pointer my-4">
           <DropdownListTitle name="Interface e navegação" />
           <div>
