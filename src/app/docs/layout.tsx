@@ -7,9 +7,9 @@ export default function LayoutDocs({
     children: React.ReactNode;
   }>) {
     return (
-      <div className="flex">
+      <div className="flex w-full justify-between">
         <Sidebar />
-        <div className="overflow-y-auto">
+        <div className="flex-1 ">
             {children}
         </div>
         <AnchorLinks />
