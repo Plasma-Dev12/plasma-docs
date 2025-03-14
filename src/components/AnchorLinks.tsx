@@ -1,8 +1,10 @@
 "use client";
+import { usePathname } from "next/navigation";
 import React, { Fragment, useEffect, useState } from "react";
 
 export default function AnchorLinks() {
   const [headings, setHeadings] = useState<{ id: string; text: string }[]>([]);
+  const pathname = usePathname();
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll("h2, h3"));
@@ -14,7 +16,7 @@ export default function AnchorLinks() {
       text: element.textContent || "",
     }));
     setHeadings(headingData);
-  }, []);
+  }, [pathname]);
 
   return (
     <nav className="mt-16 mr-12 w-[200px]">
