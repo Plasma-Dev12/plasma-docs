@@ -9,7 +9,7 @@ export default function LayoutDocs({
   return (
     <div className="flex w-full justify-between">
       <Sidebar />
-      <div className="flex-1 ">{children}</div>
+      <div className="flex-1 my-16 mx-16">{children}</div>
       <AnchorLinks />
     </div>
   );
