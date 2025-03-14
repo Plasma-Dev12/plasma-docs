@@ -8,18 +8,18 @@ import Link from "next/link";
 export default function Sidebar() {
   return (
     <div className="w-[400px] h-screen max-h-screen overflow-y-auto bg-[#28225F]/50 px-4 py-6 shadow-[0px_0px_24px_#8c93fb44]">
-        <Link href={"/"}>
-      <div className="flex flex-row items-center gap-2">
-        <Image
-          src={plasmaDocsLogo}
-          alt="Plasma logo"
-          id="logoPlasmaDocs"
-          className="max-w-1/4"
-        />
-        <span className="text-3xl font-bold" id="title">
-          Plasma Docs
-        </span>
-      </div>
+      <Link href={"/"}>
+        <div className="flex flex-row items-center gap-2">
+          <Image
+            src={plasmaDocsLogo}
+            alt="Plasma logo"
+            id="logoPlasmaDocs"
+            className="max-w-1/4"
+          />
+          <span className="text-3xl font-bold" id="title">
+            Plasma Docs
+          </span>
+        </div>
       </Link>
       <div className="text-white mt-8">
         <h2 className="font-bold text-xl">Github</h2>
@@ -39,7 +39,10 @@ export default function Sidebar() {
                 name="Perfil"
                 link="/docs/interface-navigation/profile"
               />
-              <SidebarItemLink name="Menu" link="/docs/interface-navigation/menu" />
+              <SidebarItemLink
+                name="Menu"
+                link="/docs/interface-navigation/menu"
+              />
             </ul>
           </div>
         </details>
@@ -47,7 +50,10 @@ export default function Sidebar() {
           <DropdownListTitle name="Funcionalidades Principais" />
           <div>
             <ul className="pl-4">
-              <SidebarItemLink name="Code" link="/docs/principal-functions/code" />
+              <SidebarItemLink
+                name="Code"
+                link="/docs/principal-functions/code"
+              />
               <SidebarItemLink
                 name="Issues"
                 link="/docs/principal-functions/issues"
@@ -64,7 +70,10 @@ export default function Sidebar() {
                 name="Projects"
                 link="/docs/principal-functions/projects"
               />
-              <SidebarItemLink name="Wiki" link="/docs/principal-functions/wiki" />
+              <SidebarItemLink
+                name="Wiki"
+                link="/docs/principal-functions/wiki"
+              />
               <SidebarItemLink
                 name="Insights"
                 link="/docs/principal-functions/insights"
@@ -117,9 +126,12 @@ export default function Sidebar() {
             <ul className="pl-4">
               <SidebarItemLink
                 name="Erros comuns e soluções"
-                link="/docs/useful-resources/commom-erros-and-solutions"
+                link="/docs/useful-resources/common-errors-and-solutions"
               />
-              <SidebarItemLink name="Dicas" link="/docs/useful-resources/tips" />
+              <SidebarItemLink
+                name="Dicas"
+                link="/docs/useful-resources/tips"
+              />
               <SidebarItemLink
                 name="Atalhos"
                 link="/docs/useful-resources/shortcuts"

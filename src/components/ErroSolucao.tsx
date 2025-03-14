@@ -21,9 +21,9 @@ export default function ErroSolucao({ content }: ErrosSolucoesProps) {
         onClick={() => setMostrarSolucoes(!mostrarSolucoes)}
       >
         <div className="flex flex-col items-start gap-1">
-          <h3 className="text-red-300 font-mono text-xl text-center font-bold">
+          <h4 className="text-red-300 font-mono text-xl text-center font-bold">
             {content.erro}
-          </h3>
+          </h4>
           <p className="text-white text-justify text">
             {content.descricaoErro}
           </p>
