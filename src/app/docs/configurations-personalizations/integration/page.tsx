@@ -1,7 +1,9 @@
 export default function Page() {
-    return (
-        <>
-            <h1>Title</h1>
-        </>
-    );
+  return (
+    <>
+      <div className="flex justify-center items-center">
+        <h1 className="text-4xl font-bold text-[#F5F5F5] text-start w-full">Integrações</h1>
+      </div>
+    </>
+  );
 }

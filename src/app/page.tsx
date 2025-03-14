@@ -3,7 +3,7 @@ import Image from "next/image";
 import plasmaDocsLogo from "@/assets/Logo plasma docs.svg";
 import { FaAngleDown } from "react-icons/fa";
 import React, { useState } from "react";
-import GithubLoginComponent from "@/components/GithubLoginComponent";
+import GithubLoginComponent from "@/components/githubLoginComponents/GithubLoginComponent";
 import IntroductionComponent from "@/components/IntroductionComponent";
 import TargetAudienceComponent from "@/components/TargetAudienceComponent";
 import ObjectivesComponent from "@/components/ObjectivesComponent";
@@ -126,7 +126,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center items-center w-full my-56">
-        <span id="buttonGradient">
+        <span id="buttonGradient" className="mx-10">
           <Link href={"/docs"}>
             <Button variant="primary" outline={false}>
               <p id="title">Ir para a documentação</p>
