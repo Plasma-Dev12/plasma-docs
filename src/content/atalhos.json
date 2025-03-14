@@ -1,0 +1,150 @@
+{
+  "Navegação Rápida": [
+    {
+      "atalho": "g + n",
+      "descricao": "Ir para Notificações"
+    },
+    {
+      "atalho": "g + p",
+      "descricao": "Ir para Repositórios"
+    },
+    {
+      "atalho": "g + i",
+      "descricao": "Ir para Issues"
+    },
+    {
+      "atalho": "g + m",
+      "descricao": "Ir para Pull Requests"
+    },
+    {
+      "atalho": "g + b",
+      "descricao": "Ir para Projetos"
+    },
+    {
+      "atalho": "g + d",
+      "descricao": "Ir para Repositórios Seguidos"
+    }
+  ],
+  "Edição e Comandos Gerais": [
+    {
+      "atalho": "s",
+      "descricao": "Focar na barra de pesquisa"
+    },
+    {
+      "atalho": "t",
+      "descricao": "Pesquisar rapidamente arquivos dentro de um repositório"
+    },
+    {
+      "atalho": "w",
+      "descricao": "Alternar entre branches e tags"
+    },
+    {
+      "atalho": "y",
+      "descricao": "Fixar a URL do repositório para um commit específico"
+    }
+  ],
+  "Gerenciamento de Issues e Pull Requests": [
+    {
+      "atalho": "c",
+      "descricao": "Criar uma nova Issue ou Pull Request"
+    },
+    {
+      "atalho": "Shift + .",
+      "descricao": "Alternar entre arquivos e código-fonte"
+    }
+  ],
+  "Navegação Geral": [
+    {
+      "atalho": "/",
+      "descricao": "Focar na barra de pesquisa"
+    },
+    {
+      "atalho": "?",
+      "descricao": "Exibir a lista de atalhos de teclado"
+    },
+    {
+      "atalho": "g + c",
+      "descricao": "Ir para Código (Code) de um repositório"
+    },
+    {
+      "atalho": "g + w",
+      "descricao": "Ir para Wiki do repositório"
+    },
+    {
+      "atalho": "g + s",
+      "descricao": "Ir para Security"
+    },
+    {
+      "atalho": "g + k",
+      "descricao": "Ir para Keys (chaves SSH e GPG)"
+    }
+  ],
+  "Gerenciamento de Arquivos": [
+    {
+      "atalho": "l",
+      "descricao": "Ir para uma linha específica em um arquivo"
+    },
+    {
+      "atalho": "b",
+      "descricao": "Alternar entre exibição em blame (histórico de edições)"
+    },
+    {
+      "atalho": "y",
+      "descricao": "Copiar o link fixo de um arquivo em um commit específico"
+    }
+  ],
+  "Issues e Pull Requests": [
+    {
+      "atalho": "u",
+      "descricao": "Voltar para a lista de Issues/PRs"
+    },
+    {
+      "atalho": "i",
+      "descricao": "Ir para a aba Issues"
+    },
+    {
+      "atalho": "p",
+      "descricao": "Ir para a aba Pull Requests"
+    },
+    {
+      "atalho": "a",
+      "descricao": "Atribuir Issue/PR a alguém"
+    },
+    {
+      "atalho": "m",
+      "descricao": "Adicionar um marcador (label)"
+    },
+    {
+      "atalho": "r",
+      "descricao": "Revisar um PR"
+    },
+    {
+      "atalho": "e",
+      "descricao": "Editar título e descrição"
+    }
+  ],
+  "Comentários e Revisões": [
+    {
+      "atalho": "Ctrl + Enter",
+      "descricao": "Enviar comentário"
+    },
+    {
+      "atalho": "j/k",
+      "descricao": "Navegar entre comentários"
+    },
+    {
+      "atalho": "r",
+      "descricao": "Responder a um comentário específico"
+    }
+  ],
+  "Ações em Commits": [
+    {
+      "atalho": "c",
+      "descricao": "Criar um novo commit ou issue"
+    },
+    {
+      "atalho": "o",
+      "descricao": "Expandir/collapse os detalhes de um commit"
+    }
+  ]
+}

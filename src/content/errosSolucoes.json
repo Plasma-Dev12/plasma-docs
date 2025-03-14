@@ -1,0 +1,168 @@
+[
+  {
+    "erro": "You don't have write access to this repository",
+    "descricaoErro": "Você tenta editar um arquivo ou enviar mudanças, mas não tem permissão.",
+    "solucoes": [
+      "Se for um repositório de outra pessoa, você precisa fazer um Fork antes de sugerir mudanças.",
+      "Se você deveria ter acesso, peça ao dono do repositório para te adicionar como colaborador em Settings > Collaborators."
+    ]
+  },
+  {
+    "erro": "Não consigo excluir um repositório",
+    "descricaoErro": "Você não encontra a opção para deletar o repositório.",
+    "solucoes": [
+      "Vá até o repositório e clique em Settings.",
+      "Role até o final da página e clique em Delete this repository.",
+      "Digite o nome do repositório para confirmar e clique no botão vermelho."
+    ]
+  },
+  {
+    "erro": "Meu GitHub Pages não está atualizando",
+    "descricaoErro": "Você fez mudanças no seu site hospedado pelo GitHub Pages, mas ele continua mostrando a versão antiga.",
+    "solucoes": [
+      "Vá até Settings > Pages e confira se a branch correta está selecionada.",
+      "Aguarde alguns minutos, pois as atualizações podem levar um tempo para aparecer.",
+      "Se ainda não atualizar, tente fazer um novo commit para forçar a atualização."
+    ]
+  },
+  {
+    "erro": "This branch has conflicts that must be resolved",
+    "descricaoErro": "Você tenta mesclar uma Pull Request, mas há conflitos entre as mudanças.",
+    "solucoes": [
+      "O GitHub mostrará os arquivos que têm conflitos.",
+      "Clique no botão Resolve conflicts, edite os arquivos para corrigir os conflitos e clique em Mark as resolved.",
+      "Depois, clique em Commit merge e finalize a Pull Request."
+    ]
+  },
+  {
+    "erro": "O botão 'Merge Pull Request' não aparece",
+    "descricaoErro": "Você criou uma Pull Request, mas não consegue mesclá-la.",
+    "solucoes": [
+      "Confira se você tem permissões para mesclar Pull Requests no repositório.",
+      "Se houver verificações automáticas (Checks) ou revisões obrigatórias, elas precisam ser aprovadas antes da mesclagem."
+    ]
+  },
+  {
+    "erro": "Repository Not Found ao abrir uma página no GitHub",
+    "descricaoErro": "Você tenta acessar um repositório e recebe essa mensagem.",
+    "solucoes": [
+      "Confirme se o repositório ainda existe e se o link está correto.",
+      "Se for privado, verifique se você tem permissão para acessá-lo.",
+      "Se for um repositório excluído, ele não pode ser recuperado."
+    ]
+  },
+  {
+    "erro": "Arquivo sumiu depois de editar no GitHub",
+    "descricaoErro": "Você editou um arquivo pelo site, mas ele desapareceu depois de um tempo.",
+    "solucoes": [
+      "Confira o Histórico de commits no repositório para ver se alguém removeu ou alterou o arquivo.",
+      "Se necessário, recupere uma versão anterior do arquivo a partir do histórico."
+    ]
+  },
+  {
+    "erro": "Não estou recebendo notificações de Issues e Pull Requests",
+    "descricaoErro": "Você deveria estar recebendo e-mails ou alertas do GitHub, mas não recebe nada.",
+    "solucoes": [
+      "Vá em Settings > Notifications e verifique se as notificações por e-mail ou web estão ativadas.",
+      "Confira se as notificações não estão indo para a caixa de spam do seu e-mail."
+    ]
+  },
+  {
+    "erro": "Não consigo adicionar uma imagem no README",
+    "descricaoErro": "Você tentou inserir uma imagem no README.md, mas ela não aparece.",
+    "solucoes": [
+      "Certifique-se de que o caminho da imagem está correto. Se a imagem estiver no repositório, use: ![Descrição da imagem](caminho/para/imagem.png)",
+      "Se a imagem estiver hospedada em outro site, verifique se o link é válido e acessível."
+    ]
+  },
+  {
+    "erro": "This action is disabled for this repository",
+    "descricaoErro": "O GitHub não permite que você execute certas ações, como abrir Issues ou ativar GitHub Pages.",
+    "solucoes": [
+      "Se for um repositório de outra pessoa, pode ser que o dono tenha desativado essas funções.",
+      "Se for seu repositório, vá em Settings e ative a funcionalidade desejada."
+    ]
+  },
+  {
+    "erro": "Não consigo adicionar um novo colaborador ao meu repositório",
+    "descricaoErro": "Você tenta adicionar alguém ao repositório, mas a opção não aparece.",
+    "solucoes": [
+      "Apenas repositórios privados ou de organizações permitem adicionar colaboradores.",
+      "Vá até Settings > Collaborators e insira o nome do usuário.",
+      "Se for um repositório de uma organização, você precisa ter permissões de administrador para adicionar membros."
+    ]
+  },
+  {
+    "erro": "Não consigo renomear meu repositório",
+    "descricaoErro": "Você quer mudar o nome do repositório, mas não encontra a opção.",
+    "solucoes": [
+      "Vá até Settings, na seção Repository Name, e edite o nome.",
+      "Depois da mudança, o antigo link do repositório não funcionará mais. Se outras pessoas usam esse repositório, avise-as sobre a alteração."
+    ]
+  },
+  {
+    "erro": "You have reached the maximum number of private repositories",
+    "descricaoErro": "O GitHub não permite criar mais repositórios privados.",
+    "solucoes": [
+      "Se você estiver no plano gratuito, pode haver um limite de repositórios privados.",
+      "Para criar mais, você pode arquivar repositórios antigos ou considerar um plano pago."
+    ]
+  },
+  {
+    "erro": "Branch protection rules prevent this action",
+    "descricaoErro": "Você tenta enviar mudanças ou excluir uma branch, mas recebe essa mensagem.",
+    "solucoes": [
+      "O dono do repositório pode ter ativado proteção de branch em Settings > Branches.",
+      "Se você precisar fazer mudanças, peça a um administrador para ajustar as regras ou abrir uma Pull Request para sugerir alterações."
+    ]
+  },
+  {
+    "erro": "O botão de 'Delete Fork' não aparece",
+    "descricaoErro": "Você fez um Fork de um repositório, mas não sabe como removê-lo.",
+    "solucoes": [
+      "O Fork é tratado como um repositório normal. Para excluí-lo:",
+      "Vá até o Fork, clique em Settings, role até o final e clique em Delete this repository.",
+      "Confirme digitando o nome do repositório."
+    ]
+  },
+  {
+    "erro": "Meu avatar/nome de usuário não atualiza",
+    "descricaoErro": "Você alterou sua foto de perfil ou nome de usuário, mas o GitHub ainda mostra o antigo.",
+    "solucoes": [
+      "Às vezes, o GitHub demora um tempo para atualizar informações visuais. Tente limpar o cache do navegador e recarregar a página.",
+      "Se for o nome de usuário, os antigos links dos seus repositórios podem não funcionar mais, então atualize onde for necessário."
+    ]
+  },
+  {
+    "erro": "Meu repositório não aparece na pesquisa do GitHub",
+    "descricaoErro": "Você criou um repositório, mas ele não aparece nos resultados de busca do GitHub.",
+    "solucoes": [
+      "O GitHub pode demorar algumas horas para indexar novos repositórios.",
+      "Certifique-se de que o repositório não é privado, pois repositórios privados não aparecem na busca pública."
+    ]
+  },
+  {
+    "erro": "This file is too big to edit in the browser",
+    "descricaoErro": "Você tenta editar um arquivo pelo site, mas recebe essa mensagem.",
+    "solucoes": [
+      "O GitHub não permite edição de arquivos grandes diretamente pelo navegador.",
+      "Faça o download do arquivo, edite localmente e depois envie a versão atualizada pelo site."
+    ]
+  },
+  {
+    "erro": "Too many requests ou API rate limit exceeded",
+    "descricaoErro": "O GitHub bloqueia temporariamente suas ações porque você fez muitas requisições em pouco tempo.",
+    "solucoes": [
+      "Aguarde alguns minutos antes de tentar novamente.",
+      "Se você estiver usando integrações com APIs do GitHub, pode ser necessário gerar um Token de Acesso Pessoal para evitar esses bloqueios."
+    ]
+  },
+  {
+    "erro": "Recebi um aviso de 'Security Alert' no meu repositório",
+    "descricaoErro": "O GitHub avisou que há vulnerabilidades em dependências do seu projeto.",
+    "solucoes": [
+      "Vá até a aba Security do repositório e verifique os alertas de dependências vulneráveis.",
+      "O GitHub pode sugerir atualizações automáticas. Clique em Create automated security update para corrigir o problema rapidamente."
+    ]
+  }
+]
