@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <div className="w-[400px] h-screen max-h-screen overflow-y-auto bg-[#28225F]/50 px-4 py-6 shadow-[0px_0px_24px_#8c93fb44]">
+    <div className="w-[350px] h-screen max-h-screen overflow-y-auto bg-[#28225F]/50 px-4 py-6 shadow-[0px_0px_24px_#8c93fb44]">
         <Link href={"/"}>
       <div className="flex flex-row items-center gap-2">
         <Image
