@@ -2,7 +2,6 @@ import Atalho from "@/components/Atalho";
 import Dica from "@/components/Dica";
 import dicas from "@/content/dicas.json";
 import atalhos from "@/content/atalhos.json";
-import { div, object } from "framer-motion/client";
 
 export default function GithubDocs() {
   return (

@@ -4,7 +4,6 @@ import plasmaDocsLogo from "@/assets/Logo plasma docs.svg";
 import DropdownListTitle from "./DropdownListTitle";
 import SidebarItemLink from "./SidebarItemLink";
 import Link from "next/link";
-import { div } from "framer-motion/client";
 
 export default function Sidebar() {
   return (
@@ -16,7 +15,7 @@ export default function Sidebar() {
               src={plasmaDocsLogo}
               alt="Plasma logo"
               id="logoPlasmaDocs"
-              className="max-w-1/4"
+              className="no-drag max-w-1/4"
             />
             <span className="text-3xl font-bold" id="title">
               Plasma Docs
