@@ -1,36 +1,31 @@
 import Atalho from "@/components/Atalho";
-import Dica from "@/components/Dica";
-import dicas from "@/content/dicas.json";
+
 import atalhos from "@/content/atalhos.json";
-import { div, object } from "framer-motion/client";
 
 export default function GithubDocs() {
   return (
-    <>
-      <main className="flex flex-row w-screen">
-        <section className="w-[300px] bg-slate-950"></section>
-        <section className=" hidden mx-auto w-3/5 overflow-y-auto">
-          <div className="grid grid-cols-3 gap-8 items-stretch p-4 justify-center w-full ">
-            {dicas.map((dica, index) => (
-              <Dica key={index} content={dica} />
-            ))}
-            {/* <ErrosSolucoes content={errosSolucoes[0]} /> */}
-          </div>
-        </section>
-        <section className="mx-auto w-3/5 overflow-y-auto">
-          <div className="grid grid-cols-1 gap-8 items-stretch p-4 justify-center w-full ">
-            {Object.entries(atalhos).map(([key, value], index) => (
-              <div className="flex flex-col gap-4">
-                <h2 className="text-2xl text-white font-bold">{key}</h2>
-                {value.map((atalho, index) => (
-                  <Atalho key={index} content={atalho} />
-                ))}
-              </div>
-            ))}
-            {/* <ErrosSolucoes content={errosSolucoes[0]} /> */}
-          </div>
-        </section>
-      </main>
-    </>
+    <section className="flex flex-row text-[#F5F5F5]">
+      <div className=" mx-auto flex flex-col">
+        <span className="text-4xl font-bold mb-4">Atalhos</span>
+
+        <div className="grid grid-cols-1 gap-8 items-stretch justify-center ">
+          <p className="text-lg">
+            Ao utilizar o Git e o GitHub, alguns erros podem ocorrer com
+            frequência. Abaixo, listamos alguns dos problemas mais comuns e suas
+            soluções:
+          </p>
+          {Object.entries(atalhos).map(([key, value], index) => (
+            <div className="flex flex-col gap-4" key={index}>
+              <h2 className="text-2xl text-white font-bold">{key}</h2>
+              {value.map((atalho, index) => (
+                <Atalho key={index} content={atalho} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
+  {
+  }
 }
