@@ -2,7 +2,7 @@ export default function Page() {
   return (
     <>
       <div className="flex justify-center items-center">
-        <h1 className="text-4xl font-bold text-[#F5F5F5] text-start w-full">Arquivos</h1>
+        <h1 className="text-4xl font-bold text-start w-full mb-10">Arquivos</h1>
       </div>
     </>
   );
