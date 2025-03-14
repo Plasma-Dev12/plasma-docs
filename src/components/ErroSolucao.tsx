@@ -29,9 +29,17 @@ export default function ErroSolucao({ content }: ErrosSolucoesProps) {
           </p>
         </div>
         {mostrarSolucoes ? (
-          <LuChevronDown className="text-[#8C93FB] w-6 h-6" />
+          <LuChevronDown
+            width={24}
+            height={24}
+            className="text-[#8C93FB] w-6 h-6"
+          />
         ) : (
-          <LuChevronRight className="text-[#8C93FB] w-6 h-6" />
+          <LuChevronRight
+            width={24}
+            height={24}
+            className="text-[#8C93FB] w-6 h-6"
+          />
         )}
       </div>
       <div
