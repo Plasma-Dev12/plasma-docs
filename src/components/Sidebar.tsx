@@ -5,7 +5,7 @@ import DropdownListTitle from "./DropdownListTitle";
 import SidebarItemLink from "./SidebarItemLink";
 
 export default function Sidebar() {    
-
+    //é pra vir junto
     return (
         <div className="w-[350px] ">
             <div className="w-[350px] fixed   h-screen max-h-screen overflow-y-auto bg-[#28225F]/50 px-4 py-6 shadow-[0px_0px_24px_#8c93fb44]">
