@@ -3,7 +3,9 @@ import { usePathname } from "next/navigation";
 import React, { Fragment, useEffect, useState } from "react";
 
 export default function AnchorLinks() {
-  const [headings, setHeadings] = useState<{ id: string; text: string }[]>([]);
+  const [headings, setHeadings] = useState<
+    { id: string; text: string; tag: string }[]
+  >([]);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -14,6 +16,7 @@ export default function AnchorLinks() {
     const headingData = elements.map((element) => ({
       id: element.textContent || "",
       text: element.textContent || "",
+      tag: element.tagName,
     }));
     setHeadings(headingData);
   }, [pathname]);
@@ -30,7 +33,12 @@ export default function AnchorLinks() {
         </span>
         <ul className="flex flex-col mt-3 gap-1">
           {headings.map((heading) => (
-            <li key={heading.id} className="text-white/70 hover:text-[#A486FF]">
+            <li
+              key={heading.id}
+              className={`text-white/70 hover:text-[#A486FF] ${
+                heading.tag === "H3" && "pl-4"
+              }`}
+            >
               <a href={`#${heading.id}`}>{heading.text}</a>
             </li>
           ))}
