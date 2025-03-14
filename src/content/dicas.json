@@ -1,0 +1,83 @@
+[
+  {
+    "titulo": "Aprenda os atalhos de teclado",
+    "descricao": "Pressione ? em qualquer página para ver todos os atalhos disponíveis e navegar mais rápido sem precisar do mouse."
+  },
+  {
+    "titulo": "Copie links permanentes de arquivos",
+    "descricao": "Se precisar compartilhar um arquivo específico de um projeto, pressione y para gerar um link que sempre levará à mesma versão do arquivo, mesmo que ele seja atualizado depois."
+  },
+  {
+    "titulo": "Pesquise arquivos rapidamente",
+    "descricao": "Pressione t dentro de um repositório para abrir uma barra de pesquisa e encontrar qualquer arquivo sem precisar clicar pasta por pasta."
+  },
+  {
+    "titulo": "Faça referência a outras partes do projeto",
+    "descricao": "Em comentários e descrições, digite # seguido de um número para criar um link direto para uma tarefa (Issue) ou sugestão de mudança (Pull Request)."
+  },
+  {
+    "titulo": "Formate seu código corretamente em comentários",
+    "descricao": "Para melhorar a leitura, coloque trechos de código entre três crases (```) para que fiquem bem formatados."
+  },
+  {
+    "titulo": "Edite arquivos direto pelo navegador",
+    "descricao": "Se precisar fazer pequenas mudanças sem baixar nada, clique no ícone de lápis em um arquivo para editá-lo e salvar a alteração direto pelo site."
+  },
+  {
+    "titulo": "Crie anotações e compartilhe código sem precisar de um projeto",
+    "descricao": "No site gist.github.com, você pode criar pequenos arquivos de código e compartilhá-los facilmente com outras pessoas."
+  },
+  {
+    "titulo": "Facilite a colaboração criando modelos para tarefas",
+    "descricao": "Se várias pessoas contribuem para o seu projeto, você pode definir modelos para novas tarefas (Issues) e sugestões de mudança (Pull Requests), orientando os colaboradores sobre quais informações fornecer."
+  },
+  {
+    "titulo": "Automatize tarefas repetitivas",
+    "descricao": "O GitHub tem uma ferramenta chamada 'Actions' que permite programar ações automáticas, como rodar testes ou atualizar arquivos, sem precisar fazer isso manualmente."
+  },
+  {
+    "titulo": "Evite alterações acidentais em partes importantes do projeto",
+    "descricao": "Você pode configurar restrições para impedir que mudanças sejam feitas diretamente em arquivos ou áreas críticas do projeto sem passar por uma revisão antes."
+  },
+  {
+    "titulo": "Crie uma boa apresentação para seu projeto",
+    "descricao": "Adicione um arquivo README.md no seu repositório para descrever o que o projeto faz e como outras pessoas podem usá-lo ou contribuir."
+  },
+  {
+    "titulo": "Reabra sugestões de mudança fechadas por engano",
+    "descricao": "Se alguém fechar um pedido de alteração (Pull Request) sem querer, basta reabri-lo para continuar de onde parou, sem perder o histórico das discussões."
+  },
+  {
+    "titulo": "Crie projetos privados sem pagar nada",
+    "descricao": "Desde 2019, o GitHub permite que você tenha projetos privados gratuitamente, o que é ótimo para testar ideias antes de torná-las públicas."
+  },
+  {
+    "titulo": "Veja mudanças em textos de forma mais organizada",
+    "descricao": "Quando arquivos escritos em Markdown (como anotações ou documentos) são alterados, o GitHub exibe as diferenças de forma clara, destacando o que foi adicionado ou removido."
+  },
+  {
+    "titulo": "Gerencie seu GitHub pelo terminal",
+    "descricao": "Se você gosta de usar comandos em vez do navegador, pode instalar o GitHub CLI e gerenciar tudo digitando comandos no computador."
+  },
+  {
+    "titulo": "Mantenha suas ferramentas atualizadas automaticamente",
+    "descricao": "Você pode ativar um recurso chamado Dependabot, que verifica se há atualizações para bibliotecas e ferramentas que seu projeto usa e sugere a instalação delas."
+  },
+
+  {
+    "titulo": "Crie um site diretamente do GitHub",
+    "descricao": "Com o recurso GitHub Pages, você pode transformar arquivos de um repositório em um site, sem precisar configurar servidores ou serviços extras."
+  },
+  {
+    "titulo": "Acompanhe o que está acontecendo no seu projeto",
+    "descricao": "A aba Insights mostra estatísticas sobre quantas pessoas acessam seu projeto, quem contribui mais e quais partes do código mudaram ao longo do tempo."
+  },
+  {
+    "titulo": "Baixe um projeto sem precisar instalar programas",
+    "descricao": "Se quiser apenas ver os arquivos de um projeto sem instalar nada, clique no botão verde 'Code' e escolha a opção 'Download ZIP' para baixar tudo como uma pasta compactada."
+  },
+  {
+    "titulo": "Integre o GitHub ao seu editor de código",
+    "descricao": "Se você usa o Visual Studio Code, pode instalar a extensão do GitHub para visualizar, editar e enviar mudanças diretamente do programa, sem precisar abrir o site."
+  }
+]
