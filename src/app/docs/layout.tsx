@@ -11,7 +11,11 @@ export default function LayoutDocs({
     <>
       <div className="flex w-full justify-between">
         <Sidebar />
-        <div className="flex-1 my-16 mx-16">{children}</div>
+        <main className="flex-1 text-[#F5F5F5] text-justify my-16 mx-16">
+          <div className="flex flex-col max-w-[800px]">
+            {children}
+          </div>
+        </main>
         <AnchorLinks />
       </div>
       <Footer />
