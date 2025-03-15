@@ -5,7 +5,7 @@ interface ListProps {
 
 export default function List({children, type}: ListProps) {
     return (
-        <ul className={`list-inside ${type === "disc" ? "list-disc" : "list-decimal"}`}>
+        <ul className={`list-inside flex flex-col gap-4 ${type === "disc" ? "list-disc" : "list-decimal"}`}>
             {children}
         </ul>
     );

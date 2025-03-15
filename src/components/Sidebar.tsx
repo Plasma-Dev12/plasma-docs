@@ -33,7 +33,7 @@ export default function Sidebar() {
                   link="/docs/interface-navigation/navbar"
                 />
                 <SidebarItemLink
-                  name="Busca"
+                  name="Barra de pesquisa"
                   link="/docs/interface-navigation/search"
                 />
                 <SidebarItemLink
