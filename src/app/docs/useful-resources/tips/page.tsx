@@ -2,7 +2,6 @@ import Atalho from "@/components/Atalho";
 import Dica from "@/components/Dica";
 import dicas from "@/content/dicas.json";
 import atalhos from "@/content/atalhos.json";
-import { div, object } from "framer-motion/client";
 
 export default function GithubDocs() {
   return (
@@ -20,7 +19,7 @@ export default function GithubDocs() {
         <section className="mx-auto w-3/5 overflow-y-auto">
           <div className="grid grid-cols-1 gap-8 items-stretch p-4 justify-center w-full ">
             {Object.entries(atalhos).map(([key, value], index) => (
-              <div className="flex flex-col gap-4">
+              <div key={index} className="flex flex-col gap-4">
                 <h2 className="text-2xl text-white font-bold">{key}</h2>
                 {value.map((atalho, index) => (
                   <Atalho key={index} content={atalho} />

@@ -38,7 +38,7 @@ export default function DevelopersComponent() {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [developers.length]);
 
   return (
     <div className="relative h-full w-full flex flex-col justify-center items-center gap-10 lg:flex-row lg:gap-[10%] lg:w-full">

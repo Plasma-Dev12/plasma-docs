@@ -1,5 +1,3 @@
-import atalhos from "@/content/atalhos.json";
-
 interface AtalhosProps {
   content: {
     atalho: string;

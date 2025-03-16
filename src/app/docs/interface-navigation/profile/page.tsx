@@ -41,7 +41,7 @@ export default function Page() {
           <h2 className="text-3xl font-bold">Barra de Pesquisa</h2>
           <p className="w-full text-lg">
             <b>Aparência:</b> Exibe um espaço para busca com o texto placeholder
-            "Type / to search".
+            &quot;Type / to search&quot;.
           </p>
           <p className="w-full text-lg">
             <b>Função:</b> Permite ao usuário realizar pesquisas avançadas por
@@ -61,7 +61,7 @@ export default function Page() {
             notificações pendentes, um contador aparece indicando o número de
             itens não lidos.
           </p>
-          <p className="font-bold w-full text-lg">2. Ícone de "+"</p>
+          <p className="font-bold w-full text-lg">2. Ícone de &quot;+&quot;</p>
           <p className="w-full text-lg pl-10">
             <b>Função:</b> Abre um menu suspenso com opções para criar:
           </p>
