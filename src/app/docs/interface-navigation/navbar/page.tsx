@@ -22,7 +22,7 @@ export default function NavbarPage() {
         <Content>
           <Image
             id="navbar"
-            className="md:min-w-[800px]"
+            className="w-full"
             src={headerExample}
             alt="Header image"
           />
@@ -67,18 +67,43 @@ export default function NavbarPage() {
         <LearnMoreLink link="/docs/interface-navigation/search">Barra de pesquisa</LearnMoreLink>
       </TopicContent>
         <TopicContent>
-          <TopicTitle>Ícones Funcionais (lado direito da barra)</TopicTitle>
+          <TopicTitle>Ícones Funcionais</TopicTitle>
           <List type="decimal">
-            <ListItem title="Sino de Notificações">
+            <ListItem title="Chat com Copilot">
               <Spacer>
                 <Topic title="Função">
-                  exibe notificações relacionadas a issues, pull requests e outros
-                  eventos dos repositórios acompanhados. Quando há notificações
-                  pendentes, um contador aparece indicando o número de itens não
-                  lidos.
+                  disponibiliza um assistente inteligente integrado diretamente ao GitHub, ajudando os usuários a aumentar sua produtividade e resolver dúvidas em tempo real.
                 </Topic>
+                <Spacer>
+                  <List type="disc">
+                    <ListItem>
+                      <Topic title="Sugestões de Código">
+                        Gera trechos de código baseados em descrições ou comandos fornecidos pelo usuário, 
+                        agilizando o desenvolvimento e evitando erros comuns.
+                      </Topic>
+                    </ListItem>
+                    <ListItem>
+                      <Topic title="Auxílio nas Pull Requests">
+                        Oferece sugestões para melhorar o código, resolve conflitos e explica trechos para facilitar 
+                        revisões detalhadas ou colaborações no projeto.
+                      </Topic>
+                    </ListItem>
+                    <ListItem>
+                      <Topic title="Documentação Simplificada">
+                        Responde perguntas e traz insights diretamente da documentação relevante do GitHub, 
+                        ajudando o usuário a encontrar soluções rapidamente.
+                      </Topic>
+                    </ListItem>
+                    <ListItem>
+                      <Topic title="Facilidade de Acesso">
+                        O Chat com o Copilot está integrado diretamente na interface, oferecendo assistência de forma rápida 
+                        e acessível na barra de navegação.
+                      </Topic>
+                    </ListItem>
+                  </List>
+                </Spacer>
               </Spacer>
-            </ListItem>
+            </ListItem>            
             <ListItem title={`Ícone de "+"`}>
               <Spacer>
                 <Topic title="Função">
@@ -130,6 +155,50 @@ export default function NavbarPage() {
                     </ListItem>
                   </List>
                 </Spacer>
+              </Spacer>
+            </ListItem>
+            <ListItem title="Your issues">
+              <Spacer>
+                <Topic title="Função">
+                  direciona o usuário para uma página personalizada que exibe todas as issues criadas ou atribuídas ao usuário.
+                </Topic>
+                <Spacer>
+                  <List type="disc">
+                    <ListItem>                      
+                      Facilita o gerenciamento das tarefas ou problemas relacionados aos repositórios.                   
+                    </ListItem>
+                    <ListItem>                      
+                      Inclui filtros como status (abertas ou fechadas) e prioridade, permitindo acompanhar o progresso e resolver pendências de forma eficiente.
+                    </ListItem>
+                  </List>
+                </Spacer>
+              </Spacer>
+            </ListItem>
+            <ListItem title="Your pull requests">
+              <Spacer>
+                <Topic title="Função">
+                  leva o usuário a uma página que lista todas as pull requests associadas ao perfil.
+                </Topic>
+                <Spacer>
+                  <List type="disc">
+                    <ListItem>                      
+                      Mostra as pull requests criadas pelo usuário, atribuídas a ele ou que exigem revisão.
+                    </ListItem>
+                    <ListItem>                      
+                      Permite visualizar o status de cada solicitação (exemplo: aberta, em merge, ou fechada) e tomar ações como revisar código, discutir mudanças ou resolver conflitos.
+                    </ListItem>
+                  </List>
+                </Spacer>
+              </Spacer>
+            </ListItem>
+            <ListItem title="Notificações">
+              <Spacer>
+                <Topic title="Função">
+                  exibe notificações relacionadas a issues, pull requests e outros
+                  eventos dos repositórios acompanhados. Quando há notificações
+                  pendentes, um contador aparece indicando o número de itens não
+                  lidos.
+                </Topic>
               </Spacer>
             </ListItem>
           </List>          

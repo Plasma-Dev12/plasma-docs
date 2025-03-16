@@ -62,7 +62,7 @@ export default function SearchFunctionalityPage() {
               </Paragraph>
               <Spacer>
                 Exemplo: <CodeHighlight>author:usuario123 fix</CodeHighlight> →
-                Lista commits que contêm "fix" feitos pelo autor "usuario123".
+                Lista commits que contêm &quot;fix&quot; feitos pelo autor &quot;usuario123&quot;.
               </Spacer>
             </ListItem>
             <ListItem title="Issues e Pull Requests">
@@ -71,7 +71,7 @@ export default function SearchFunctionalityPage() {
               </Paragraph>
               <Spacer>
                 Exemplo: <CodeHighlight>is:open label:bug</CodeHighlight> →
-                Exibe issues abertas com o rótulo "bug".
+                Exibe issues abertas com o rótulo &quot;bug&quot;.
               </Spacer>
             </ListItem>
             <ListItem title="Usuários">
@@ -89,7 +89,7 @@ export default function SearchFunctionalityPage() {
               </Paragraph>
               <Spacer>
                 Exemplo: <CodeHighlight>filename:README.md</CodeHighlight> →
-                Mostra arquivos chamados "README.md".
+                Mostra arquivos chamados &quot;README.md&quot;.
               </Spacer>
             </ListItem>
           </List>
