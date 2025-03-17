@@ -62,7 +62,8 @@ export default function SearchFunctionalityPage() {
               </Paragraph>
               <Spacer>
                 Exemplo: <CodeHighlight>author:usuario123 fix</CodeHighlight> →
-                Lista commits que contêm &quot;fix&quot; feitos pelo autor &quot;usuario123&quot;.
+                Lista commits que contêm &quot;fix&quot; feitos pelo autor
+                &quot;usuario123&quot;.
               </Spacer>
             </ListItem>
             <ListItem title="Issues e Pull Requests">
@@ -101,65 +102,68 @@ export default function SearchFunctionalityPage() {
             A busca avançada no GitHub suporta uma série de operadores que
             refinam os resultados. Aqui estão os principais:
           </Paragraph>
-          <List type="disc">
-            <ListItem>
-              <Paragraph>
-                <CodeHighlight>repo:</CodeHighlight> Limita a busca a um
-                repositório específico. Exemplo:{" "}
-                <CodeHighlight>repo:usuario/repo issue</CodeHighlight>
-              </Paragraph>
-            </ListItem>
-            <ListItem>
-              <Paragraph>
-                <CodeHighlight>user:</CodeHighlight> Limita a busca a um usuário
-                específico. Exemplo:{" "}
-                <CodeHighlight>user:usuario123</CodeHighlight>
-              </Paragraph>
-            </ListItem>
-            <ListItem>
-              <Paragraph>
-                <CodeHighlight>language:</CodeHighlight> Filtra por linguagem de
-                programação. Exemplo:{" "}
-                <CodeHighlight>language:javascript</CodeHighlight>
-              </Paragraph>
-            </ListItem>
-            <ListItem>
-              <Paragraph>
-                <CodeHighlight>is:</CodeHighlight> Define o status (open,
-                closed, etc.). Exemplo: <CodeHighlight>is:closed</CodeHighlight>
-              </Paragraph>
-            </ListItem>
-            <ListItem>
-              <Paragraph>
-                <CodeHighlight>label:</CodeHighlight> Busca por etiquetas
-                específicas em issues ou pull requests. Exemplo:{" "}
-                <CodeHighlight>label:enhancement</CodeHighlight>
-              </Paragraph>
-            </ListItem>
-          </List>
+          <Spacer>
+            <List type="disc">
+              <ListItem>
+                <Paragraph>
+                  <CodeHighlight>repo:</CodeHighlight> Limita a busca a um
+                  repositório específico. Exemplo:{" "}
+                  <CodeHighlight>repo:usuario/repo issue</CodeHighlight>
+                </Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>
+                  <CodeHighlight>user:</CodeHighlight> Limita a busca a um
+                  usuário específico. Exemplo:{" "}
+                  <CodeHighlight>user:usuario123</CodeHighlight>
+                </Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>
+                  <CodeHighlight>language:</CodeHighlight> Filtra por linguagem
+                  de programação. Exemplo:{" "}
+                  <CodeHighlight>language:javascript</CodeHighlight>
+                </Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>
+                  <CodeHighlight>is:</CodeHighlight> Define o status (open,
+                  closed, etc.). Exemplo:{" "}
+                  <CodeHighlight>is:closed</CodeHighlight>
+                </Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>
+                  <CodeHighlight>label:</CodeHighlight> Busca por etiquetas
+                  específicas em issues ou pull requests. Exemplo:{" "}
+                  <CodeHighlight>label:enhancement</CodeHighlight>
+                </Paragraph>
+              </ListItem>
+            </List>
+          </Spacer>
         </TopicContent>
 
         <TopicContent>
           <TopicTitle>Benefícios da Busca Avançada</TopicTitle>
-          <List type="disc">
-            <ListItem>
-              <Topic title="Precisão">
-                Economiza tempo ao refinar os resultados de forma
-                específica.
-              </Topic>
-            </ListItem>
-            <ListItem>
-              <Topic title="Escalabilidade">
-                Funciona em projetos pequenos e grandes.
-              </Topic>
-            </ListItem>
-            <ListItem>
-              <Topic title="Colaboração">
-                Facilita encontrar trabalho em andamento ou
-                histórico.
-              </Topic>
-            </ListItem>
-          </List>
+          <Spacer>
+            <List type="disc">
+              <ListItem>
+                <Topic title="Precisão">
+                  Economiza tempo ao refinar os resultados de forma específica.
+                </Topic>
+              </ListItem>
+              <ListItem>
+                <Topic title="Escalabilidade">
+                  Funciona em projetos pequenos e grandes.
+                </Topic>
+              </ListItem>
+              <ListItem>
+                <Topic title="Colaboração">
+                  Facilita encontrar trabalho em andamento ou histórico.
+                </Topic>
+              </ListItem>
+            </List>
+          </Spacer>
         </TopicContent>
       </Content>
     </>

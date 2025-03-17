@@ -2,6 +2,7 @@ import Image from "next/image";
 import headerExample from "@/assets/navbar.png";
 import githubIcon from "@/assets/githubLogo.png";
 import plusOptions from "@/assets/plusFunctions.png";
+import plusOptionsMoblie from "@/assets/mobile functions.png";
 import Content from "@/components/layout-elements/Content";
 import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
@@ -110,7 +111,8 @@ export default function NavbarPage() {
                   Abre um menu suspenso com opções para criar:
                 </Topic>
                 <Spacer>
-                  <Image className="no-drag ml-10" alt="Icons" src={plusOptions} />
+                  <Image className="md:hidden no-drag pl-10" alt="Icons" src={plusOptionsMoblie} />
+                  <Image className="hidden md:block no-drag pl-10" alt="Icons" src={plusOptions} />
                 </Spacer>
                 <Spacer>              
                   <List type="disc">

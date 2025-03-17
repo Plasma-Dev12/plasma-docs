@@ -1,121 +1,251 @@
 import Image from "next/image";
-import headerExample from "@/assets/navbar.png";
-import githubIcon from "@/assets/githubLogo.png";
-import plusOptions from "@/assets/plusFunctions.png";
+import List from "@/components/layout-elements/List";
+import ListItem from "@/components/layout-elements/ListItem";
+import TopicContent from "@/components/layout-elements/TopicContent";
+import Paragraph from "@/components/layout-elements/Paragraph";
+import Topic from "@/components/layout-elements/Topic";
+import Spacer from "@/components/layout-elements/Spacer";
+import TopicTitle from "@/components/layout-elements/TopicTitle";
+import CodeHighlight from "@/components/layout-elements/CodeHighlight";
+import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
+import Content from "@/components/layout-elements/Content";
+import Title from "@/components/layout-elements/Title";
 
-export default function Page() {
+export default function ProfilePage() {
   return (
     <>
-      <h1 className="text-4xl font-bold text-start w-full mb-10">Perfil</h1>
-      <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-10">
-          <Image
-            id="navbar"
-            className="no-drag w-full max-w-[1000px]"
-            src={headerExample}
-            alt="Header image"
-          />
-          <div className="flex flex-col gap-5">
-            <div className="flex justify-start items-center gap-10">
-              <h2 className="text-3xl font-bold text-start">
-                Logotipo do GitHub
-              </h2>
-              <Image
-                src={githubIcon}
-                alt="Github logo"
-                className="no-drag w-[60px]"
-              />
-            </div>
-            <p className="w-full text-lg">
-              Um clique no logotipo leva o usuário diretamente para o painel
-              principal (Dashboard), onde é possível visualizar repositórios
-              recentes, atividades e recomendações personalizadas
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-bold">Titulo</h2>
-          <p className="w-full text-lg">Indica em que página o usuário está</p>
-        </div>
-        <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-bold">Barra de Pesquisa</h2>
-          <p className="w-full text-lg">
-            <b>Aparência:</b> Exibe um espaço para busca com o texto placeholder
-            &quot;Type / to search&quot;.
-          </p>
-          <p className="w-full text-lg">
-            <b>Função:</b> Permite ao usuário realizar pesquisas avançadas por
-            repositórios, usuários, commits e mais. Suporta operadores de busca
-            como author:, is:open, entre outros. Atalho útil: Pressione “/” no
-            teclado para ativar a barra de pesquisa.
-          </p>
-        </div>
-        <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-bold">
-            Ícones Funcionais (lado direito da barra)
-          </h2>
-          <p className="font-bold w-full text-lg">1. Sino de Notificações:</p>
-          <p className="w-full text-lg pl-10">
-            <b>Função:</b> Exibe notificações relacionadas a issues, pull
-            requests e outros eventos dos repositórios acompanhados. Quando há
-            notificações pendentes, um contador aparece indicando o número de
-            itens não lidos.
-          </p>
-          <p className="font-bold w-full text-lg">2. Ícone de &quot;+&quot;</p>
-          <p className="w-full text-lg pl-10">
-            <b>Função:</b> Abre um menu suspenso com opções para criar:
-          </p>
-          <Image className="no-drag pl-10" alt="Icons" src={plusOptions} />
-          <ul className="w-full text-lg pl-16 list-disc flex flex-col gap-5">
-            <li>
-              <b>New repository -</b> Cria um novo repositório para armazenar e
-              gerenciar código. É possível configurar a visibilidade (público ou
-              privado) e adicionar arquivos iniciais, como um README ou
-              .gitignore.
-            </li>
-            <li>
-              <b>Import repository –</b> Permite importar um repositório externo
-              para o GitHub, útil para migrar projetos hospedados em outros
-              serviços ou servidores Git.
-            </li>
-            <li>
-              <b>New codespace –</b> Inicia um novo ambiente de desenvolvimento
-              remoto usando GitHub Codespaces, permitindo editar código
-              diretamente no navegador com um ambiente pré-configurado.
-            </li>
-            <li>
-              <b>New gist –</b> Cria um novo Gist, que pode ser público ou
-              secreto. Gists são trechos de código compartilháveis, úteis para
-              armazenar scripts, notas e exemplos rápidos.
-            </li>
-            <li>
-              <b>New organization –</b> Cria uma nova organização no GitHub, que
-              permite gerenciar repositórios, permissões e equipes de forma
-              colaborativa.
-            </li>
-            <li>
-              <b>New project –</b> Cria um novo projeto no GitHub Projects,
-              permitindo organizar tarefas e acompanhar o progresso usando
-              quadros, listas e tabelas.
-            </li>
-          </ul>
-          <p className="w-full text-lg pl-10">
-            Essa seção facilita a criação e organização de novos conteúdos
-            diretamente pelo header do GitHub.
-          </p>
-        </div>
-        <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-bold text-start">
-            Icone de Perfil do Usuáro
-          </h2>
-          <p className="w-full text-lg">
-            <b>Função: </b>Abre um menu suspenso com opções como{" "}
-            <b>Configurações da conta</b>,
-            <b>Alternar entre diferentes organizações ou equipes</b> e{" "}
-            <b>Sair da conta</b>.
-          </p>
-        </div>
-      </div>
+      <Title>Profile</Title>
+      <Content>
+        <Paragraph>
+          A <b>página de perfil do usuário</b> no GitHub é um espaço onde são
+          exibidas informações importantes sobre as atividades, repositórios e
+          contribuições de um usuário. Essa página ajuda na apresentação
+          profissional e no acompanhamento do histórico de contribuições. A
+          seguir, um detalhamento da estrutura e funcionalidades.
+        </Paragraph>
+        <Title>COLOCAR A IMAGEM AQUI</Title>
+        <TopicContent>
+          <TopicTitle>Estrutura do Perfil do Usuário</TopicTitle>
+          <Paragraph>
+            A página do perfil é organizada em várias seções para apresentar as
+            informações de forma clara e acessível.
+          </Paragraph>
+          <Spacer>
+            <Topic title="1.1 Cabeçalho do Perfil">
+              O cabeçalho exibe informações básicas e de destaque do usuário:
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic title="Foto de Perfil e Nome de Usuário">
+                    Exibe a imagem de perfil do usuário.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Biografia (Bio)">
+                    Espaço para incluir uma breve descrição, como cargo,
+                    empresa, localização ou interesses.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Seguidores e Seguindo">
+                    Quantidade de seguidores e de usuários seguidos pelo perfil.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Repositórios Estrelados">
+                    Contagem de repositórios que o usuário marcou como favoritos
+                    (starred repositories)
+                  </Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+          <Spacer>
+            <Topic title="1.2 Seção de Repositórios">
+              Lista dos repositórios públicos do usuário, com opção de ordenação
+              e filtragem.
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic title="Detalhes exibidos">
+                    Nome do repositório, Breve descrição (se fornecida),
+                    Linguagem principal utilizada e Contagem de estrelas e forks
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Filtros de Repositórios">
+                    Permite buscar repositórios por palavras-chave e também
+                    oferece uma opção para classificação por tipo de repositório
+                    (publico, privado, forks, templates, entre outros),
+                    linguagem de programação e um filtro de ordenação (última
+                    atualização, por nome e por estrelas).
+                  </Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+          <Spacer>
+            <Topic title="1.3 Contribuições Recentes">
+              Esta seção apresenta um resumo das atividades do usuário na
+              plataforma:
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic title="Gráfico de Contribuições">
+                    Um mapa de calor que exibe a frequência de contribuições ao
+                    longo do ano, ele inclui atividades como commits, pull
+                    requests e issues.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Atividade Recente">
+                    Exibe as interações mais recentes do usuário, incluindo:{" "}
+                    <b>participação em Pull Requests</b>,{" "}
+                    <b>comentários em issues</b> e{" "}
+                    <b>contribuições a repositórios públicos</b>.
+                  </Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+          <Spacer>
+            <Topic title="1.4 Estatísticas Gerais">
+              A seção "Estatísticas Gerais" oferece uma visão geral das
+              atividades do usuário no GitHub, incluindo o número de
+              contribuições realizadas nos últimos 12 meses, as organizações das
+              quais faz parte e a possibilidade de destacar projetos específicos
+              no topo do perfil para maior visibilidade.
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic title="Número de Contribuições">
+                    Quantidade total de contribuições nos últimos 12 meses.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Organizações">
+                    Exibe as organizações das quais o usuário faz parte, com
+                    links para seus perfis.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Projetos em Destaque">
+                    Permite destacar repositórios específicos no topo do perfil
+                    para melhor visibilidade.
+                  </Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+          <Spacer>
+            <Topic title="1.5 Estatísticas Gerais">
+              O usuário pode personalizar seu perfil com diversas opções, entre
+              elas temos:
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic>
+                    Alterar foto, bio e links (como site pessoal ou portfólio).
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic>Configurar e-mail visível ao público.</Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic>Gerenciar configurações de privacidade.</Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic>
+                    Escolher repositórios para exibição em destaque.
+                  </Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+        </TopicContent>
+        <TopicContent>
+          <TopicTitle>Navegação</TopicTitle>
+          <Paragraph>
+            A página de perfil possui vários elementos que facilitam a
+            exploração e acesso a informações:
+          </Paragraph>
+          <Spacer>
+            <Topic title="2.1 Barra Lateral do Perfil">
+              Aqui na barra lateral temos algumas opções e atalhos para faciliar
+              a navegação, como:
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic>
+                    Atalhos para repositórios, organizações e estatísticas
+                    detalhadas.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic>Links rápidos para projetos e contribuições.</Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+          <Spacer>
+            <Topic title="2.2 Links de Conexão">
+              Existem algumas opções para podermos adicionar links de
+              redirecionamento para aumentar o seu alcançe com outras
+              plataformas, portifólios e redes sociais, como:
+            </Topic>
+            <Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic>
+                    Links personalizados para redes sociais e portfólios
+                    externos.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic>
+                    Opção de adicionar um site pessoal para melhor visibilidade
+                    profissional.
+                  </Topic>
+                </ListItem>
+              </List>
+            </Spacer>
+          </Spacer>
+        </TopicContent>
+        <TopicContent>
+          <TopicTitle>Importância do Perfil no GitHub</TopicTitle>
+          <Paragraph>
+            Com uma página de perfil bem configurada e atualizada, os usuários
+            podem aumentar sua visibilidade na comunidade de desenvolvedores e
+            atrair mais oportunidades no mercado de trabalho. Ter um perfil bem
+            estruturado no GitHub é essencial para:
+          </Paragraph>
+          <Spacer>
+            <List type="disc">
+              <ListItem>
+                <Topic title="Demonstração de habilidades">
+                  Facilita a apresentação de projetos e experiência.
+                </Topic>
+              </ListItem>
+              <ListItem>
+                <Topic title="Networking e oportunidades">
+                  Permite conexões com outros desenvolvedores e empresas.
+                </Topic>
+              </ListItem>
+              <ListItem>
+                <Topic title="Organização profissional">
+                  Mantém um histórico claro de contribuições e colaborações.
+                </Topic>
+              </ListItem>
+            </List>
+          </Spacer>
+        </TopicContent>
+      </Content>
     </>
   );
 }
