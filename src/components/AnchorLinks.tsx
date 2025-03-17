@@ -6,7 +6,7 @@ interface AnchorLinksProps {
   fixed?: boolean;
 }
 
-export default function AnchorLinks({fixed = true}: AnchorLinksProps) {
+export default function AnchorLinks({ fixed = true }: AnchorLinksProps) {
   const [headings, setHeadings] = useState<
     { id: string; text: string; tag: string }[]
   >([]);
@@ -25,9 +25,28 @@ export default function AnchorLinks({fixed = true}: AnchorLinksProps) {
     setHeadings(headingData);
   }, [pathname]);
 
+  const handleAnchorClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 200;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <nav className="anchor-links flex md:justify-center border-1 border-[#A486FF] rounded-xl mt-4 mb-16 md:mr-8 md:w-[200px] 2xl:flex-1 2xl:w-auto">
-      <div className={`2xl:w-auto pr-4 2xl:mt-0 ${fixed ? "fixed mt-48 w-[200px]" : "p-8"}`}>
+    <nav className="flex md:justify-center mt-4 mb-16 md:mr-8 md:w-[200px] 2xl:flex-1 2xl:w-auto 2xl:mt-16">
+      <div
+        className={`2xl:w-auto pr-4 2xl:mt-0 ${
+          fixed ? "fixed mt-48 w-[200px]" : "p-8"
+        }`}
+      >
         <span
           className={`text-white text-xl font-bold ${
             headings.length === 0 && "hidden"
@@ -43,7 +62,12 @@ export default function AnchorLinks({fixed = true}: AnchorLinksProps) {
                 heading.tag === "H3" && "pl-4"
               }`}
             >
-              <a href={`#${heading.id}`}>{heading.text}</a>
+              <a
+                href={`#${heading.id}`}
+                onClick={(e) => handleAnchorClick(e, heading.id)}
+              >
+                {heading.text}
+              </a>
             </li>
           ))}
         </ul>
