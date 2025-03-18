@@ -11,7 +11,7 @@ import List from "@/components/layout-elements/List";
 import Topic from "@/components/layout-elements/Topic";
 import menu from "@/assets/menu-sidebar.png";
 
-export default function Page() {
+export default function Menu() {
   return (
     <>
       <Title>Menu</Title>
