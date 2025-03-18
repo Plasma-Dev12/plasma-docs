@@ -18,11 +18,11 @@ export default function Page() {
       <Content>
         <Content>
           <Paragraph>
-            Ao clicar no botão de menu lateral{" "}
-            <CodeHighlight>hamburguer bar ≡</CodeHighlight>, um menu flutuante
-            aparece no lado esquerdo da tela, oferecendo acesso rápido a
-            diversas páginas e funcionalidades. Abaixo está a descrição
-            detalhada de cada opção disponível:
+            Ao clicar no botão de menu lateral hamburguer bar{" "}
+            <CodeHighlight>≡</CodeHighlight>, um menu flutuante aparece no lado
+            esquerdo da tela, oferecendo acesso rápido a diversas páginas e
+            funcionalidades. Abaixo está a descrição detalhada de cada opção
+            disponível:
           </Paragraph>
           <Image id="navbar" className="w-full" src={menu} alt="Menu image" />
         </Content>
@@ -258,6 +258,28 @@ export default function Page() {
                   automação de processos. Empresas também podem disponibilizar
                   suas próprias soluções, tornando o GitHub um ambiente ainda
                   mais completo para desenvolvimento de software.
+                </Topic>
+              </ListItem>
+            </List>
+          </Spacer>
+        </TopicContent>
+        <TopicContent>
+          <TopicTitle>Repositories</TopicTitle>
+          <Spacer>
+            <List type="disc">
+              <ListItem>
+                <Topic title="Função">
+                  Esta seção exibe os repositórios nos quais você mais
+                  contribuiu, destacando aqueles considerados mais relevantes ou
+                  populares com base em suas interações.
+                </Topic>
+              </ListItem>
+              <ListItem>
+                <Topic title="Descrição">
+                  Aqui são listados seus ou repositórios que você contribuiu
+                  recentemente, permitindo acesso rápido a cada um deles. Você
+                  pode visualizar informações como nome do repositório e quem é
+                  o dono dele.
                 </Topic>
               </ListItem>
             </List>
