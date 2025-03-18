@@ -6,10 +6,9 @@ import Paragraph from "@/components/layout-elements/Paragraph";
 import Topic from "@/components/layout-elements/Topic";
 import Spacer from "@/components/layout-elements/Spacer";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
-import CodeHighlight from "@/components/layout-elements/CodeHighlight";
-import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
 import Content from "@/components/layout-elements/Content";
 import Title from "@/components/layout-elements/Title";
+import profilePage from "@/assets/profilePage.png";
 
 export default function ProfilePage() {
   return (
@@ -23,7 +22,7 @@ export default function ProfilePage() {
           profissional e no acompanhamento do histórico de contribuições. A
           seguir, um detalhamento da estrutura e funcionalidades.
         </Paragraph>
-        <Title>COLOCAR A IMAGEM AQUI</Title>
+        <Image  id="navbar" className="border-2 rounded-lg" src={profilePage} alt="Profile page"/>
         <TopicContent>
           <TopicTitle>Estrutura do Perfil do Usuário</TopicTitle>
           <Paragraph>
