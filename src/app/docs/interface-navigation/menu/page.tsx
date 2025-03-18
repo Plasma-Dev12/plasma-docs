@@ -18,7 +18,7 @@ export default function Page() {
       <Content>
         <Content>
           <Paragraph>
-            Ao clicar no botão de menu lateral hamburguer bar{" "}
+            Ao clicar no botão de menu lateral hamburguer bar
             <CodeHighlight>≡</CodeHighlight>, um menu flutuante aparece no lado
             esquerdo da tela, oferecendo acesso rápido a diversas páginas e
             funcionalidades. Abaixo está a descrição detalhada de cada opção
@@ -69,7 +69,7 @@ export default function Page() {
                   Cada issue pode conter descrições detalhadas, imagens, código,
                   etiquetas <CodeHighlight>labels</CodeHighlight> para
                   categorização, responsáveis
-                  <CodeHighlight>assignees</CodeHighlight> e marcos{" "}
+                  <CodeHighlight>assignees</CodeHighlight> e marcos
                   <CodeHighlight>milestones</CodeHighlight> para melhor
                   organização. Os usuários podem comentar, sugerir soluções e
                   fechar issues conforme são resolvidas. Essa funcionalidade é
@@ -94,7 +94,7 @@ export default function Page() {
               </ListItem>
               <ListItem>
                 <Topic title="Descrição">
-                  Os desenvolvedores podem criar um{" "}
+                  Os desenvolvedores podem criar um
                   <CodeHighlight>pull request (PR)</CodeHighlight> para sugerir
                   mudanças, anexando comentários e justificativas. Revisores
                   podem analisar as alterações, sugerir edições e aprovar ou
@@ -123,13 +123,13 @@ export default function Page() {
                 <Topic title="Descrição">
                   Utilizando um sistema similar ao Kanban, os usuários podem
                   criar colunas personalizadas para diferentes fases do
-                  desenvolvimento, como <CodeHighlight>"A Fazer"</CodeHighlight>
-                  , <CodeHighlight>"Em Andamento"</CodeHighlight> e{" "}
-                  <CodeHighlight>"Concluído"</CodeHighlight>. As tarefas podem
-                  ser movidas entre colunas, ter responsáveis atribuídos e
-                  incluir prazos. Essa funcionalidade é amplamente utilizada
-                  para planejamento de sprints, controle de demandas e
-                  coordenação de equipes.
+                  desenvolvimento, como <CodeHighlight>A Fazer</CodeHighlight>,{" "}
+                  <CodeHighlight>Em Andamento</CodeHighlight> e
+                  <CodeHighlight>Concluído</CodeHighlight>. As tarefas podem ser
+                  movidas entre colunas, ter responsáveis atribuídos e incluir
+                  prazos. Essa funcionalidade é amplamente utilizada para
+                  planejamento de sprints, controle de demandas e coordenação de
+                  equipes.
                 </Topic>
               </ListItem>
             </List>
@@ -249,10 +249,10 @@ export default function Page() {
               <ListItem>
                 <Topic title="Descrição">
                   Os usuários podem procurar e instalar plugins que auxiliam no
-                  desenvolvimento, automação de tarefas, segurança,{" "}
+                  desenvolvimento, automação de tarefas, segurança,=
                   <CodeHighlight>
                     CI/CD Integração e Entrega Contínua
-                  </CodeHighlight>{" "}
+                  </CodeHighlight>
                   e muito mais. Entre os serviços disponíveis estão
                   monitoramento de código, análise de vulnerabilidades e
                   automação de processos. Empresas também podem disponibilizar

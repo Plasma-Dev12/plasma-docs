@@ -22,7 +22,12 @@ export default function ProfilePage() {
           profissional e no acompanhamento do histórico de contribuições. A
           seguir, um detalhamento da estrutura e funcionalidades.
         </Paragraph>
-        <Image  id="navbar" className="border-2 rounded-lg" src={profilePage} alt="Profile page"/>
+        <Image
+          id="navbar"
+          className="border-2 rounded-lg"
+          src={profilePage}
+          alt="Profile page"
+        />
         <TopicContent>
           <TopicTitle>Estrutura do Perfil do Usuário</TopicTitle>
           <Paragraph>
@@ -101,9 +106,9 @@ export default function ProfilePage() {
                 </ListItem>
                 <ListItem>
                   <Topic title="Atividade Recente">
-                    Exibe as interações mais recentes do usuário, incluindo:{" "}
-                    <b>participação em Pull Requests</b>,{" "}
-                    <b>comentários em issues</b> e{" "}
+                    Exibe as interações mais recentes do usuário, incluindo:
+                    <b>participação em Pull Requests</b>,
+                    <b>comentários em issues</b> e
                     <b>contribuições a repositórios públicos</b>.
                   </Topic>
                 </ListItem>
@@ -112,7 +117,7 @@ export default function ProfilePage() {
           </Spacer>
           <Spacer>
             <Topic title="1.4 Estatísticas Gerais">
-              A seção "Estatísticas Gerais" oferece uma visão geral das
+              A seção &quot;Estatísticas Gerais&quot; oferece uma visão geral das
               atividades do usuário no GitHub, incluindo o número de
               contribuições realizadas nos últimos 12 meses, as organizações das
               quais faz parte e a possibilidade de destacar projetos específicos
