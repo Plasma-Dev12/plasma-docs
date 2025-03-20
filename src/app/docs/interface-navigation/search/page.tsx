@@ -18,7 +18,7 @@ export default function SearchFunctionalityPage() {
       <Content>
         <Content>
           <Image
-            id="search-bar"
+            id="navbar"
             className="w-full"
             src={searchBarImage}
             alt="Header image"
