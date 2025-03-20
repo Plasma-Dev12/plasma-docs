@@ -4,7 +4,7 @@ import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import ListItem from "@/components/layout-elements/ListItem";
 import Image from "next/image";
-import personalizacao from "@/assets/personalizacao.gif";
+import notif from "@/assets/notif.png";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
@@ -15,9 +15,14 @@ import SubTopic from "@/components/layout-elements/SubTopic";
 export default function Page() {
   return (
     <>
-      <Title>Personalização e Acessibilidade</Title>
+      <Title>Notificações</Title>
       <Content>
-        <Image id="navbar" src={personalizacao} alt="Profile Page" />
+        <Paragraph>
+          A seção de notificações do GitHub permite controlar como e quando você
+          recebe atualizações sobre atividades relevantes nos repositórios,
+          organizações e times que você participa.
+        </Paragraph>
+        <Image id="navbar" src={notif} alt="Profile Page" />
         <TopicContent>
           <TopicTitle>Aparência</TopicTitle>
           <Paragraph>

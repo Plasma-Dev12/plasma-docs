@@ -16,7 +16,7 @@ export default function List({
   return spacer ? (
     <Spacer>
       <ul
-        className={`list-inside flex flex-col gap-4 ${
+        className={`list-inside flex flex-col [&_ul]:list-[revert] ${
           type === "topics"
             ? "list-none"
             : type === "disc"
@@ -29,7 +29,7 @@ export default function List({
     </Spacer>
   ) : (
     <ul
-      className={`list-inside flex flex-col gap-4 ${
+      className={`list-inside flex flex-col [&_ul]:list-[revert] ${
         type === "topics"
           ? "list-none"
           : type === "disc"
