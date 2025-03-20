@@ -7,7 +7,7 @@ interface LearnMoreLinkProps {
 
 export default function LearnMoreLink({children, link}: LearnMoreLinkProps) {
     return (
-        <span>
+        <span className="!text-[16px]">
             Saiba mais em: {""}
             <Link href={link} className="text-[#A486FF] hover:opacity-80 hover:underline">
                 {children}

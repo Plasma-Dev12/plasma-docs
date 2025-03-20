@@ -11,6 +11,7 @@ import Topic from "@/components/layout-elements/Topic";
 import Spacer from "@/components/layout-elements/Spacer";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 import SubTopic from "@/components/layout-elements/SubTopic";
+import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
 
 export default function Page() {
   return (
@@ -249,7 +250,104 @@ export default function Page() {
             <SubTopic>Code Button</SubTopic>
             <Spacer>
               <ListItem title="Clone">
-                Copia o URL do repositório para clonar via: <CodeHighlight>HTTPS</CodeHighlight>
+                Copia o URL do repositório para clonar via:{" "}
+                <Spacer>
+                  <List type="disc">
+                    <ListItem title="HTTPS">
+                      <Paragraph>
+                        Quando você escolhe a opção <b>HTTPS</b> e clica em{" "}
+                        <b>Copiar URL</b>, ele copia o link do repositório no
+                        formato HTTPS, que pode ser usado para clonar o projeto
+                        via Git (o sistema de controle de versão). E porque
+                        escolher o HTTPS?
+                      </Paragraph>
+                      <Spacer>
+                        <List type="disc">
+                          <ListItem title="Acessivel">
+                            <Paragraph>
+                              Não exige configuração prévia de chaves SSH.
+                            </Paragraph>
+                          </ListItem>
+                          <ListItem title="Versátil">
+                            <Paragraph>
+                              Funciona com nome de usuário e senha ou token de
+                              acesso pessoal para autenticar alterações, se
+                              necessário.
+                            </Paragraph>
+                          </ListItem>
+                        </List>
+                      </Spacer>
+                    </ListItem>
+                    <ListItem title="SSH">
+                      <Paragraph>
+                        SSH é um protocolo usado para acessar e gerenciar
+                        sistemas remotamente com segurança. No GitHub, ele
+                        permite a autenticação usando chaves SSH, em vez de nome
+                        de usuário e senha. No contexto do GitHub, é uma
+                        alternativa ao HTTPS para clonar e interagir com
+                        repositórios. SSH (Secure Shell) oferece mais segurança
+                        e conveniência para quem trabalha frequentemente com
+                        repositórios, evitando a necessidade de inserir
+                        credenciais toda vez. E porque escolher o HTTPS?
+                      </Paragraph>
+                      <Spacer>
+                        <List type="disc">
+                          <ListItem>
+                            <Paragraph>
+                              Não precisa digitar senhas repetidamente.
+                            </Paragraph>
+                          </ListItem>
+                          <ListItem>
+                            <Paragraph>
+                              Mais seguro e prático para desenvolvedores
+                              regulares.
+                            </Paragraph>
+                          </ListItem>
+                          <ListItem>
+                            <Paragraph>
+                              Ideal para automatizar tarefas.
+                            </Paragraph>
+                          </ListItem>
+                        </List>
+                      </Spacer>
+                    </ListItem>
+                    <ListItem title="Github CLI">
+                      <Paragraph>
+                        A opção GitHub CLI (Command Line Interface) permite que
+                        você gerencie repositórios, crie issues, revise pull
+                        requests e muito mais, sem precisar abrir a interface
+                        gráfica do GitHub em um navegador. E porque escolher
+                        esta opção?
+                      </Paragraph>
+                    </ListItem>
+                    <LearnMoreLink link="/docs/useful-resources/github-cli">
+                      GitHub CLI
+                    </LearnMoreLink>
+                    <ListItem title="Github CLI">
+                      <Spacer>
+                        <List type="disc">
+                          <ListItem title="Produtividade">
+                            <Paragraph>
+                              Evita a necessidade de alternar entre o terminal e
+                              o navegador.
+                            </Paragraph>
+                          </ListItem>
+                          <ListItem title="Automatização">
+                            <Paragraph>
+                              Ideal para integrar em scripts e fluxos de
+                              trabalho.
+                            </Paragraph>
+                          </ListItem>
+                          <ListItem title="Flexibilidade">
+                            <Paragraph>
+                              Disponível para diferentes sistemas operacionais.
+                            </Paragraph>
+                          </ListItem>
+                        </List>
+                      </Spacer>
+                    </ListItem>
+                  </List>
+                </Spacer>
               </ListItem>
             </Spacer>
           </List>
