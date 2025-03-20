@@ -26,6 +26,10 @@ export default function LayoutDocs({
         h1.insertAdjacentElement("afterend", anchorLinks);
       });
     }
+    const h1 = document.querySelector('h1');
+    if (h1) {
+      document.title = h1.textContent + " - Plasma docs" || "Plasma docs";
+    }
   }, [pathname]);
   
   return (
