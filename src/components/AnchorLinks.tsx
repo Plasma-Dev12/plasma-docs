@@ -41,7 +41,7 @@ export default function AnchorLinks({ fixed = true }: AnchorLinksProps) {
   };
 
   return (
-    <nav className="flex md:justify-center mt-4 mb-16 md:mr-8 md:w-[200px] 2xl:flex-1 2xl:w-auto 2xl:mt-16">
+    <nav className="flex md:justify-center border-2 border-[#8C93FB] md:border-none rounded-3xl mt-4 mb-16 md:mr-8 md:w-[200px] 2xl:flex-1 2xl:w-auto 2xl:mt-16">
       <div
         className={`2xl:w-auto pr-4 2xl:mt-0 ${
           fixed ? "fixed mt-48 w-[200px]" : "p-8"
