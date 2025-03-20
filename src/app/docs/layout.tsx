@@ -32,13 +32,13 @@ export default function LayoutDocs({
     <>
       <div className="flex ">        
         <Sidebar />
-        <div className="flex flex-1 justify-evenly">
-          <main className="text-[#F5F5F5] text-justify mb-16 mt-48 2xl:mt-16 mx-8 sm:mx-16 2xl:mx-32 2xl:w-[800px]">
+        <div className="flex flex-1 justify-between">
+          <main className="text-[#F5F5F5]  text-justify mb-16 mt-48 2xl:mt-16 mx-8 sm:mx-16 2xl:mx-32 2xl:w-[800px]">
             <div className="flex flex-col max-w-[800px] 2xl:w-[800px]">                            
               {children}
             </div>
-          </main>
-          <div className="hidden md:block">
+          </main>          
+          <div className="hidden md:flex flex-1 justify-center">
             <AnchorLinks />
           </div>
         </div>
