@@ -249,7 +249,7 @@ export default function Menu() {
               <ListItem>
                 <Topic title="Descrição">
                   Os usuários podem procurar e instalar plugins que auxiliam no
-                  desenvolvimento, automação de tarefas, segurança,=
+                  desenvolvimento, automação de tarefas, segurança,
                   <CodeHighlight>
                     CI/CD Integração e Entrega Contínua
                   </CodeHighlight>
