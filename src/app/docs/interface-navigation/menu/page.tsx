@@ -5,7 +5,6 @@ import Image from "next/image";
 import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
-import Spacer from "@/components/layout-elements/Spacer";
 import ListItem from "@/components/layout-elements/ListItem";
 import List from "@/components/layout-elements/List";
 import Topic from "@/components/layout-elements/Topic";
@@ -24,11 +23,10 @@ export default function Menu() {
             funcionalidades. Abaixo está a descrição detalhada de cada opção
             disponível:
           </Paragraph>
-          <Image id="navbar" className="w-full" src={menu} alt="Menu image" />
+          <Image className="w-full image-shadow" src={menu} alt="Menu image" />
         </Content>
         <TopicContent>
           <TopicTitle>Home</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -50,11 +48,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Issues</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -78,11 +74,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Pull Requests</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -105,11 +99,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Projects</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -133,11 +125,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Discussions</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -159,11 +149,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Codespaces</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -184,11 +172,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Copilot</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -209,11 +195,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Explore</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -233,11 +217,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Marketplace</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -261,11 +243,9 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
         <TopicContent>
           <TopicTitle>Repositories</TopicTitle>
-          <Spacer>
             <List type="disc">
               <ListItem>
                 <Topic title="Função">
@@ -283,7 +263,6 @@ export default function Menu() {
                 </Topic>
               </ListItem>
             </List>
-          </Spacer>
         </TopicContent>
       </Content>
     </>

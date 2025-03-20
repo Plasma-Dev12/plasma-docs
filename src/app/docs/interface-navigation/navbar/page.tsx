@@ -22,8 +22,7 @@ export default function NavbarPage() {
       <Content>
         <Content>
           <Image
-            id="navbar"
-            className="w-full"
+            className="w-full image-shadow"
             src={headerExample}
             alt="Header image"
           />
@@ -70,111 +69,101 @@ export default function NavbarPage() {
           <TopicTitle>Ícones Funcionais</TopicTitle>
           <List type="decimal">
             <ListItem title="Chat com Copilot">
-              <Spacer>
-                <Topic title="Função">
-                  disponibiliza um assistente inteligente integrado diretamente
-                  ao GitHub, ajudando os usuários a aumentar sua produtividade e
-                  resolver dúvidas em tempo real.
-                </Topic>
-                <Spacer>
-                  <List type="disc">
-                    <ListItem>
-                      <Topic title="Sugestões de Código">
-                        Gera trechos de código baseados em descrições ou
-                        comandos fornecidos pelo usuário, agilizando o
-                        desenvolvimento e evitando erros comuns.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="Auxílio nas Pull Requests">
-                        Oferece sugestões para melhorar o código, resolve
-                        conflitos e explica trechos para facilitar revisões
-                        detalhadas ou colaborações no projeto.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="Documentação Simplificada">
-                        Responde perguntas e traz insights diretamente da
-                        documentação relevante do GitHub, ajudando o usuário a
-                        encontrar soluções rapidamente.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="Facilidade de Acesso">
-                        O Chat com o Copilot está integrado diretamente na
-                        interface, oferecendo assistência de forma rápida e
-                        acessível na barra de navegação.
-                      </Topic>
-                    </ListItem>
-                  </List>
-                </Spacer>
-              </Spacer>
+              <Topic title="Função">
+                disponibiliza um assistente inteligente integrado diretamente ao
+                GitHub, ajudando os usuários a aumentar sua produtividade e
+                resolver dúvidas em tempo real.
+              </Topic>
+              <List type="disc">
+                <ListItem>
+                  <Topic title="Sugestões de Código">
+                    Gera trechos de código baseados em descrições ou comandos
+                    fornecidos pelo usuário, agilizando o desenvolvimento e
+                    evitando erros comuns.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Auxílio nas Pull Requests">
+                    Oferece sugestões para melhorar o código, resolve conflitos
+                    e explica trechos para facilitar revisões detalhadas ou
+                    colaborações no projeto.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Documentação Simplificada">
+                    Responde perguntas e traz insights diretamente da
+                    documentação relevante do GitHub, ajudando o usuário a
+                    encontrar soluções rapidamente.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Facilidade de Acesso">
+                    O Chat com o Copilot está integrado diretamente na
+                    interface, oferecendo assistência de forma rápida e
+                    acessível na barra de navegação.
+                  </Topic>
+                </ListItem>
+              </List>
             </ListItem>
             <ListItem title={`Ícone de "+"`}>
+              <Topic title="Função">
+                Abre um menu suspenso com opções para criar:
+              </Topic>
               <Spacer>
-                <Topic title="Função">
-                  Abre um menu suspenso com opções para criar:
-                </Topic>
-                <Spacer>
-                  <Image
-                    className="md:hidden no-drag pl-10"
-                    alt="Icons"
-                    src={plusOptionsMoblie}
-                  />
-                  <Image
-                    className="hidden md:block no-drag pl-10"
-                    alt="Icons"
-                    src={plusOptions}
-                  />
-                </Spacer>
-                <Spacer>
-                  <List type="disc">
-                    <ListItem>
-                      <Topic title="New repository">
-                        Cria um novo repositório para armazenar e gerenciar
-                        código. É possível configurar a visibilidade (público ou
-                        privado) e adicionar arquivos iniciais, como um README
-                        ou .gitignore.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="Import repository">
-                        Permite importar um repositório externo para o GitHub,
-                        útil para migrar projetos hospedados em outros serviços
-                        ou servidores Git.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="New codespace">
-                        Inicia um novo ambiente de desenvolvimento remoto usando
-                        GitHub Codespaces, permitindo editar código diretamente
-                        no navegador com um ambiente pré-configurado.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="New gist">
-                        Cria um novo Gist, que pode ser público ou secreto.
-                        Gists são trechos de código compartilháveis, úteis para
-                        armazenar scripts, notas e exemplos rápidos.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="New organization">
-                        Cria uma nova organização no GitHub, que permite
-                        gerenciar repositórios, permissões e equipes de forma
-                        colaborativa.
-                      </Topic>
-                    </ListItem>
-                    <ListItem>
-                      <Topic title="New project">
-                        Cria um novo projeto no GitHub Projects, permitindo
-                        organizar tarefas e acompanhar o progresso usando
-                        quadros, listas e tabelas.
-                      </Topic>
-                    </ListItem>
-                  </List>
-                </Spacer>
+                <Image
+                  className="md:hidden no-drag pl-10"
+                  alt="Icons"
+                  src={plusOptionsMoblie}
+                />
+                <Image
+                  className="hidden md:block no-drag pl-10"
+                  alt="Icons"
+                  src={plusOptions}
+                />
               </Spacer>
+              <List type="disc">
+                <ListItem>
+                  <Topic title="New repository">
+                    Cria um novo repositório para armazenar e gerenciar código.
+                    É possível configurar a visibilidade (público ou privado) e
+                    adicionar arquivos iniciais, como um README ou .gitignore.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="Import repository">
+                    Permite importar um repositório externo para o GitHub, útil
+                    para migrar projetos hospedados em outros serviços ou
+                    servidores Git.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="New codespace">
+                    Inicia um novo ambiente de desenvolvimento remoto usando
+                    GitHub Codespaces, permitindo editar código diretamente no
+                    navegador com um ambiente pré-configurado.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="New gist">
+                    Cria um novo Gist, que pode ser público ou secreto. Gists
+                    são trechos de código compartilháveis, úteis para armazenar
+                    scripts, notas e exemplos rápidos.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="New organization">
+                    Cria uma nova organização no GitHub, que permite gerenciar
+                    repositórios, permissões e equipes de forma colaborativa.
+                  </Topic>
+                </ListItem>
+                <ListItem>
+                  <Topic title="New project">
+                    Cria um novo projeto no GitHub Projects, permitindo
+                    organizar tarefas e acompanhar o progresso usando quadros,
+                    listas e tabelas.
+                  </Topic>
+                </ListItem>
+              </List>
             </ListItem>
             <ListItem title="Your issues">
               <Spacer>
@@ -182,19 +171,17 @@ export default function NavbarPage() {
                   direciona o usuário para uma página personalizada que exibe
                   todas as issues criadas ou atribuídas ao usuário.
                 </Topic>
-                <Spacer>
-                  <List type="disc">
-                    <ListItem>
-                      Facilita o gerenciamento das tarefas ou problemas
-                      relacionados aos repositórios.
-                    </ListItem>
-                    <ListItem>
-                      Inclui filtros como status (abertas ou fechadas) e
-                      prioridade, permitindo acompanhar o progresso e resolver
-                      pendências de forma eficiente.
-                    </ListItem>
-                  </List>
-                </Spacer>
+                <List type="disc">
+                  <ListItem>
+                    Facilita o gerenciamento das tarefas ou problemas
+                    relacionados aos repositórios.
+                  </ListItem>
+                  <ListItem>
+                    Inclui filtros como status (abertas ou fechadas) e
+                    prioridade, permitindo acompanhar o progresso e resolver
+                    pendências de forma eficiente.
+                  </ListItem>
+                </List>
               </Spacer>
             </ListItem>
             <ListItem title="Your pull requests">
