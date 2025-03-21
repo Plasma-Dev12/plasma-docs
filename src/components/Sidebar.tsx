@@ -58,7 +58,12 @@ export default function Sidebar() {
             (isOpen ? "block" : "hidden")
           }
         >
-          <span className="font-bold text-xl">Github</span>
+          <Link
+            href="/docs/github"
+            className="font-bold text-xl transition-colors hover:text-[#A486FF]"
+          >
+            Github
+          </Link>
           <details className="cursor-pointer my-4">
             <DropdownListTitle name="Interface e navegação" />
             <div>
