@@ -6,11 +6,8 @@ import ListItem from "@/components/layout-elements/ListItem";
 import Image from "next/image";
 import settingsAccount from "@/assets/settingsAccount.png";
 import settingsProfile from "@/assets/settingsProfile.png";
-import CodeHighlight from "@/components/layout-elements/CodeHighlight";
-import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
 import TopicContent from "@/components/layout-elements/TopicContent";
-import Topic from "@/components/layout-elements/Topic";
 
 export default function Page() {
   return (

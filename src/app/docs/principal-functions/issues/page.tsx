@@ -7,8 +7,6 @@ import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
 import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
-import { Space } from "lucide-react";
-import Spacer from "@/components/layout-elements/Spacer";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 import Topic from "@/components/layout-elements/Topic";
 
@@ -57,8 +55,8 @@ export default function Page() {
                 </ListItem>
                 <ListItem title="Botão 'New Issue'">
                   Localizado no canto superior direito da página. Inicia a
-                  criação de uma nova issue (veja mais abaixo na seção "Criar
-                  Nova Issue").
+                  criação de uma nova issue (veja mais abaixo na seção &quot;Criar
+                  Nova Issue&quot;).
                 </ListItem>
               </List>
             </ListItem>
@@ -143,7 +141,7 @@ export default function Page() {
         </TopicContent>
         <TopicContent>
           <TopicTitle>Criar Nova Issue</TopicTitle>
-          <Paragraph>Ao clicar no botão "New Issue", o usuário pode:</Paragraph>
+          <Paragraph>Ao clicar no botão &quot;New Issue&quot;, o usuário pode:</Paragraph>
           <List type="disc">
             <ListItem>
               Definir um título descritivo e preencher o corpo da issue.
