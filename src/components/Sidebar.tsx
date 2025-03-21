@@ -59,22 +59,22 @@ export default function Sidebar() {
               <ul className="pl-4 mt-2">
                 <SidebarItemLink
                   name="Navbar"
-                  link="/docs/interface-navigation/navbar"
+                  link="/docs/github/interface-navigation/navbar"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Barra de pesquisa"
-                  link="/docs/interface-navigation/search"
+                  link="/docs/github/interface-navigation/search"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Perfil"
-                  link="/docs/interface-navigation/profile"
+                  link="/docs/github/interface-navigation/profile"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Menu"
-                  link="/docs/interface-navigation/menu"
+                  link="/docs/github/interface-navigation/menu"
                   onClick={() => setIsOpen(false)}
                 />
               </ul>
@@ -86,42 +86,42 @@ export default function Sidebar() {
               <ul className="pl-4">
                 <SidebarItemLink
                   name="Code"
-                  link="/docs/principal-functions/code"
+                  link="/docs/github/principal-functions/code"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Issues"
-                  link="/docs/principal-functions/issues"
+                  link="/docs/github/principal-functions/issues"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Pull requests"
-                  link="/docs/principal-functions/pull-requests"
+                  link="/docs/github/principal-functions/pull-requests"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Actions"
-                  link="/docs/principal-functions/actions"
+                  link="/docs/github/principal-functions/actions"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Projects"
-                  link="/docs/principal-functions/projects"
+                  link="/docs/github/principal-functions/projects"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Wiki"
-                  link="/docs/principal-functions/wiki"
+                  link="/docs/github/principal-functions/wiki"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Insights"
-                  link="/docs/principal-functions/insights"
+                  link="/docs/github/principal-functions/insights"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Settings"
-                  link="/docs/principal-functions/settings"
+                  link="/docs/github/principal-functions/settings"
                   onClick={() => setIsOpen(false)}
                 />
               </ul>
@@ -133,47 +133,47 @@ export default function Sidebar() {
               <ul className="pl-4">
                 <SidebarItemLink
                   name="Perfil público e conta"
-                  link="/docs/configurations-personalizations/public-profile-acount"
+                  link="/docs/github/configurations-personalizations/public-profile-acount"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Personalização e acessibilidade"
-                  link="/docs/configurations-personalizations/personalization-accessibility"
+                  link="/docs/github/configurations-personalizations/personalization-accessibility"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Notificações"
-                  link="/docs/configurations-personalizations/notifications"
+                  link="/docs/github/configurations-personalizations/notifications"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Acesso"
-                  link="/docs/configurations-personalizations/access"
+                  link="/docs/github/configurations-personalizations/access"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Código, planejamento e automação"
-                  link="/docs/configurations-personalizations/code-planning-automation"
+                  link="/docs/github/configurations-personalizations/code-planning-automation"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Segurança"
-                  link="/docs/configurations-personalizations/security"
+                  link="/docs/github/configurations-personalizations/security"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Integrações"
-                  link="/docs/configurations-personalizations/integration"
+                  link="/docs/github/configurations-personalizations/integration"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Arquivos"
-                  link="/docs/configurations-personalizations/archives"
+                  link="/docs/github/configurations-personalizations/archives"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Configurações de desenvolvedor"
-                  link="/docs/configurations-personalizations/dev-configurations"
+                  link="/docs/github/configurations-personalizations/dev-configurations"
                   onClick={() => setIsOpen(false)}
                 />
               </ul>
@@ -185,27 +185,27 @@ export default function Sidebar() {
               <ul className="pl-4">
                 <SidebarItemLink
                   name="Erros comuns e soluções"
-                  link="/docs/useful-resources/common-errors-and-solutions"
+                  link="/docs/github/useful-resources/common-errors-and-solutions"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Dicas"
-                  link="/docs/useful-resources/tips"
+                  link="/docs/github/useful-resources/tips"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Atalhos"
-                  link="/docs/useful-resources/shortcuts"
+                  link="/docs/github/useful-resources/shortcuts"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Github CLI"
-                  link="/docs/useful-resources/github-cli"
+                  link="/docs/github/useful-resources/github-cli"
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
                   name="Conclusão, referências e créditos"
-                  link="/docs/useful-resources/conclusion-references-credits"
+                  link="/docs/github/useful-resources/conclusion-references-credits"
                   onClick={() => setIsOpen(false)}
                 />
               </ul>

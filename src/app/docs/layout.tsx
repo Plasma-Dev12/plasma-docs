@@ -26,28 +26,45 @@ export default function LayoutDocs({
         h1.insertAdjacentElement("afterend", anchorLinks);
       });
     }
-    const h1 = document.querySelector('h1');
+    const h1 = document.querySelector("h1");
     if (h1) {
       document.title = h1.textContent + " - Plasma docs" || "Plasma docs";
     }
   }, [pathname]);
-  
+
+  const isDocsPage = pathname === "/docs";
+  const isGithubHomePage = pathname === "/docs/github";
+
   return (
     <>
-      <div className="flex ">        
-        <Sidebar />
-        <div className="flex flex-1 justify-between">
-          <main className="text-[#F5F5F5]  text-justify mb-16 mt-48 2xl:mt-16 mx-8 sm:mx-16 2xl:mx-32 2xl:w-[800px]">
-            <div className="flex flex-col max-w-[800px] 2xl:w-[800px]">                            
+      <div className={`flex ${isDocsPage ? "flex-col" : ""}`}>
+        {!isDocsPage && <Sidebar />}
+        <div
+          className={`flex ${isDocsPage || isGithubHomePage ? "w-full" : "flex-1 justify-between"}`}
+        >
+          <main
+            className={`text-[#F5F5F5] text-justify ${
+              isDocsPage || isGithubHomePage
+                ? `w-full p-0 ${isGithubHomePage ? "flex justify-center items-center" : ""}`
+                : "mb-16 mt-48 2xl:mt-16 mx-8 sm:mx-16 2xl:mx-32 2xl:w-[800px]"
+            }`}
+          >
+            <div
+              className={`flex ${
+                isDocsPage ? "w-full h-full" : `flex-col ${isGithubHomePage ? "" : " max-w-[800px]"}`
+              }`}
+            >
               {children}
             </div>
-          </main>          
-          <div className="hidden md:flex flex-1 justify-center">
-            <AnchorLinks />
-          </div>
+          </main>
+          {!isDocsPage && !isGithubHomePage && (
+            <div className="hidden md:flex flex-1 justify-center">
+              <AnchorLinks />
+            </div>
+          )}
         </div>
       </div>
-      <Footer />
+      {!isDocsPage && <Footer />}
     </>
   );
 }
