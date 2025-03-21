@@ -7,12 +7,13 @@ import Image from "next/image";
 import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
 import settings from "@/assets/settings.png";
+import SubTopic from "@/components/layout-elements/SubTopic";
 
 export default function Page() {
   return (
     <>
+      <Title>Settings</Title>
       <Content>
-        <Title>Settings</Title>
         <Content>
           <Paragraph>
             A seção Settings no GitHub é onde administradores e colaboradores
@@ -46,151 +47,173 @@ export default function Page() {
             A página é organizada em diversas subseções, cada uma com um foco
             específico. Vamos detalhá-las:
           </Paragraph>
-          {/* <List type="disc">
-            <ListItem title="Página Inicial (Home)">
-              <List type="disc">
-                <ListItem>
 
+          <List type="disc">
+            <SubTopic>General (Geral)</SubTopic>
+            <ListItem title="Descrição">
+              Configurações básicas do repositório.
+            </ListItem>
+            <ListItem title="Funcionalidades Importantes">
+              <List type="disc" compact>
+                <ListItem>
+                  Alterar o nome e a descrição do repositório.
                 </ListItem>
                 <ListItem>
-                  Geralmente usada como ponto de partida, com links para outras
-                  páginas e uma visão geral do repositório.
+                  Atualizar a URL do repositório (caso seja um site, como no
+                  GitHub Pages).
+                </ListItem>
+                <ListItem>
+                  Configurar o nível de visibilidade do repositório (public,
+                  private, ou internal).
+                </ListItem>
+                <ListItem>Configurações de branch padrão.</ListItem>
+              </List>
+            </ListItem>
+            <SubTopic>Access (Acesso)</SubTopic>
+            <ListItem title="Descrição">
+              Gestão de permissões e equipes.
+            </ListItem>
+            <ListItem title="Funcionalidades">
+              <List type="disc" compact>
+                <ListItem>Adicionar ou remover colaboradores.</ListItem>
+                <ListItem>
+                  Definir permissões específicas para colaboradores (leitura,
+                  escrita, administração).
+                </ListItem>
+                <ListItem>
+                  Gerenciamento de equipes dentro de organizações.
                 </ListItem>
               </List>
             </ListItem>
-            <ListItem title="Barra Lateral (Sidebar)">
-              <List type="disc">
-                <ListItem>Exibe uma lista de páginas organizadas.</ListItem>
+
+            <SubTopic>Security & Analysis (Segurança e Análise)</SubTopic>
+            <ListItem title="Descrição">
+              Ferramentas de segurança para manter o repositório protegido.
+            </ListItem>
+            <ListItem title="Funcionalidades Importantes">
+              <List type="disc" compact>
                 <ListItem>
-                  Pode ser personalizada para destacar links importantes e
-                  organizar o conteúdo de forma hierárquica.
+                  Ativação de branch protection rules para impedir commits
+                  diretos em branches principais.
+                </ListItem>
+                <ListItem>
+                  Configuração de Dependabot para detecção de vulnerabilidades
+                  em dependências.
+                </ListItem>
+                <ListItem>
+                  Permitir ou bloquear GitHub Actions para fluxos de trabalho
+                  externos.
                 </ListItem>
               </List>
             </ListItem>
-            <ListItem title="Barra de Navegação Superior">
-              <List type="disc">
-                <ListItem>Botões como:</ListItem>
-                <List type="disc">
-                  <ListItem title="Edit">
-                    Permite editar a página Wiki atual.
+
+            <SubTopic>Branches</SubTopic>
+            <ListItem title="Descrição">
+              Configurações para gerenciar branches.
+            </ListItem>
+            <ListItem title="Funcionalidades">
+              <List type="disc" compact>
+                <ListItem>Escolher a branch padrão.</ListItem>
+                <ListItem>Configurar regras de proteção, como:</ListItem>
+                <List type="disc" compact>
+                  <ListItem>
+                    Exigir revisões para aprovar Pull Requests.
                   </ListItem>
-                  <ListItem title="History">
-                    Exibe o histórico de edições para a página atual.
-                  </ListItem>
-                  <ListItem title="New Page">
-                    Criação de uma nova página.
+                  <ListItem>
+                    Impedir merges sem testes automatizados aprovados.
                   </ListItem>
                 </List>
               </List>
             </ListItem>
-          </List> */}
-        </TopicContent>
-        {/*<TopicContent>
-           <TopicTitle>Funcionalidades Principais</TopicTitle>
-          <List type="disc">
-            <ListItem title="Criação de Páginas">
-              <List type="disc">
+
+            <SubTopic>Webhooks</SubTopic>
+            <ListItem title="Descrição">
+              Configuração de integrações externas.
+            </ListItem>
+            <ListItem title="Funcionalidades">
+              <List type="disc" compact>
                 <ListItem>
-                  Qualquer usuário com permissão pode criar novas páginas.
+                  Criar webhooks para enviar eventos do repositório (como
+                  commits ou Pull Requests) para serviços externos.
                 </ListItem>
                 <ListItem>
-                  Páginas são editáveis diretamente pelo navegador usando um
-                  editor rico com suporte a{" "}
-                  <CodeHighlight>Markdown</CodeHighlight>.
+                  Personalizar os gatilhos que ativam os webhooks.
                 </ListItem>
               </List>
             </ListItem>
-            <ListItem title="Edição Colaborativa">
-              <List type="disc">
+
+            <SubTopic>Pages (GitHub Pages)</SubTopic>
+            <ListItem title="Descrição">
+              Configuração para hospedar sites estáticos diretamente no GitHub.
+            </ListItem>
+            <ListItem title="Funcionalidades">
+              <List type="disc" compact>
                 <ListItem>
-                  Todos os colaboradores do repositório podem sugerir edições.
+                  Escolher a branch e pasta fonte para o site.
+                </ListItem>
+                <ListItem>Configurar o domínio personalizado.</ListItem>
+                <ListItem>Monitorar o status de publicação do site.</ListItem>
+              </List>
+            </ListItem>
+
+            <SubTopic>Integrations & Services</SubTopic>
+            <ListItem title="Descrição">
+              Configuração de integrações com aplicativos ou serviços externos.
+            </ListItem>
+            <ListItem title="Funcionalidades">
+              <List type="disc" compact>
+                <ListItem>
+                  Permitir integrações com ferramentas como Slack, Jira, ou
+                  plataformas de CI/CD externas.
                 </ListItem>
                 <ListItem>
-                  Histórico detalhado de versões está disponível, permitindo
-                  reverter alterações, se necessário.
+                  Gerenciar acessos de aplicativos conectados.
                 </ListItem>
               </List>
             </ListItem>
-            <ListItem title="Links e Organização">
-              <List type="disc">
-                <ListItem>
-                  Fácil de criar links entre páginas utilizando a sintaxe de
-                  <CodeHighlight>Markdown</CodeHighlight>.
-                </ListItem>
-                <ListItem>
-                  Suporte para incluir imagens, tabelas e código, tornando a
-                  Wiki rica em conteúdo.
-                </ListItem>
-              </List>
+
+            <SubTopic>Advanced Settings</SubTopic>
+            <ListItem title="Descrição">
+              Configurações avançadas do repositório.
             </ListItem>
-            <ListItem title="Histórico de Edições">
-              <List type="disc">
+            <ListItem title="Funcionalidades">
+              <List type="disc" compact>
                 <ListItem>
-                  Cada página possui um registro completo de alterações,
-                  mostrando o autor, a data e o tipo de edição realizada.
+                  Transferir a propriedade do repositório para outro usuário ou
+                  organização.
                 </ListItem>
-              </List>
-            </ListItem>
-            <ListItem title="Clone do Repositório Wiki">
-              <List type="disc">
+                <ListItem>Arquivar ou deletar o repositório.</ListItem>
                 <ListItem>
-                  As Wikis são armazenadas em um repositório Git separado, que
-                  pode ser clonado para edição local.
-                </ListItem>
-                <ListItem title="Exemplo de comando">
-                  <br></br>
-                  <Spacer>
-                    <CodeHighlight>
-                      git clone https://github.com/usuario/repositorio.wiki.git
-                    </CodeHighlight>
-                  </Spacer>
+                  Ativar o modo "Git Large File Storage (LFS)" para gerenciar
+                  arquivos grandes.
                 </ListItem>
               </List>
             </ListItem>
           </List>
         </TopicContent>
         <TopicContent>
-          <TopicTitle>Exemplos de Uso</TopicTitle>
+          <TopicTitle>
+            Como Utilizar a Página Settings Eficientemente
+          </TopicTitle>
           <List type="disc">
-            <ListItem title="Guia de Contribuição">
-              Explicar como outros desenvolvedores podem contribuir para o
-              projeto.
+            <ListItem title="Personalização do Repositório">
+              Certifique-se de preencher a descrição, URL e definições de
+              visibilidade.
             </ListItem>
-            <ListItem title="Documentação Técnica">
-              Descrever a arquitetura do software, diagramas ou fluxos de
-              trabalho.
+            <ListItem title="Segurança">
+              Ative regras de proteção de branch para evitar alterações
+              acidentais.
             </ListItem>
-            <ListItem title="Manuais do Usuário">
-              Criar tutoriais e instruções para usuários finais do software.
+            <ListItem title="Colaboração">
+              Garanta que permissões sejam atribuídas corretamente a
+              colaboradores e equipes.
+            </ListItem>
+            <ListItem title="Automação">
+              Configure webhooks e GitHub Actions para fluxos de trabalho
+              otimizados.
             </ListItem>
           </List>
         </TopicContent>
-        <TopicContent>
-          <TopicTitle>Configuração Inicial</TopicTitle>
-          <List type="disc">
-            <ListItem title="Ativar a Wiki">
-              <List type="disc">
-                <ListItem>Clique na aba Wiki no repositório.</ListItem>
-                <ListItem>
-                  Caso ainda não esteja configurada, selecione a opção para
-                  criar a primeira página.
-                </ListItem>
-              </List>
-            </ListItem>
-            <ListItem title="Personalização">
-              <List type="disc">
-                <ListItem>
-                  Configure uma sidebar e página inicial para organizar o
-                  conteúdo.
-                </ListItem>
-                <ListItem>
-                  Utilize boas práticas de nomenclatura para facilitar a
-                  navegação.
-                </ListItem>
-              </List>
-            </ListItem> 
-          </List>
-        </TopicContent>*/}
       </Content>
     </>
   );

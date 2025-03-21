@@ -37,12 +37,18 @@ export default function Sidebar() {
             <Menu
               color={"#f5f5f5"}
               onClick={() => setIsOpen(true)}
-              className={`2xl:hidden size-10 ` + (isOpen ? "hidden" : "block")}
+              className={
+                `transition-all hover:scale-105 cursor-pointer 2xl:hidden size-10 ` +
+                (isOpen ? "hidden" : "block")
+              }
             />
             <X
               color={"#f5f5f5"}
               onClick={() => setIsOpen(false)}
-              className={`2xl:hidden size-10 ` + (isOpen ? "block" : "hidden")}
+              className={
+                `transition-all hover:scale-105 cursor-pointer 2xl:hidden size-10 ` +
+                (isOpen ? "block" : "hidden")
+              }
             />
           </div>
         </div>
