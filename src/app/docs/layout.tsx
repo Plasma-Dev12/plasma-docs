@@ -33,30 +33,31 @@ export default function LayoutDocs({
   }, [pathname]);
 
   const isDocsPage = pathname === "/docs";
+  const isGithubHomePage = pathname === "/docs/github";
 
   return (
     <>
       <div className={`flex ${isDocsPage ? "flex-col" : ""}`}>
         {!isDocsPage && <Sidebar />}
         <div
-          className={`flex ${isDocsPage ? "w-full" : "flex-1 justify-between"}`}
+          className={`flex ${isDocsPage || isGithubHomePage ? "w-full" : "flex-1 justify-between"}`}
         >
           <main
             className={`text-[#F5F5F5] text-justify ${
-              isDocsPage
-                ? "w-full p-0"
+              isDocsPage || isGithubHomePage
+                ? `w-full p-0 ${isGithubHomePage ? "flex justify-center items-center" : ""}`
                 : "mb-16 mt-48 2xl:mt-16 mx-8 sm:mx-16 2xl:mx-32 2xl:w-[800px]"
             }`}
           >
             <div
               className={`flex ${
-                isDocsPage ? "w-full h-full" : "flex-col max-w-[800px]"
+                isDocsPage ? "w-full h-full" : `flex-col ${isGithubHomePage ? "" : " max-w-[800px]"}`
               }`}
             >
               {children}
             </div>
           </main>
-          {!isDocsPage && (
+          {!isDocsPage && !isGithubHomePage && (
             <div className="hidden md:flex flex-1 justify-center">
               <AnchorLinks />
             </div>

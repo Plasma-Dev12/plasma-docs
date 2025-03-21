@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -98,7 +97,7 @@ export default function DevelopersComponent() {
         {[0, 1, 2].map((index) => (
           <motion.div
             key={index}
-            className="w-[8px] h-[8px] rounded-full"
+            className="w-[8px] h-[8px] rounded-full cursor-pointer"
             initial={{ opacity: 0.5, scale: 0.8 }}
             animate={{
               opacity: actualIndex === index ? 1 : 0.5,
@@ -106,6 +105,7 @@ export default function DevelopersComponent() {
               backgroundColor: actualIndex === index ? "#A486FF" : "#28225F",
             }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
+            onClick={() => setActualIndex(index)}
           />
         ))}
       </div>
