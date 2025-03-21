@@ -157,7 +157,7 @@ export default function Page() {
         <TopicContent>
           <TopicTitle>Criar nova Pull Request</TopicTitle>
           <Paragraph>
-            Ao clicar em "New Pull Request", o fluxo segue estas etapas:
+            Ao clicar em &quot;New Pull Request&quot;, o fluxo segue estas etapas:
           </Paragraph>
 
           <ListItem title="Selecionar Branches">

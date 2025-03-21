@@ -1,17 +1,13 @@
 import Content from "@/components/layout-elements/Content";
-import List from "@/components/layout-elements/List";
 import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
-import ListItem from "@/components/layout-elements/ListItem";
 import Image from "next/image";
 import notif from "@/assets/notif.png";
-import CodeHighlight from "@/components/layout-elements/CodeHighlight";
-import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
 import TopicContent from "@/components/layout-elements/TopicContent";
-import Topic from "@/components/layout-elements/Topic";
 import SubTopic from "@/components/layout-elements/SubTopic";
 import Dica from "@/components/Dica";
+
 export default function Page() {
   const dica1 = {
     titulo: "Dica",
@@ -68,7 +64,7 @@ export default function Page() {
         <TopicContent>
           <SubTopic>Notificações de repositórios</SubTopic>
           <Paragraph>
-            Com a opção “Automatically watch repositories” ativada, sempre que
+            Com a opção &quot;Automatically watch repositories&quot; ativada, sempre que
             você receber permissão de push em um repositório, o GitHub
             automaticamente te inscreve nas notificações dele.
           </Paragraph>
@@ -77,7 +73,7 @@ export default function Page() {
         <TopicContent>
           <SubTopic>Notificações de times</SubTopic>
           <Paragraph>
-            Se a opção “Automatically watch teams” estiver ativada, por sua vez,
+            Se a opção &quot;Automatically watch teams&quot; estiver ativada, por sua vez,
             você será automaticamente inscrito nas notificações de atualizações
             e menções (@mentions) de qualquer time do qual você for membro.
           </Paragraph>
@@ -168,7 +164,7 @@ export default function Page() {
           </Paragraph>
         </TopicContent>
         <TopicContent>
-          <SubTopic> 'Deploy key' alert email</SubTopic>
+          <SubTopic> &apos;Deploy key&apos; alert email</SubTopic>
           <Paragraph>
             Receba uma notificação automática por email sempre que uma nova
             <b>Deploy Key</b> for adicionada a uma organização onde você tem

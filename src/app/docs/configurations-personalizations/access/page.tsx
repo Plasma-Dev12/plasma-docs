@@ -5,11 +5,7 @@ import Title from "@/components/layout-elements/Title";
 import ListItem from "@/components/layout-elements/ListItem";
 import Image from "next/image";
 import acesso from "@/assets/acesso.png";
-import CodeHighlight from "@/components/layout-elements/CodeHighlight";
-import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
-import TopicTitle from "@/components/layout-elements/TopicTitle";
 import TopicContent from "@/components/layout-elements/TopicContent";
-import Topic from "@/components/layout-elements/Topic";
 
 export default function Page() {
   return (

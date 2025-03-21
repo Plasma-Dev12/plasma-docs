@@ -9,7 +9,6 @@ import TopicTitle from "@/components/layout-elements/TopicTitle";
 import Image from "next/image";
 import yaml from "@/assets/arquivo-yaml.png";
 import Spacer from "@/components/layout-elements/Spacer";
-import Topic from "@/components/layout-elements/Topic";
 
 export default function Page() {
   return (

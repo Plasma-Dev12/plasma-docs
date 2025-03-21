@@ -3,12 +3,9 @@ import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
-import wiki from "@/assets/wiki.png";
 import Image from "next/image";
 import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
-import CodeHighlight from "@/components/layout-elements/CodeHighlight";
-import Spacer from "@/components/layout-elements/Spacer";
 import settings from "@/assets/settings.png";
 
 export default function Page() {
