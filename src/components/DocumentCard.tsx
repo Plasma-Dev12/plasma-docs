@@ -1,7 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import Paragraph from "./layout-elements/Paragraph";
 import Link from "next/link";
-import TopicTitle from "./layout-elements/TopicTitle";
 
 interface DocumentCardProps {
   tecnology: string;

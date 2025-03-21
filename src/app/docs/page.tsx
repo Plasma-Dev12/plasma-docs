@@ -1,6 +1,6 @@
 import DocumentCard from "@/components/DocumentCard";
 import Paragraph from "@/components/layout-elements/Paragraph";
-import github from "@/assets/github.webp";
+import github from "@/assets/github.png";
 import git from "@/assets/git.png";
 import docker from "@/assets/docker.png";
 import k8s from "@/assets/k8s.png";

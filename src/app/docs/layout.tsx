@@ -12,6 +12,8 @@ export default function LayoutDocs({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+  const isDocsPage = pathname === "/docs";
+  const isGithubHomePage = pathname === "/docs/github";
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -22,7 +24,9 @@ export default function LayoutDocs({
       h1Elements.forEach((h1) => {
         const anchorLinks = document.createElement("div");
         anchorLinks.className = "anchor-links";
-        createRoot(anchorLinks).render(<AnchorLinks fixed={false} />);
+        if (!isDocsPage && !isGithubHomePage) {
+          createRoot(anchorLinks).render(<AnchorLinks fixed={false} />);
+        }
         h1.insertAdjacentElement("afterend", anchorLinks);
       });
     }
@@ -32,26 +36,29 @@ export default function LayoutDocs({
     }
   }, [pathname]);
 
-  const isDocsPage = pathname === "/docs";
-  const isGithubHomePage = pathname === "/docs/github";
-
   return (
     <>
       <div className={`flex ${isDocsPage ? "flex-col" : ""}`}>
         {!isDocsPage && <Sidebar />}
         <div
-          className={`flex ${isDocsPage || isGithubHomePage ? "w-full" : "flex-1 justify-between"}`}
+          className={`flex ${
+            isDocsPage || isGithubHomePage ? "w-full" : "flex-1 justify-between"
+          }`}
         >
           <main
             className={`text-[#F5F5F5] text-justify ${
               isDocsPage || isGithubHomePage
-                ? `w-full p-0 ${isGithubHomePage ? "flex justify-center items-center" : ""}`
+                ? `w-full p-0 ${
+                    isGithubHomePage ? "flex justify-center items-center" : ""
+                  }`
                 : "mb-16 mt-48 2xl:mt-16 mx-8 sm:mx-16 2xl:mx-32 2xl:w-[800px]"
             }`}
           >
             <div
               className={`flex ${
-                isDocsPage ? "w-full h-full" : `flex-col ${isGithubHomePage ? "" : " max-w-[800px]"}`
+                isDocsPage
+                  ? "w-full h-full"
+                  : `flex-col ${isGithubHomePage ? "" : " max-w-[800px]"}`
               }`}
             >
               {children}
