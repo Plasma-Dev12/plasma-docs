@@ -7,11 +7,17 @@ export default function GithubDocs() {
     <Content>
       <Title>GitHub CLI</Title>
       <CodeSpace>
-        {`// Instale o GitHub CLI usando Chocolatey choco install gh`}
-        <br />
-        {`# Ou use outro gerenciador de pacotes`}
-        <br />
-        {`Testando o código`}
+        {[
+          "// Instale o GitHub CLI usando Chocolatey",
+          "choco install gh",
+          "# Ou use outro gerenciador de pacotes",
+          "Testando o codigo.teste(() => {",
+          "  console.log('Hello, world!');",
+          "  if (true) {",
+          "    console.log('Indentação automática!');",
+          "  }",
+          "})",
+        ]}
       </CodeSpace>
     </Content>
   );
