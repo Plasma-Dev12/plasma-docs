@@ -1,24 +1,21 @@
 import errosSolucoes from "@/content/errosSolucoes.json";
 import ErroSolucao from "@/components/ErroSolucao";
+import Content from "@/components/layout-elements/Content";
+import Title from "@/components/layout-elements/Title";
+import Paragraph from "@/components/layout-elements/Paragraph";
 
 export default function ErrosSolucoesPage() {
   return (
-    <section className="flex flex-row text-[#F5F5F5]">
-      <div className=" mx-auto flex flex-col">
-        <span className="text-4xl font-bold pb-4">Erros comuns e soluções</span>
-
-        <div className="grid grid-cols-1 gap-8 items-stretch justify-center ">
-          <p className="text-lg">
-            Ao utilizar o Git e o GitHub, alguns erros podem ocorrer com
-            frequência. Abaixo, listamos alguns dos problemas mais comuns e suas
-            soluções:
-          </p>
-          {errosSolucoes.map((erroSolucao, index) => (
-            <ErroSolucao key={index} content={erroSolucao} />
-          ))}
-          {/* <ErrosSolucoes content={errosSolucoes[0]} /> */}
-        </div>
-      </div>
-    </section>
+    <Content>
+      <Title>Erros comuns e soluções</Title>
+      <Paragraph indent={false}>
+        Ao utilizar o Git e o GitHub, alguns erros podem ocorrer com frequência.
+        Abaixo, listamos alguns dos problemas mais comuns e suas soluções:
+      </Paragraph>
+      {errosSolucoes.map((erroSolucao, index) => (
+        <ErroSolucao key={index} content={erroSolucao} />
+      ))}
+      {/* <ErrosSolucoes content={errosSolucoes[0]} /> */}
+    </Content>
   );
 }

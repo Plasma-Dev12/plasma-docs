@@ -1,31 +1,38 @@
 import Atalho from "@/components/Atalho";
-
 import atalhos from "@/content/atalhos.json";
+import Content from "@/components/layout-elements/Content";
+import Title from "@/components/layout-elements/Title";
+import Paragraph from "@/components/layout-elements/Paragraph";
+import TopicTitle from "@/components/layout-elements/TopicTitle";
+import TopicContent from "@/components/layout-elements/TopicContent";
 
 export default function GithubDocs() {
   return (
-    <section className="flex flex-row text-[#F5F5F5]">
-      <div className=" mx-auto flex flex-col">
-        <span className="text-4xl font-bold mb-4">Atalhos</span>
+    <>
+      <Title>Atalhos</Title>
+      <Content>
+        <TopicContent>
+          <Paragraph>
+            Ao executar o comando shift + ? em qualquer parte do GitHub, ao
+            estar logado, uma tela listando alguns atalhos principais do GitHub
+            surgirá. Esta tela também tem a opção de clicar para mostrar todos
+            os atalhos do GitHub.
+          </Paragraph>
 
-        <div className="grid grid-cols-1 gap-8 items-stretch justify-center ">
-          <p className="text-lg">
-            Ao utilizar o Git e o GitHub, alguns erros podem ocorrer com
-            frequência. Abaixo, listamos alguns dos problemas mais comuns e suas
-            soluções:
-          </p>
-          {Object.entries(atalhos).map(([key, value], index) => (
-            <div className="flex flex-col gap-4" key={index}>
-              <h2 className="text-2xl text-white font-bold">{key}</h2>
-              {value.map((atalho, index) => (
-                <Atalho key={index} content={atalho} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          <Paragraph>
+            O GitHub possui diversos atalhos de teclado para agilizar a
+            navegação e o uso da plataforma. Aqui estão alguns dos mais úteis:
+          </Paragraph>
+        </TopicContent>
+        {Object.entries(atalhos).map(([key, value], index) => (
+          <div className="flex flex-col gap-4" key={index}>
+            <TopicTitle>{key}</TopicTitle>
+            {value.map((atalho, index) => (
+              <Atalho key={index} content={atalho} />
+            ))}
+          </div>
+        ))}
+      </Content>
+    </>
   );
-  {
-  }
 }
