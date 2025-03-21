@@ -42,7 +42,7 @@ export default function Page() {
         </TopicContent>
         <TopicContent>
           <TopicTitle>Elementos da Página</TopicTitle>
-          <List type="decimal">
+          <List type="topics">
             <ListItem title="Barra Superior">
               <List type="disc">
                 <ListItem title="Filtros padrão">
