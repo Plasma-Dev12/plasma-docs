@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import pedroPanstein from "@/assets/Pedro P.png";
 import plasmaDocsLogo from "@/assets/Logo plasma docs.svg";
@@ -9,6 +9,7 @@ import arturNeves from "@/assets/Artur N.png";
 
 export default function DevelopersComponent() {
   const [actualIndex, setActualIndex] = useState(0);
+  const intervalRef = useRef<number | null>(null);
 
   const developers = [
     {
@@ -31,13 +32,28 @@ export default function DevelopersComponent() {
     },
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  const resetTimer = () => {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = window.setInterval(() => {
       setActualIndex((prevIndex) => (prevIndex + 1) % developers.length);
-    }, 8000);
+    }, 5000);
+  };
 
-    return () => clearInterval(interval);
+  useEffect(() => {
+    resetTimer();
+    return () => {
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [developers.length]);
+
+  const handleClick = (index: number) => {
+    setActualIndex(index);
+    resetTimer();
+  };
 
   return (
     <div className="relative h-full w-full flex flex-col justify-center items-center gap-10 lg:flex-row lg:gap-[10%] lg:w-full">
@@ -105,7 +121,7 @@ export default function DevelopersComponent() {
               backgroundColor: actualIndex === index ? "#A486FF" : "#28225F",
             }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            onClick={() => setActualIndex(index)}
+            onClick={() => handleClick(index)}
           />
         ))}
       </div>

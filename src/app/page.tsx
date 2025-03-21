@@ -15,14 +15,12 @@ export default function Home() {
   ];
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
-  const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option: {
     name: string;
     component: React.ReactElement;
   }) => {
     setSelectedOption(option);
-    setIsOpen(false);
   };
 
   return (
