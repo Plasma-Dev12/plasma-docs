@@ -252,6 +252,29 @@ export default function Page() {
             </ListItem>
           </List>
         </TopicContent>
+        <TopicContent>
+          <TopicTitle>Como Usar Insights de Forma Eficiente</TopicTitle>
+          <List type="disc">
+            <ListItem>
+              <Paragraph>
+                Acompanhe o progresso do projeto por meio de gráficos e
+                tendências.
+              </Paragraph>
+            </ListItem>
+            <ListItem>
+              <Paragraph>
+                Utilize os dados para identificar gargalos ou baixa
+                produtividade.
+              </Paragraph>
+            </ListItem>
+            <ListItem>
+              <Paragraph>
+                Monitore dependências e vulnerabilidades para manter o projeto
+                seguro e atualizado.
+              </Paragraph>
+            </ListItem>
+          </List>
+        </TopicContent>
       </Content>
     </>
   );
