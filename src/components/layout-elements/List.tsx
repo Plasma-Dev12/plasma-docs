@@ -21,7 +21,7 @@ export default function List({
             ? "list-none"
             : type === "disc"
             ? "list-disc"
-            : "list-decimal"
+            : "list-decimal  "
         } ${compact ? "gap-2" : "gap-4"}`}
       >
         {children}
@@ -29,7 +29,7 @@ export default function List({
     </Spacer>
   ) : (
     <ul
-      className={`list-inside flex flex-col [&_ul]:list-[revert] ${
+      className={` list-inside flex flex-col [&_ul]:list-[revert] ${
         type === "topics"
           ? "list-none"
           : type === "disc"

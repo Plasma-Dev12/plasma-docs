@@ -147,6 +147,11 @@ export default function Sidebar() {
                   onClick={() => setIsOpen(false)}
                 />
                 <SidebarItemLink
+                  name="Acesso"
+                  link="/docs/configurations-personalizations/access"
+                  onClick={() => setIsOpen(false)}
+                />
+                <SidebarItemLink
                   name="Código, planejamento e automação"
                   link="/docs/configurations-personalizations/code-planning-automation"
                   onClick={() => setIsOpen(false)}
