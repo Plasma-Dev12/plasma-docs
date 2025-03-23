@@ -8,6 +8,11 @@ import TopicContent from "@/components/layout-elements/TopicContent";
 import SubTopic from "@/components/layout-elements/SubTopic";
 import Dica from "@/components/Dica";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=3
+
 export default function Page() {
   const dica1 = {
     titulo: "Dica",

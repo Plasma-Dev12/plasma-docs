@@ -10,7 +10,7 @@ export default function DropdownListTitle({ name }: DropdownListProps) {
 
   return (
     <summary className="font-bold" onClick={() => setOpen(!open)}>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row items-center justify-between">
         <span className="text-[#A486FF]">{name}</span>
         {open ? (
           <LuChevronDown color="#A486FF" />

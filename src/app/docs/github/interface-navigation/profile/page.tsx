@@ -10,6 +10,11 @@ import Content from "@/components/layout-elements/Content";
 import Title from "@/components/layout-elements/Title";
 import profilePage from "@/assets/profilePage.png";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=3
+
 export default function ProfilePage() {
   return (
     <>

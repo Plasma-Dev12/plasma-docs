@@ -10,6 +10,11 @@ import TopicTitle from "@/components/layout-elements/TopicTitle";
 import TopicContent from "@/components/layout-elements/TopicContent";
 import SubTopic from "@/components/layout-elements/SubTopic";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=2
+
 export default function Page() {
   return (
     <>

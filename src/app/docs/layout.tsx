@@ -34,12 +34,14 @@ export default function LayoutDocs({
     if (h1) {
       document.title = h1.textContent + " - Plasma docs" || "Plasma docs";
     }
-  }, [pathname]);
+  }, [pathname, isDocsPage, isGithubHomePage]);
 
   return (
     <>
       <div className={`flex ${isDocsPage ? "flex-col" : ""}`}>
-        {!isDocsPage && <Sidebar />}
+        {!isDocsPage && 
+          <Sidebar />
+          }
         <div
           className={`flex ${
             isDocsPage || isGithubHomePage ? "w-full" : "flex-1 justify-between"

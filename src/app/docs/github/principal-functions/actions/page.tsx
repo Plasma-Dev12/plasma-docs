@@ -8,6 +8,11 @@ import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
 import CodeSpace from "@/components/layout-elements/CodeSpace";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=4
+
 export default function Page() {
   return (
     <>

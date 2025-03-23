@@ -16,6 +16,11 @@ import Title from "@/components/layout-elements/Title";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 import LearnMoreLink from "@/components/layout-elements/LearnMoreLink";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=1
+
 export default function NavbarPage() {
   return (
     <>
