@@ -149,7 +149,7 @@ export default function Page() {
           <TopicTitle>Criar e Gerenciar um Projeto</TopicTitle>
           <List type="disc">
             <ListItem title="Criar Novo Projeto">
-              Clique em "New Project" e selecione um modelo apropriado.
+              Clique em &quot;New Project&quot; e selecione um modelo apropriado.
               Configure colunas e automações conforme o fluxo de trabalho.
             </ListItem>
             <ListItem title="Adicionar Tarefas">
