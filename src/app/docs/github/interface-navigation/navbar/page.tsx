@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Image from "@/components/Image";
+import SecondImage from "next/image";
 import headerExample from "@/assets/navbar.png";
 import githubIcon from "@/assets/githubLogo.png";
 import plusOptions from "@/assets/plusFunctions.png";
@@ -31,7 +32,7 @@ export default function NavbarPage() {
           <TopicTitle>
             <div className="flex items-center gap-4">
               Logotipo do GitHub
-              <Image src={githubIcon} alt="Github logo" className="w-[60px]" />
+              <SecondImage src={githubIcon} alt="Github logo" className="w-[60px]" />
             </div>
           </TopicTitle>
           <Paragraph>
@@ -110,12 +111,12 @@ export default function NavbarPage() {
                 Abre um menu suspenso com opções para criar:
               </Topic>
               <Spacer>
-                <Image
+                <SecondImage
                   className="md:hidden no-drag pl-10"
                   alt="Icons"
                   src={plusOptionsMoblie}
                 />
-                <Image
+                <SecondImage
                   className="hidden md:block no-drag pl-10"
                   alt="Icons"
                   src={plusOptions}

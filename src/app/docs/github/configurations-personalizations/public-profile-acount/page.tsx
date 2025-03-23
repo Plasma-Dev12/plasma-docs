@@ -3,7 +3,7 @@ import List from "@/components/layout-elements/List";
 import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import ListItem from "@/components/layout-elements/ListItem";
-import Image from "next/image";
+import Image from "@/components/Image";
 import settingsAccount from "@/assets/settingsAccount.png";
 import settingsProfile from "@/assets/settingsProfile.png";
 import TopicTitle from "@/components/layout-elements/TopicTitle";

@@ -1,6 +1,6 @@
 import Content from "@/components/layout-elements/Content";
 import Title from "@/components/layout-elements/Title";
-import Image from "next/image";
+import Image from "@/components/Image";
 import IssuesImage from "@/assets/issues.png";
 import Paragraph from "@/components/layout-elements/Paragraph";
 import TopicContent from "@/components/layout-elements/TopicContent";

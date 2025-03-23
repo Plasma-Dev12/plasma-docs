@@ -3,7 +3,7 @@ import Content from "@/components/layout-elements/Content";
 import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import githubcli from "@/assets/githubcli.png";
-import Image from "next/image";
+import Image from "@/components/Image";
 import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
 import SubTopic from "@/components/layout-elements/SubTopic";
@@ -24,11 +24,7 @@ export default function GithubDocs() {
           criar, gerenciar e revisar issues, pull requests, repositórios e
           outras funcionalidades sem precisar acessar a interface web do GitHub.
         </Paragraph>
-        <Image
-          className="w-full image-shadow"
-          src={githubcli}
-          alt="Github CLI"
-        />
+        <Image src={githubcli} alt="Github CLI" />
       </Content>
       <TopicContent>
         <TopicTitle>Instalação</TopicTitle>

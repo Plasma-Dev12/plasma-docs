@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/Image";
 import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
 import TopicContent from "@/components/layout-elements/TopicContent";

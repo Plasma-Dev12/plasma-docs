@@ -3,7 +3,7 @@ import List from "@/components/layout-elements/List";
 import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import ListItem from "@/components/layout-elements/ListItem";
-import Image from "next/image";
+import Image from "@/components/Image";
 import personalizacao from "@/assets/personalizacao.gif";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 import TopicTitle from "@/components/layout-elements/TopicTitle";

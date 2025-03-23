@@ -6,9 +6,7 @@ import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import TopicContent from "@/components/layout-elements/TopicContent";
 import TopicTitle from "@/components/layout-elements/TopicTitle";
-import Image from "next/image";
-import yaml from "@/assets/arquivo-yaml.png";
-import Spacer from "@/components/layout-elements/Spacer";
+import CodeSpace from "@/components/layout-elements/CodeSpace";
 
 export default function Page() {
   return (
@@ -180,9 +178,20 @@ export default function Page() {
             </ListItem>
             <ListItem>
               <Paragraph>Exemplo básico de arquivo YAML:</Paragraph>
-              <Spacer>
-                <Image src={yaml} alt="Exemplo básico de arquivo YAML" />
-              </Spacer>
+              <CodeSpace space={true}>
+                {[
+                  "name: CI/CD Pipeline",
+                  "on: [push]",
+                  "jobs:",
+                  "  &tab&build:",
+                  "    &tab&&tab&runs-on: ubuntu-latest",
+                  "    &tab&&tab&steps:",
+                  "    &tab&&tab&&tab&- name: Checkout code",
+                  "    &tab&&tab&&tab&- uses: actions/checkout@v2",
+                  "    &tab&&tab&&tab&- name: Run tests",
+                  "    &tab&&tab&&tab&  run: npm test",
+                ]}
+              </CodeSpace>
             </ListItem>
           </List>
         </TopicContent>

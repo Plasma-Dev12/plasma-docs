@@ -20,7 +20,8 @@ export default function CodeSpace({ children, space }: CodeSpaceProps) {
       .join("\n")
       .replace(/&space&/g, "\n")
       .replace(/&--&/g, "")
-      .replace(/&f&/g, "");
+      .replace(/&f&/g, "")
+      .replace(/&tab&/g, "  ");
 
     navigator.clipboard.writeText(plainText).then(
       () => {},
@@ -31,10 +32,18 @@ export default function CodeSpace({ children, space }: CodeSpaceProps) {
   const keywords = new Set(["if","else","return","function","const","let","var","for","while","switch","case","break","continue","default","try","catch","finally","throw","new","typeof","instanceof","this","class","extends","super","import","export","await","async","yield","true","false","null","undefined",]);
 
   const highlightCode = (code: string) => {
-    const regex = /(&f&.*?&f&)|(&--&.*?&--&)|(&space&)|(\/\/.*|#.*)|(\b\d+\b)|(["'`].*?["'`])|(\b\w+\b(?=\())|(\b\w+\b)/g;
+    const regex = /(&f&.*?&f&)|(&--&.*?&--&)|(&tab&)|(&space&)|(\/\/.*|#.*)|(\b\d+\b)|(["'`].*?["'`])|(\b\w+\b(?=\())|(\b\w+\b)/g;
 
     return code.split(regex).map((part, index) => {
       if (!part) return null;
+
+      if (part.match(/^&tab&$/)) {
+        return (
+          <span key={index} className="text-[#42f58d]">
+            {"  "}
+          </span>
+        );
+      }
 
       if (part.match(/^&space&$/)) {
         return (
