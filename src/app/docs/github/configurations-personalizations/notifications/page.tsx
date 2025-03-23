@@ -50,7 +50,7 @@ export default function Page() {
           recebe atualizações sobre atividades relevantes nos repositórios,
           organizações e times que você participa.
         </Paragraph>
-        <Image id="navbar" src={notif} alt="Profile Page" />
+        <Image src={notif} alt="Profile Page" />
         <TopicContent>
           <TopicTitle>Gerais</TopicTitle>
           <Paragraph>

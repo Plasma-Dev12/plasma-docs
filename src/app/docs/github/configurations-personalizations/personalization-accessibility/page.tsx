@@ -15,7 +15,7 @@ export default function Page() {
     <>
       <Title>Personalização e Acessibilidade</Title>
       <Content>
-        <Image id="navbar" src={personalizacao} alt="Profile Page" />
+        <Image src={personalizacao} alt="Profile Page" />
         <TopicContent>
           <TopicTitle>Aparência</TopicTitle>
           <Paragraph>

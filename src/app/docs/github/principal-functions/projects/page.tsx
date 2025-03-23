@@ -18,7 +18,6 @@ export default function Page() {
       <Content>
         <Content>
           <Image
-            className="w-full image-shadow"
             src={ProjectsImage}
             alt="Projects image"
           />
@@ -71,7 +70,6 @@ export default function Page() {
           <TopicTitle>Elementos dentro de um Project</TopicTitle>
           <Content>
             <Image
-              className="w-full mt-10 image-shadow"
               src={ProjectsKanbanImage}
               alt="Projects Kanban Image"
             />
@@ -118,7 +116,6 @@ export default function Page() {
           <TopicTitle>Funcionalidades Avançadas</TopicTitle>
           <Content>
             <Image
-              className="w-full mt-10 image-shadow"
               src={ProjectsWorkflows}
               alt="Projects Workflows Image"
             />

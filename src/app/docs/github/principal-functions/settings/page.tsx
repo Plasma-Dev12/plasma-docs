@@ -24,7 +24,6 @@ export default function Page() {
             dessa página:
           </Paragraph>
           <Image
-            className="w-full image-shadow"
             src={settings}
             alt="wiki image"
           />

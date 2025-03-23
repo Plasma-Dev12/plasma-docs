@@ -24,7 +24,7 @@ export default function Page() {
             de software e outros recursos técnicos. Aqui está uma descrição
             detalhada da página e suas funcionalidades:
           </Paragraph>
-          <Image className="w-full image-shadow" src={wiki} alt="wiki image" />
+          <Image src={wiki} alt="wiki image" />
         </Content>
         <TopicContent>
           <TopicTitle>Visão Geral da Página Wiki</TopicTitle>

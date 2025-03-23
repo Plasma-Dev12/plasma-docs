@@ -12,7 +12,7 @@ export default function Page() {
     <>
       <Title>Código, Planejamento e Automação</Title>
       <Content>
-        <Image width={256} id="navbar" src={cpa} alt="Profile Page" />
+        <Image src={cpa} alt="Profile Page" className="max-w-[256px]" />
         <TopicContent>
           <Paragraph>
             Essa seção reúne configurações voltadas para código, automação e

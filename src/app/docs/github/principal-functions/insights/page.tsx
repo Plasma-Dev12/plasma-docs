@@ -23,7 +23,6 @@ export default function Page() {
             desta página:
           </Paragraph>
           <Image
-            className="w-full image-shadow"
             src={insights}
             alt="Insights image"
           />

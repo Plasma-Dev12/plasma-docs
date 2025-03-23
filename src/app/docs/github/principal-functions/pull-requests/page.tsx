@@ -17,7 +17,6 @@ export default function Page() {
       <Content>
         <Content>
           <Image
-            className="w-full image-shadow"
             src={PullRequestImage}
             alt="Pull request image"
           />

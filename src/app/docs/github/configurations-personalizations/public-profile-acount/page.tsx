@@ -14,7 +14,7 @@ export default function Page() {
     <>
       <Title>Perfil Público e Conta</Title>
       <Content>
-        <Image id="navbar" src={settingsProfile} alt="Profile Page" />
+        <Image src={settingsProfile} alt="Profile Page" />
         <TopicContent>
           <TopicTitle>Perfil Público</TopicTitle>
           <Paragraph>
@@ -51,7 +51,7 @@ export default function Page() {
           </span>
         </Paragraph>
 
-        <Image id="navbar" src={settingsAccount} alt="Profile Page" />
+        <Image src={settingsAccount} alt="Profile Page" />
 
         <TopicContent>
           <TopicTitle>Conta</TopicTitle>

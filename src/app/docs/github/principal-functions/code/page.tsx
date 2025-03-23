@@ -18,7 +18,7 @@ export default function Page() {
       <Title>Code</Title>
       <Content>
         <Content>
-          <Image id="navbar" className="w-full" src={code} alt="Code image" />
+          <Image src={code} alt="Code image" />
           <Paragraph>
             A seção <b>Code</b> de um repositório no GitHub é o coração do
             projeto, onde estão armazenados os arquivos do código-fonte,
