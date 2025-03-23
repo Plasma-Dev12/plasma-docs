@@ -184,7 +184,7 @@ export default function Page() {
                 </ListItem>
                 <ListItem>Arquivar ou deletar o repositório.</ListItem>
                 <ListItem>
-                  Ativar o modo "Git Large File Storage (LFS)" para gerenciar
+                  Ativar o modo &quot;Git Large File Storage (LFS)&quot; para gerenciar
                   arquivos grandes.
                 </ListItem>
               </List>
