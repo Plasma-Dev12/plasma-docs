@@ -1,11 +1,9 @@
 "use client";
 import AnchorLinks from "@/components/AnchorLinks";
-import CleverSidebar from "@/components/CleverSidebar";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
-import { getSideBarData } from "@/utils/getSideBarData";
 import { usePathname } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 
 export default function LayoutDocs({
@@ -41,9 +39,7 @@ export default function LayoutDocs({
     <>
       <div className={`flex ${isDocsPage ? "flex-col" : ""}`}>
         {!isDocsPage && 
-        <Suspense fallback={<div>Loading sidebar...</div>}>
-          <CleverSidebar />
-        </Suspense>
+          <Sidebar />
           }
         <div
           className={`flex ${isDocsPage || isGithubHomePage ? "w-full" : "flex-1 justify-between"}`}

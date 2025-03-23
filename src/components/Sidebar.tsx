@@ -1,18 +1,13 @@
 "use client";
 import Image from "next/image";
 import plasmaDocsLogo from "@/assets/Logo plasma docs.svg";
-import DropdownListTitle from "./DropdownListTitle";
-import SidebarItemLink from "./SidebarItemLink";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import SidebarLinksByFolder from "./SidebarLinksByFolder";
 
-interface SidebarProps {
-  sidebarData: string; // Altere o tipo para string
-}
-
-export default function Sidebar({ sidebarData }: SidebarProps) {  
+export default function Sidebar() {  
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -54,20 +49,7 @@ export default function Sidebar({ sidebarData }: SidebarProps) {
           }
         >
           <span className="font-bold text-xl">Github</span>
-          {sidebarData && Object.entries(JSON.parse(sidebarData)).map(([key, value]) => (
-            <details key={key} className="cursor-pointer my-4">
-              <DropdownListTitle name={value.name} />
-              <ul className="pl-4 mt-2">
-                {Object.entries(value.subfolders).map(([key2, value2]) => (
-                  <SidebarItemLink
-                    name={value2.page[0].name}
-                    link={value2.page[1].link}
-                    key={key2}
-                  />
-                ))}
-              </ul>
-            </details>
-          ))}
+            <SidebarLinksByFolder technology={"github"} />
         </div>
       </div>
     </div>
