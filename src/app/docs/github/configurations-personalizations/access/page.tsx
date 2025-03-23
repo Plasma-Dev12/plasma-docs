@@ -12,7 +12,7 @@ export default function Page() {
     <>
       <Title>Acesso</Title>
       <Content>
-        <Image width={256} id="navbar" src={acesso} alt="Profile Page" />
+        <Image src={acesso} alt="Profile Page" className="max-w-[256px]" />
         <TopicContent>
           <Paragraph>
             A seção Access no GitHub contém configurações essenciais para
