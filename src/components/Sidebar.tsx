@@ -27,7 +27,7 @@ export default function Sidebar() {
                   alt="Plasma logo"
                   className="no-drag w-14 md:w-20"
                 />
-                <span className="text-2xl md:text-3xl font-bold">Plasma Docs</span>
+                <span id="title" className="text-2xl md:text-3xl font-bold">Plasma Docs</span>
               </div>
             </Link>
             <Menu

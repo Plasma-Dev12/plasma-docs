@@ -10,6 +10,11 @@ import List from "@/components/layout-elements/List";
 import Topic from "@/components/layout-elements/Topic";
 import menu from "@/assets/menu-sidebar.png";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=4
+
 export default function Menu() {
   return (
     <>

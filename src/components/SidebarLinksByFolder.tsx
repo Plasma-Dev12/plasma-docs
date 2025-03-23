@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import DropdownListTitle from "./DropdownListTitle";
 import SidebarItemLink from "./SidebarItemLink";
 
+type subfolderType = {name: string; order: number; page: { title: string; path: string; }};
+
 export default function SidebarLinksByFolder({
   technology,
 }: {
   technology: string;
 }) {
-  const [sidebarData, setSidebarData] = useState<Record<string, any> | null>(
-    null
-  );
+  const [sidebarData, setSidebarData] = useState<{title: string, subfolders: subfolderType[]}[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,12 +23,13 @@ export default function SidebarLinksByFolder({
 
         const data = await response.json();
         setSidebarData(data);
-        // console.log(data);
-        // data.map((item: any) => {
-        //   console.log("/////" +item.title);
-        //   item.subfolders.map((item2: any) => {
-        //     console.log("título:" + item2.page.title);
-        //     console.log("link:" + item2.page.path);
+        // console.log(data);        
+
+        // data.map((sectionFolder: {title: string, subfolders: subfolderType[]}) => {
+        //   console.log("/////" +sectionFolder.title);
+        //   sectionFolder.subfolders.map((subfolder: subfolderType) => {
+        //     console.log("título:" + subfolder.page.title);
+        //     console.log("link:" + subfolder.page.path);
         //   })
         // });
       } catch (error) {
@@ -51,15 +52,15 @@ export default function SidebarLinksByFolder({
 
   return (
     sidebarData &&
-    sidebarData.map((item: unknown, key: number) => (
-      <details key={key} className="cursor-pointer my-4">
-        <DropdownListTitle name={item.title} />
+    sidebarData.map((sectionFolder: {title: string, subfolders: subfolderType[]}, keySectionFolder: number) => (
+      <details key={keySectionFolder} className="cursor-pointer my-4">
+        <DropdownListTitle name={sectionFolder.title} />
         <ul className="pl-4 mt-2">
-          {item.subfolders.map((value2: unknown, key2: number) => {            
+          {sectionFolder.subfolders.map((subfolder: subfolderType, keySubfolder: number) => {            
             return <SidebarItemLink 
-              name={value2.page.title} 
-              link={value2.page.path} 
-              key={key2} 
+              name={subfolder.page.title} 
+              link={subfolder.page.path} 
+              key={keySubfolder} 
             />;
           })}
         </ul>

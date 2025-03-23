@@ -4,6 +4,11 @@ import Paragraph from "@/components/layout-elements/Paragraph";
 import Title from "@/components/layout-elements/Title";
 import dicas from "@/content/dicas.json";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=2
+
 export default function DicasPage() {
   return (
     <>

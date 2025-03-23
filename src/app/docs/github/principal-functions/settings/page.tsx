@@ -8,6 +8,11 @@ import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
 import settings from "@/assets/settings.png";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=8
+
 export default function Page() {
   return (
     <>

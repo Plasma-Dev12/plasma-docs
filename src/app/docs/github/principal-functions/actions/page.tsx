@@ -10,6 +10,11 @@ import Image from "next/image";
 import yaml from "@/assets/arquivo-yaml.png";
 import Spacer from "@/components/layout-elements/Spacer";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=4
+
 export default function Page() {
   return (
     <>

@@ -1,17 +1,26 @@
 import path from "path";
 import fs from "fs";
 
-export default function handler(req, res) {
-  const { technology } = req.query;
-  const docsData = [];
+type subfolderType = {name: string; order: number; page: { title: string; path: string; }};
 
+export default function handler(
+  req: {query: {technology: string}}, 
+  res: {
+    status: (arg0: number) => {json: (arg0: {error: string}) => void};
+    json: (arg0: { title: string; subfolders: subfolderType[]; order: number; }[]) => void;
+}
+) {
+  const {technology} = req.query;
   try {
     const docsDir = path.join(process.cwd(), `src/app/docs/${technology}`);
+    
     if (!fs.existsSync(docsDir)) {
-      return res.status(404).json({ error: `Directory ${docsDir} does not exist` });
+      return res
+      .status(404)
+      .json({ error: `Directory ${docsDir} does not exist` });
     }
 
-    
+    const docsData = [];
     const mainFolders = fs.readdirSync(docsDir);
 
     for (const mainFolder of mainFolders) {
@@ -22,8 +31,21 @@ export default function handler(req, res) {
 
       const folderData = {
         title: mainFolder,
-        subfolders: [],
+        subfolders: [] as subfolderType[],
+        order: 999
       };
+
+      const metaFilePath = path.join(mainFolderPath, "meta.json");
+
+      if (fs.existsSync(metaFilePath)) {
+        const metaData = JSON.parse(fs.readFileSync(metaFilePath, "utf-8"));
+        if (metaData.title) {
+          folderData.title = metaData.title;          
+        }
+        if (metaData.order) {
+          folderData.order = metaData.order;
+        }
+      }
 
       const subfolders = fs.readdirSync(mainFolderPath);
       for (const subfolder of subfolders) {
@@ -32,6 +54,8 @@ export default function handler(req, res) {
 
         if (!isSubfolderDirectory) continue;
 
+        const subfolderTitle = subfolder;        
+
         const files = fs.readdirSync(subfolderPath);
         const pageFile = files.find((file) => file === "page.tsx");
 
@@ -39,10 +63,11 @@ export default function handler(req, res) {
           const pageFilePath = path.join(subfolderPath, pageFile);
           const fileContent = fs.readFileSync(pageFilePath, "utf-8");
           const titleMatch = fileContent.match(/<Title[^>]*>(.*?)<\/Title>/);
+          const orderMatch = fileContent.match(/orderInTheSideBar\s*=\s*(\d+)/);
           const title = titleMatch ? titleMatch[1].trim() : "Untitled";
-
           folderData.subfolders.push({
-            name: subfolder,
+            name: subfolderTitle,
+            order: orderMatch ? parseInt(orderMatch[1].trim()) : 999,
             page: {
               title: title,
               path: `/docs/${technology}/${mainFolder}/${subfolder}`,
@@ -50,12 +75,16 @@ export default function handler(req, res) {
           });
         }
       }
-
+      folderData.subfolders.sort((a, b) => a.order - b.order);
       docsData.push(folderData);
     }
-    // Lógica de leitura de arquivos aqui...
-    res.status(200).json(docsData);
+
+    docsData.sort((a, b) => a.order - b.order);
+
+    res.json(docsData);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 }

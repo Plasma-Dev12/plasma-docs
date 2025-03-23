@@ -4,6 +4,11 @@ import Title from "@/components/layout-elements/Title";
 import ListItem from "@/components/layout-elements/ListItem";
 import TopicContent from "@/components/layout-elements/TopicContent";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=7
+
 export default function Page() {
   return (
     <>

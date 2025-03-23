@@ -11,6 +11,11 @@ import searchBarImage from "@/assets/search-bar.png";
 import Spacer from "@/components/layout-elements/Spacer";
 import Topic from "@/components/layout-elements/Topic";
 
+//This defines the order in the sidebar, if not defined, 
+//it will be in alphabetical order by the folders name, 
+//and the order attribute will be 999
+//orderInTheSideBar=2
+
 export default function SearchFunctionalityPage() {
   return (
     <>
