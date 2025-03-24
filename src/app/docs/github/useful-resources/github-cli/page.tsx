@@ -13,8 +13,8 @@ import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
 import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 
-//This defines the order in the sidebar, if not defined, 
-//it will be in alphabetical order by the folders name, 
+//This defines the order in the sidebar, if not defined,
+//it will be in alphabetical order by the folders name,
 //and the order attribute will be 999
 //orderInTheSideBar=4
 
@@ -41,13 +41,14 @@ export default function GithubDocs() {
           <LearnMoreLink
             text="Instale o GitHub CLI usando"
             link="https://chocolatey.org/"
+            _blank
           >
             Chocolatey
           </LearnMoreLink>
           <CodeSpace space={true}>
             {["# Instalação via Chocolatey", "choco install gh"]}
           </CodeSpace>
-          <LearnMoreLink text="Ou instale via" link="https://scoop.sh/">
+          <LearnMoreLink text="Ou instale via" _blank link="https://scoop.sh/">
             Scoop
           </LearnMoreLink>
           <CodeSpace space={true}>
@@ -56,7 +57,7 @@ export default function GithubDocs() {
         </Spacer>
         <Spacer>
           <SubTopic>MacOS</SubTopic>
-          <LearnMoreLink text="Instale via" link="https://brew.sh/">
+          <LearnMoreLink text="Instale via" _blank link="https://brew.sh/">
             Homebrew
           </LearnMoreLink>
           <CodeSpace space={true}>
@@ -86,6 +87,7 @@ export default function GithubDocs() {
           <LearnMoreLink
             text="Ou instale pelo próprio site do"
             link="https://cli.github.com/"
+            _blank
           >
             GithubCLI
           </LearnMoreLink>
@@ -556,6 +558,171 @@ export default function GithubDocs() {
             </ListItem>
           </List>
         </Spacer>
+        <Spacer>
+          <SubTopic>Gerenciamento de Gists</SubTopic>
+          <Spacer>
+            <Paragraph>
+              <b>Gists</b> são pequenos trechos de código ou arquivos que podem
+              ser compartilhados publicamente ou mantidos privados no GitHub.
+              Eles são úteis para armazenar anotações, trechos de código
+              reutilizáveis e compartilhar rapidamente informações com outras
+              pessoas.
+            </Paragraph>
+          </Spacer>
+          <List type="disc">
+            <ListItem title="Criar um release">
+              <Paragraph indent={true}>
+                O comando <CodeHighlight>gh gist create</CodeHighlight> cria um
+                novo gist no GitHub utilizando a CLI (Command Line Interface) do
+                GitHub. Aqui está uma explicação detalhada:
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Exemplo prático",
+                  "gh gist create 'arquivo.txt' &--&--public&--&",
+                ]}
+              </CodeSpace>
+            </ListItem>
+            <ListItem title="Listar gists">
+              <Paragraph indent={true}>
+                O comando <CodeHighlight>gh gist list</CodeHighlight> na CLI do
+                GitHub lista todos os <b>gists</b> associados à sua conta do
+                GitHub. Por padrão, ele mostra tanto os públicos quanto os
+                privados, facilitando a visualização e o gerenciamento de seus
+                gists.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Comando para listar seus gists",
+                  "gh gist list",
+                  "&space&",
+                  "# Para listar apenas gists públicos",
+                  "gh gist list  &--&--public&--&",
+                  "&space&",
+                  "# Para listar apenas gists privados",
+                  "gh gist list  &--&--secret&--&",
+                  "&space&",
+                  "# Para filtrar por palavras-chave, como um título específico",
+                  "gh gist list | grep 'palavra-chave'",
+                ]}
+              </CodeSpace>
+            </ListItem>
+            <ListItem title="Visualizar um gist">
+              <Paragraph indent={true}>
+                O comando <CodeHighlight>gh gist view</CodeHighlight> na CLI do
+                GitHub exibe o conteúdo e detalhes de um gist específico,
+                identificado pelo seu ID único. Isso permite que você visualize
+                rapidamente o que está no gist sem precisar acessar o site do
+                GitHub.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Comando para visualizar um gist",
+                  "gh gist view 'ID-do-Gist'",
+                ]}
+              </CodeSpace>
+            </ListItem>
+          </List>
+        </Spacer>
+      </TopicContent>
+      <TopicContent>
+        <TopicTitle>Integração com Workflows do GitHub Actions</TopicTitle>
+        <Paragraph>
+          O GitHub CLI (Command Line Interface) é uma ferramenta poderosa que
+          permite aos desenvolvedores interagir com workflows do GitHub Actions
+          diretamente pelo terminal. Com ele, é possível gerenciar processos
+          automatizados de CI/CD (Integração Contínua e Entrega Contínua),
+          listar, executar, monitorar e até mesmo cancelar workflows sem a
+          necessidade de acessar a interface gráfica do GitHub. Essa
+          funcionalidade oferece agilidade, eficiência e controle aos usuários,
+          facilitando a integração das ações automatizadas em fluxos de trabalho
+          do dia a dia.
+        </Paragraph>
+        <LearnMoreLink link="/docs/github/principal-functions/actions">
+          Actions
+        </LearnMoreLink>
+        <Spacer>
+          <SubTopic>Listar execuções</SubTopic>
+          <List type="disc">
+            <ListItem title="Listar execuções">
+              <Paragraph>
+                O comando <CodeHighlight>gh run list</CodeHighlight> na CLI do
+                GitHub lista todas as execuções recentes de workflows do GitHub
+                Actions associadas a um repositório. Ele exibe informações como
+                o estado da execução (concluído, em andamento, falhou), o número
+                da execução, o branch em que foi executada, entre outros
+                detalhes úteis.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {["# Comando para listar suas execuções", "gh run list"]}
+              </CodeSpace>
+            </ListItem>
+            <ListItem title="Listar execuções">
+              <Paragraph>
+                O comando <CodeHighlight>gh run view</CodeHighlight> exibe
+                detalhes completos de uma execução específica de workflow no
+                GitHub Actions, identificada pelo seu ID único. Com o parâmetro{" "}
+                <b>--log</b>, ele também mostra os logs gerados durante a
+                execução, permitindo que você analise o progresso e depure
+                possíveis problemas diretamente pelo terminal. detalhes úteis.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Comando para visualizar uma execução",
+                  "gh run view 'ID-da-Execução' &--&--log&--&",
+                ]}
+              </CodeSpace>
+            </ListItem>
+            <ListItem title="Listar execuções">
+              <Paragraph>
+                O comando <CodeHighlight>gh run rerun</CodeHighlight> reexecuta
+                uma execução específica de um workflow no GitHub Actions,
+                identificada pelo seu ID único. Isso é útil quando você deseja
+                corrigir erros ou verificar novamente a execução do workflow sem
+                precisar dispará-lo manualmente desde o início.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Comando para reexecutar uma execução",
+                  "gh run rerun 'ID-da-Execução'",
+                ]}
+              </CodeSpace>
+            </ListItem>
+          </List>
+        </Spacer>
+      </TopicContent>
+      <TopicContent>
+        <TopicTitle>Benefícios do GitHub CLI</TopicTitle>
+        <List type="disc">
+          <ListItem>
+            <Paragraph>
+              Reduz a necessidade de acessar a interface web.
+            </Paragraph>
+          </ListItem>
+          <ListItem>
+            <Paragraph>Automatiza tarefas comuns com scripts. </Paragraph>
+          </ListItem>
+          <ListItem>
+            <Paragraph>
+              Acelera o fluxo de trabalho para desenvolvedores.{" "}
+            </Paragraph>
+          </ListItem>
+          <ListItem>
+            <Paragraph>
+              Maior controle e agilidade na gestão de repositórios e PRs.{" "}
+            </Paragraph>
+          </ListItem>
+        </List>
+      </TopicContent>
+      <TopicContent>
+        <TopicTitle>Conclusão</TopicTitle>
+        <Paragraph>
+          O <b>GitHub CLI</b> é uma ferramenta poderosa que melhora a
+          experiência de desenvolvimento e gestão de projetos no GitHub. Com sua
+          interface intuitiva e comandos práticos, permite que desenvolvedores
+          interajam com o GitHub diretamente do terminal, economizando tempo e
+          tornando os fluxos de trabalho mais eficientes.
+        </Paragraph>
       </TopicContent>
     </Content>
   );
