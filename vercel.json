@@ -1,7 +1,8 @@
 {
     "functions": {
-      "api/**/*.js": {
+      "src/pages/api/**/*.{ts,js}": {
         "includeFiles": "src/app/docs/**"
       }
     }
-}
+  }
+  
