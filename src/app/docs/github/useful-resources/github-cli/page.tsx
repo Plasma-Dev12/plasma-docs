@@ -92,6 +92,16 @@ export default function GithubDocs() {
             GithubCLI
           </LearnMoreLink>
         </Spacer>
+        <Spacer>
+          <SubTopic>Verificar se instalou</SubTopic>
+          <Paragraph indent={false}>
+            Para verificar se o GitHub CLI foi instalado corretamente, execute o
+            seguinte comando no terminal:
+          </Paragraph>
+          <CodeSpace space={true}>
+            {["# Verificar se o GitHub CLI foi instalado", "gh --version"]}
+          </CodeSpace>
+        </Spacer>
       </TopicContent>
       <TopicContent>
         <TopicTitle>Configuração inicial</TopicTitle>
@@ -260,6 +270,32 @@ export default function GithubDocs() {
                 </ListItem>
               </List>
             </ListItem>
+            <ListItem title="Deletar repositório">
+              <Paragraph>
+                O comando <CodeHighlight>gh repo delete</CodeHighlight> como
+                parte da ferramenta CLI do GitHub (gh), é utilizado para apagar
+                um repositório. Essa funcionalidade é prática para
+                desenvolvedores que preferem gerenciar seus repositórios
+                diretamente via terminal.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Comando para deletar um repositório",
+                  "gh repo delete nome-do-repositorio &--&--yes&--&",
+                ]}
+              </CodeSpace>
+
+              <Paragraph>
+                Caso ele retorne algum problema de permissão, é só colocar este
+                comando abaixo
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Permitir que sua CLI possa deletar repositórios remotos",
+                  "gh auth refresh &--&-h&--& github.com &--&-s&--& delete_repo",
+                ]}
+              </CodeSpace>
+            </ListItem>
           </List>
         </Spacer>
         <Spacer>
@@ -281,10 +317,16 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Comando em si",
-                  "gh issue create &--&--title&--& 'Título da Issue' &--&--body&--& 'Descrição detalhada'",
+                  'gh issue create &--&--title&--& "Título da Issue" &--&--body&--& "Descrição detalhada"',
                   "&space&",
                   "# Exemplo prático",
-                  "gh issue create &--&--title&--& 'Erro ao carregar página inicial' &--&--body&--& 'Ao acessar a página inicial, ocorre um erro 404. Isso precisa ser corrigido.'",
+                  'gh issue create &--&--title&--& "Erro ao carregar página inicial" &--&--body&--& "Ao acessar a página inicial, ocorre um erro 404. Isso precisa ser corrigido."',
+                  "&space&",
+                  "# Para fazer de forma remota, sem precisar estar em uma pasta com um arquivo .git",
+                  'gh issue create &--&-R&--& seu-usuaro/seu-repo &--&--title&--& "Título da Issue" &--&--body&--& "Descrição detalhada"',
+                  "&space&",
+                  "# Para adicionar uma label basta usar sua flag ao final do comando",
+                  'gh issue create &--&-R&--& seu-usuaro/seu-repo &--&--title&--& "Erro ao carregar página inicial" &--&--body&--& "Ao acessar a página inicial, ocorre um erro 404. Isso precisa ser corrigido." &--&--label&--& "bug"',
                 ]}
               </CodeSpace>
             </ListItem>
@@ -315,10 +357,10 @@ export default function GithubDocs() {
                   "gh issue list &--&--limit&--& 5",
                   "&space&",
                   "# Filtrar com base em etiquetas específicas",
-                  "gh issue list &--&--label&--& 'bug'",
+                  'gh issue list &--&--label&--& "bug"',
                   "&space&",
                   "# Exemplo de uso combinando tudo",
-                  "gh issue list &--&--repo&--& microsoft/vscode &--&--state&--& open &--&--limit&--& 10 &--&--label&--& 'enhancement'",
+                  'gh issue list &--&--repo&--& microsoft/vscode &--&--state&--& open &--&--limit&--& 10 &--&--label&--& "enhancement"',
                 ]}
               </CodeSpace>
             </ListItem>
@@ -364,10 +406,10 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Comando em si",
-                  "gh pr create &--&--title&--& 'Título do PR' &--&--body&--& 'Descrição' &--&--base&--& main",
+                  'gh pr create &--&--title&--& "Título do PR" &--&--body&--& "Descrição" &--&--base&--& main',
                   "&space&",
                   "# Exemplo prático",
-                  "gh pr create &--&--title&--& 'Corrigir bug na interface' &--&--body&--& 'Este PR resolve um problema que ocorria ao carregar a página principal.' &--&--base&--& main",
+                  'gh pr create &--&--title&--& "Corrigir bug na interface" &--&--body&--& "Este PR resolve um problema que ocorria ao carregar a página principal." &--&--base&--& main',
                   "# Para arir o PR no navegador basta adicionar um --web ao final do comando",
                 ]}
               </CodeSpace>
@@ -507,10 +549,10 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Exemplo prático",
-                  "gh release create v1.0.0 &--&--title&--& 'Lançamento Inicial' &--&--notes&--& 'Esta é a primeira versão oficial do projeto'",
+                  'gh release create v1.0.0 &--&--title&--& "Lançamento Inicial" &--&--notes&--& "Esta é a primeira versão oficial do projeto"',
                   "&space&",
                   "# Se você precisar anexar um arquivo (como binários ou instaladores), basta especificar o caminho do arquivo",
-                  "gh release create v1.0.0 &--&--title&--& 'Lançamento Inicial' &--&--notes&--& 'Primeira versão com todos os recursos principais.' arquivo.zip",
+                  'gh release create v1.0.0 &--&--title&--& "Lançamento Inicial" &--&--notes&--& "Primeira versão com todos os recursos principais." arquivo.zip',
                 ]}
               </CodeSpace>
             </ListItem>
@@ -579,7 +621,7 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Exemplo prático",
-                  "gh gist create 'arquivo.txt' &--&--public&--&",
+                  'gh gist create "arquivo.txt" &--&--public&--&',
                 ]}
               </CodeSpace>
             </ListItem>
@@ -603,7 +645,7 @@ export default function GithubDocs() {
                   "gh gist list  &--&--secret&--&",
                   "&space&",
                   "# Para filtrar por palavras-chave, como um título específico",
-                  "gh gist list | grep 'palavra-chave'",
+                  'gh gist list | grep "palavra-chave"',
                 ]}
               </CodeSpace>
             </ListItem>
@@ -618,7 +660,37 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Comando para visualizar um gist",
-                  "gh gist view 'ID-do-Gist'",
+                  'gh gist view "ID-do-Gist"',
+                ]}
+              </CodeSpace>
+            </ListItem>
+          </List>
+        </Spacer>
+        <Spacer>
+          <SubTopic>Visualizar notificações</SubTopic>
+          <Spacer>
+            <Paragraph>
+              As notificações no GitHub são uma ferramenta importante para
+              manter os usuários atualizados sobre as atividades e eventos nos
+              repositórios ou organizações que estão acompanhando. Elas ajudam a
+              garantir que você não perca informações relevantes relacionadas ao
+              seu trabalho colaborativo e projetos.
+            </Paragraph>
+          </Spacer>
+          <List type="disc">
+            <ListItem title="Visualizar notificações">
+              <Paragraph indent={true}>
+                O comando <CodeHighlight>gh api notifications</CodeHighlight> é
+                utilizado para gerenciar notificações do GitHub diretamente pela
+                linha de comando, permitindo visualizar, organizar ou interagir
+                com notificações relacionadas aos seus repositórios,
+                organizações e atividades.
+              </Paragraph>
+              <CodeSpace space={true}>
+                {[
+                  "# Comando para visualizar suas notificações",
+                  "gh api notifications",
+                  "# Retorna um array de json, caso você não tenha notificações retornará []",
                 ]}
               </CodeSpace>
             </ListItem>
@@ -669,7 +741,7 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Comando para visualizar uma execução",
-                  "gh run view 'ID-da-Execução' &--&--log&--&",
+                  'gh run view "ID-da-Execução" &--&--log&--&',
                 ]}
               </CodeSpace>
             </ListItem>
@@ -684,7 +756,7 @@ export default function GithubDocs() {
               <CodeSpace space={true}>
                 {[
                   "# Comando para reexecutar uma execução",
-                  "gh run rerun 'ID-da-Execução'",
+                  'gh run rerun "ID-da-Execução"',
                 ]}
               </CodeSpace>
             </ListItem>

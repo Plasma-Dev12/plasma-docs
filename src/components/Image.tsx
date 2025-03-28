@@ -89,7 +89,7 @@ export default function ImageModal({ src, alt, className }: ImageProps) {
             onMouseLeave={handleMouseUp}
             style={{ cursor: isDragging ? "grabbing" : "grab" }}
           >
-            <img
+            <Image
               src={src.src}
               alt={alt}
               style={{
