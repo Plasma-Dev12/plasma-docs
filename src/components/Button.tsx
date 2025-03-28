@@ -15,7 +15,7 @@ export default function Button({
 }: ButtonProps) {
   const style = !outline
     ? variant === "primary"
-      ? "border-t-[#28225F] border-b-[#8C93FB] font-bold text-2xl bg-[#28225F] "
+      ? "border-t-[#28225F] border-b-[#110d33] font-bold text-2xl bg-[#28225F] "
       : variant === "secondary"
       ? "border-t-secondary_color border-b-highlight_color bg-secondary_color text-brand_white "
       : variant === "gradient"
