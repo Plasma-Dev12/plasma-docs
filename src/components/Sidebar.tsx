@@ -6,6 +6,8 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import SidebarLinksByFolder from "./SidebarLinksByFolder";
+import DropdownListTitle from "./DropdownListTitle";
+import SidebarItemLink from "./SidebarItemLink";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +64,165 @@ export default function Sidebar() {
           >
             Github
           </Link>
-          <SidebarLinksByFolder technology={"github"} />
+          {/* <SidebarLinksByFolder technology={"github"} /> */}
+          <details className="cursor-pointer my-4">
+             <DropdownListTitle name="Interface e navegação" />
+             <div>
+             <ul className="pl-4 mt-2">
+                 <SidebarItemLink
+                   name="Navbar"
+                   link="/docs/github/interface-navigation/navbar"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Barra de pesquisa"
+                   link="/docs/github/interface-navigation/search"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Perfil"
+                   link="/docs/github/interface-navigation/profile"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Menu"
+                   link="/docs/github/interface-navigation/menu"
+                   onClick={() => setIsOpen(false)}
+                 />
+               </ul>
+             </div>
+           </details>
+           <details className="cursor-pointer my-4">
+             <DropdownListTitle name="Funcionalidades Principais" />
+             <div>
+               <ul className="pl-4">
+                 <SidebarItemLink
+                   name="Code"
+                   link="/docs/github/principal-functions/code"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Issues"
+                   link="/docs/github/principal-functions/issues"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Pull requests"
+                   link="/docs/github/principal-functions/pull-requests"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Actions"
+                   link="/docs/github/principal-functions/actions"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Projects"
+                   link="/docs/github/principal-functions/projects"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Wiki"
+                   link="/docs/github/principal-functions/wiki"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Insights"
+                   link="/docs/github/principal-functions/insights"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Settings"
+                   link="/docs/github/principal-functions/settings"
+                   onClick={() => setIsOpen(false)}
+                 />
+               </ul>
+             </div>
+           </details>
+           <details className="cursor-pointer my-4">
+             <DropdownListTitle name="Configurações e Personalização" />
+             <div>
+               <ul className="pl-4">
+                 <SidebarItemLink
+                   name="Perfil público e conta"
+                   link="/docs/github/configurations-personalizations/public-profile-acount"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Personalização e acessibilidade"
+                   link="/docs/github/configurations-personalizations/personalization-accessibility"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Notificações"
+                   link="/docs/github/configurations-personalizations/notifications"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Acesso"
+                   link="/docs/github/configurations-personalizations/access"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Código, planejamento e automação"
+                   link="/docs/github/configurations-personalizations/code-planning-automation"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Segurança"
+                   link="/docs/github/configurations-personalizations/security"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Integrações"
+                   link="/docs/github/configurations-personalizations/integration"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Arquivos"
+                   link="/docs/github/configurations-personalizations/archives"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Configurações de desenvolvedor"
+                   link="/docs/github/configurations-personalizations/dev-configurations"
+                   onClick={() => setIsOpen(false)}
+                 />
+               </ul>
+             </div>
+           </details>
+           <details className="cursor-pointer my-4">
+             <DropdownListTitle name="Recursos Úteis" />
+             <div>
+               <ul className="pl-4">
+                 <SidebarItemLink
+                   name="Erros comuns e soluções"
+                   link="/docs/github/useful-resources/common-errors-and-solutions"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Dicas"
+                   link="/docs/github/useful-resources/tips"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Atalhos"
+                   link="/docs/github/useful-resources/shortcuts"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Github CLI"
+                   link="/docs/github/useful-resources/github-cli"
+                   onClick={() => setIsOpen(false)}
+                 />
+                 <SidebarItemLink
+                   name="Conclusão, referências e créditos"
+                   link="/docs/github/useful-resources/conclusion-references-credits"
+                   onClick={() => setIsOpen(false)}
+                 />
+               </ul>
+             </div>
+           </details>
         </div>
       </div>
     </div>
