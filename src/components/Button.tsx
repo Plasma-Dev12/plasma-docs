@@ -4,6 +4,7 @@ interface ButtonProps {
   outline?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
+  shadow?: boolean;
 }
 
 export default function Button({
@@ -12,10 +13,11 @@ export default function Button({
   outline,
   disabled,
   children,
+  shadow,
 }: ButtonProps) {
   const style = !outline
     ? variant === "primary"
-      ? "border-t-[#28225F] border-b-[#110d33] font-bold text-2xl bg-[#28225F] "
+      ? "text-[#110d33] border-t-[#b78cfb] border-b-[#110d33] font-bold text-xl bg-[#b78cfb] "
       : variant === "secondary"
       ? "border-t-secondary_color border-b-highlight_color bg-secondary_color text-brand_white "
       : variant === "gradient"
@@ -49,17 +51,19 @@ export default function Button({
       : "";
 
   return (
-    <button
-      className={
-        "teste w-fit h-auto rounded-lg hover:brightness-95 cursor-pointer " +
-        style +
-        offline +
-        border
-      }
-    >
-      <div className={"md-text-regular px-8 py-2 pb-3 " + innerBackground}>
-        <div className={innerGradient}>{children}</div>
-      </div>
-    </button>
+    <span id={shadow ? "buttonGradient" : ""}>
+      <button
+        className={
+          "teste w-fit h-auto rounded-lg hover:brightness-95 cursor-pointer " +
+          style +
+          offline +
+          border
+        }
+      >
+        <div className={"md-text-regular px-6 py-2 pb-3 " + innerBackground}>
+          <div className={innerGradient}>{children}</div>
+        </div>
+      </button>
+    </span>
   );
 }

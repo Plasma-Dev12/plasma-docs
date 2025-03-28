@@ -5,6 +5,8 @@ import DevelopersComponent from "@/components/DevelopersComponent";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { ArrowRight, BookOpen, Code } from "lucide-react";
+
 export default function Home() {
 
   const handleScroll = () => {
@@ -13,18 +15,16 @@ export default function Home() {
       const position = down.getBoundingClientRect().top;
       console.log(position);
 
-      down.style.opacity = `${
-        position > 750 ? 1 : position > 600 ? 0.7 : position > 400 ? 0.4 : 0
-      }`;
+      down.style.opacity = `${position > 750 ? 1 : position > 600 ? 0.7 : 0}`;
     }
   };
 
   return (
     <>
       <div onWheel={() => handleScroll()}>
-        <div className="bg-gradient-to-b from-[#28225F] to-[#0D1117] min-h-[600px] h-screen p-5 md:relative">
+        <header className="bg-gradient-to-b from-[#28225F] to-[#0D1117] min-h-[600px] h-screen p-5 md:relative">
           <div className="h-full mt-10 flex flex-col-reverse justify-center gap-12 pb-20 items-center md:h-72 md:w-auto md:mx-auto lg:h-[550px] 2xl:h-[750px]">
-            <div className="md:mt-72 xl:mt-14 flex flex-col items-center text-center md:w-[500px] md:ml-[10%] xl:w-[600px] 2xl:w-[720px]">
+            <div className="md:mt-72 xl:mt-1 flex flex-col items-center text-center md:w-[500px] md:ml-[10%] xl:w-[600px] 2xl:w-[720px]">
               <h1
                 id="title"
                 className="font-extrabold text-6xl lg:text-7xl 2xl:text-8xl"
@@ -51,32 +51,107 @@ export default function Home() {
               className="absolute top-[90%] left-1/2 animate-bounce duration-1000 text-[#FEDEFB]"
             />
           </span>
-        </div>
-        <div className="flex flex-col justify-center items-center p-[32px] md:pt-[150px]">
-          <div className="mb-20">
-            <div
-              key={"Desenvolvedores"}
-              className={`text-4xl lg:text-5xl lg:px-[18px] lg:py-0 lg:h-[50px] font-bold p-[12px] rounded-[36px] text-[#CCA9EC]`}
-            >
-              Desenvolvedores
-            </div>
-          </div>
-          <div className="max-w-[1044px] h-full w-full border-2 border-[#8C93FB] bg-[#26215b94] p-[5px] md:p-[12] lg:p-[16] rounded-[16px] shadow-[0px_0px_149.8px_-31px_#6D60C1]">
+        </header>
+        <section className="flex flex-col justify-center items-center p-8 pb-56 md:pt-[150px]">
+          <h2
+            key={"Desenvolvedores"}
+            className={`mb-20 text-4xl lg:text-5xl lg:px-[18px] lg:py-0 lg:h-[50px] font-bold p-[12px] rounded-[36px] text-[#CCA9EC]`}
+          >
+            Desenvolvedores
+          </h2>
+          <article className="max-w-6xl h-full w-full border-2 border-[#b78cfb] bg-[#26215b94] p-[5px] md:p-[12] lg:p-[16] rounded-[16px] shadow-[0px_0px_149.8px_-31px_#6D60C1]">
             <div className="bg-[#0D1117] rounded-[16px] h-[530px] md:h-[515px] p-2 flex justify-center items-center">
               <DevelopersComponent />
             </div>
+          </article>
+        </section>
+        <section className="text-white w-full flex flex-col items-center pb-16 px-4 relative overflow-hidden">
+          <div className="absolute -left-20 -bottom-20 w-64 h-64 opacity-20">
+            <Image
+              src={plasmaDocsLogo}
+              alt="Plasma logo"
+              id="logoPlasmaDocs"
+              className="select-none pointer-events-none w-[350px] mt-10 md:mt-0 lg:w-[550px] 2xl:w-[750px]"
+            />
           </div>
-        </div>
+          <h2
+            key={"Desenvolvedores"}
+            className={`mb-20 text-4xl lg:text-5xl lg:px-[18px] lg:py-0 lg:h-[50px] font-bold p-[12px] rounded-[36px] text-[#CCA9EC]`}
+          >
+            Desenvolvedores
+          </h2>
+          <div className="max-w-6xl w-full p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
+              <CallToAction
+                title="Recursos para Desenvolvedores"
+                description="Exemplos de código, snippets e integrações para acelerar seu desenvolvimento."
+                urlLink="#"
+                buttonText="Ver recursos"
+              >
+                <Code className="size-6" />
+              </CallToAction>
+              <CallToAction
+                title="Documentação Completa"
+                description="Acesse guias detalhados e tutoriais de diversas ferramentas incríveis."
+                urlLink="/docs"
+                buttonText="Ver documentação"
+              >
+                <BookOpen className="size-6" />
+              </CallToAction>
+            </div>
+          </div>
+        </section>
       </div>
-      <div className="flex justify-center items-center w-full my-56">
-        <span id="buttonGradient" className="mx-10">
-          <Link href={"/docs"}>
-            <Button variant="primary" outline={false}>
-              <p id="title">Ir para a documentação</p>
-            </Button>
+
+      <footer className="text-white w-full py-6 bg-[#0A071A]">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Plasma Docs. Todos os direitos
+              reservados.
+            </p>
+          </div>
+          <Link
+            href="#"
+            className="inline-flex items-center text-[#A78BFF] hover:text-[#C4B0FF] transition-colors"
+          >
+            Acesse nossa landing page
           </Link>
-        </span>
-      </div>
+        </div>
+      </footer>
     </>
+  );
+}
+
+interface CallToActionProps {
+  title: string;
+  description: string;
+  buttonText: string;
+  urlLink: string;
+  children: React.ReactNode;
+}
+
+export function CallToAction({
+  title,
+  description,
+  buttonText,
+  children: icon,
+  urlLink,
+}: CallToActionProps) {
+  return (
+    <article className="flex flex-col items-end bg-[#26215b94] rounded-xl p-8 gap-6 border-2 border-[#b78cfb]">
+      <div className="self-start flex items-center justify-center text-[#b78cfb]">
+        <span className="p-3 bg-[#3A2A5A] rounded-xl mr-4">{icon}</span>
+
+        <h3 className="text-xl md:text-2xl font-semibold">{title}</h3>
+      </div>
+      <p className="text-muted-foreground">{description}</p>
+      <Link
+        href={urlLink}
+        className="text-purple-100 hover:text-[#C4B0FF] transition-colors"
+      >
+        <Button variant="primary">{buttonText}</Button>
+      </Link>
+    </article>
   );
 }
