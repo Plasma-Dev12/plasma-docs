@@ -1,18 +1,11 @@
 "use client";
 import Image from "next/image";
 import plasmaDocsLogo from "@/assets/Logo plasma docs.svg";
-import React, { useState } from "react";
 import DevelopersComponent from "@/components/DevelopersComponent";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 export default function Home() {
-  const options = [
-    {
-      name: "Desenvolvedores",
-      component: <DevelopersComponent />,
-    },
-  ];
 
   const handleScroll = () => {
     const down = document.getElementById("down");
