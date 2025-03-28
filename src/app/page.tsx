@@ -8,7 +8,6 @@ import { ChevronDown } from "lucide-react";
 import { ArrowRight, BookOpen, Code } from "lucide-react";
 
 export default function Home() {
-
   const handleScroll = () => {
     const down = document.getElementById("down");
     if (down) {
@@ -65,7 +64,13 @@ export default function Home() {
             </div>
           </article>
         </section>
-        <section className="text-white w-full flex flex-col items-center pb-16 px-4 relative overflow-hidden">
+        <section className="text-white w-full flex flex-col items-center pb-16 px-8 relative overflow-hidden">
+          <h2
+            key={"Explorar"}
+            className={`mb-16 text-4xl lg:text-5xl lg:px-[18px] lg:py-0 lg:h-[50px] font-bold p-[12px] rounded-[36px] text-[#CCA9EC]`}
+          >
+            Explorar
+          </h2>
           <div className="absolute -left-20 -bottom-20 w-64 h-64 opacity-20">
             <Image
               src={plasmaDocsLogo}
@@ -74,22 +79,8 @@ export default function Home() {
               className="select-none pointer-events-none w-[350px] mt-10 md:mt-0 lg:w-[550px] 2xl:w-[750px]"
             />
           </div>
-          <h2
-            key={"Desenvolvedores"}
-            className={`mb-20 text-4xl lg:text-5xl lg:px-[18px] lg:py-0 lg:h-[50px] font-bold p-[12px] rounded-[36px] text-[#CCA9EC]`}
-          >
-            Desenvolvedores
-          </h2>
-          <div className="max-w-6xl w-full p-8">
+          <div className="max-w-6xl w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
-              <CallToAction
-                title="Recursos para Desenvolvedores"
-                description="Exemplos de código, snippets e integrações para acelerar seu desenvolvimento."
-                urlLink="#"
-                buttonText="Ver recursos"
-              >
-                <Code className="size-6" />
-              </CallToAction>
               <CallToAction
                 title="Documentação Completa"
                 description="Acesse guias detalhados e tutoriais de diversas ferramentas incríveis."
@@ -97,6 +88,14 @@ export default function Home() {
                 buttonText="Ver documentação"
               >
                 <BookOpen className="size-6" />
+              </CallToAction>
+              <CallToAction
+                title="Visite a Plasma"
+                description="Visite a nossa landing page e conheça os desenvolvedores e nossos projetos."
+                urlLink="https://devplasma.vercel.app/"
+                buttonText="Acessar a Plasma Dev"
+              >
+                <Code className="size-6" />
               </CallToAction>
             </div>
           </div>
@@ -141,11 +140,11 @@ export function CallToAction({
   return (
     <article className="flex flex-col items-end bg-[#26215b94] rounded-xl p-8 gap-6 border-2 border-[#b78cfb]">
       <div className="self-start flex items-center justify-center text-[#b78cfb]">
-        <span className="p-3 bg-[#3A2A5A] rounded-xl mr-4">{icon}</span>
+        <span className="p-3 bg-[#3c2669] rounded-xl mr-4">{icon}</span>
 
-        <h3 className="text-xl md:text-2xl font-semibold">{title}</h3>
+        <h3 className="text-2xl font-semibold">{title}</h3>
       </div>
-      <p className="text-muted-foreground">{description}</p>
+      <p className="text-muted-foreground self-start">{description}</p>
       <Link
         href={urlLink}
         className="text-purple-100 hover:text-[#C4B0FF] transition-colors"

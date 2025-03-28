@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Plasma docs",
-  description: "Documentação para o github",
+  title: "Plasma Docs",
+  description: "Documentação de sistemas de desenvolvimento",
 };
 
 export default function RootLayout({
