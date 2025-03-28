@@ -19,7 +19,7 @@ export default function Sidebar() {
     <div className="z-10 2xl:w-[350px] 2xl:block">
       <div className="2xl:w-[350px] fixed 2xl:bg-[#1A193B] 2xl:h-screen max-h-screen 2xl:overflow-y-auto 2xl:overflow-x-hidden">
         <div className={`bg-[#1A193B] py-6 shadow-[0px_0px_24px_#8c93fb44]`}>
-          <div className="flex relative w-[100vw] 2xl:w-[350px] px-4 md:px-8 flex-row items-center justify-between">
+          <div className="flex relative w-screen 2xl:w-[350px] px-4 md:px-8 flex-row items-center justify-between">
             <Link href={"/"}>
               <div className="flex flex-row items-center gap-2">
                 <Image

@@ -62,7 +62,7 @@ export default function Page() {
         </div>
         <div className="relative mt-5 md:hidden">
           <button
-            className="flex items-center justify-around gap-10 border-[1px] border-[#F6E5F8] rounded-[24px] p-[12px] text-[#CCA9EC] font-bold w-auto"
+            className="cursor-pointer flex items-center justify-around gap-10 border-[1px] border-[#F6E5F8] rounded-[24px] p-[12px] text-[#CCA9EC] font-bold w-auto"
             onClick={() => setIsOpen(!isOpen)}
           >
             {selectedOption.name} <FaAngleDown className="text-[#F6E5F8]" />
@@ -72,7 +72,7 @@ export default function Page() {
               {options.map((option) => (
                 <div
                   key={option.name}
-                  className={`p-2 cursor-pointer text-center ${
+                  className={`first:rounded-t-[16px] last:rounded-b-[16px] p-2 cursor-pointer text-center ${
                     selectedOption.name === option.name
                       ? "text-[#CCA9EC] font-bold underline"
                       : "text-[#CCA9EC] opacity-[60%]"
