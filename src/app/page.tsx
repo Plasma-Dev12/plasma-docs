@@ -16,13 +16,6 @@ export default function Home() {
 
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  const handleSelect = (option: {
-    name: string;
-    component: React.ReactElement;
-  }) => {
-    setSelectedOption(option);
-  };
-
   const handleScroll = () => {
     const down = document.getElementById("down");
     if (down) {
