@@ -1,0 +1,395 @@
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import Title from "@/components/layout-elements/Title";
+import Paragraph from "@/components/layout-elements/Paragraph";
+import Topic from "@/components/layout-elements/Topic";
+import TopicContent from "@/components/layout-elements/TopicContent";
+
+/* 1. Funções de parser e unparser */
+
+// Converte a DSL (string) em uma árvore JSON; envolve tudo num <root> para suportar múltiplos nós.
+function parseDSLToJSON(dslText) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(`<root>${dslText}</root>`, "text/xml");
+
+  if (doc.getElementsByTagName("parsererror").length) {
+    console.error("Erro no parser da DSL");
+    return [];
+  }
+
+  const nodesArray = Array.from(doc.documentElement.childNodes);
+  const parsed = nodesArray.map(domNodeToJSON).filter((n) => n !== null);
+  return parsed;
+}
+
+// Converte um nó do DOM em JSON.
+// Se for texto, retorna a string; se for elemento, retorna um objeto com
+// { component, props, children }.
+function domNodeToJSON(node) {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const text = node.textContent;
+    return text.trim() ? text : null;
+  }
+  if (node.nodeType === Node.ELEMENT_NODE) {
+    const rawName = node.tagName;
+    const component =
+      rawName.charAt(0).toUpperCase() + rawName.slice(1).toLowerCase();
+    const props = {};
+    for (let i = 0; i < node.attributes.length; i++) {
+      const attr = node.attributes[i];
+      props[attr.name] = attr.value;
+    }
+    const children = [];
+    for (let i = 0; i < node.childNodes.length; i++) {
+      const child = domNodeToJSON(node.childNodes[i]);
+      if (child !== null) children.push(child);
+    }
+    return { component, props, children };
+  }
+  return null;
+}
+
+// Atualiza um nó de texto na árvore JSON, dado um "path" (um array de índices).
+// Se o path estiver vazio e o nó for uma string, retorna o newText.
+function updateJSONAtPath(json, path, newText) {
+  if (path.length === 0) {
+    return typeof json === "string" ? newText : json;
+  }
+  if (Array.isArray(json)) {
+    const index = path[0];
+    return json.map((item, idx) =>
+      idx === index ? updateJSONAtPath(item, path.slice(1), newText) : item
+    );
+  }
+  if (typeof json === "object" && json !== null) {
+    return {
+      ...json,
+      children: updateJSONAtPath(json.children, path, newText),
+    };
+  }
+  return json;
+}
+
+// Converte a árvore JSON de volta para a DSL (HTML-like).
+function unparseJSON(json) {
+  if (Array.isArray(json)) {
+    return json.map(unparseJSON).join("\n");
+  }
+  if (typeof json === "string") return json;
+  if (typeof json === "object" && json !== null) {
+    const { component, props, children } = json;
+    const propsEntries = Object.entries(props || {});
+    const propsString = propsEntries.length
+      ? " " + propsEntries.map(([key, value]) => `${key}="${value}"`).join(" ")
+      : "";
+    const openTag = `<${component}${propsString}>`;
+    const childrenString = children ? unparseJSON(children) : "";
+    return `${openTag}${childrenString}</${component}>`;
+  }
+  return "";
+}
+
+/* 2. Atualiza o tipo (component) de um bloco na árvore JSON dado o path */
+function updateBlockTypeAtPath(json, path, newType) {
+  if (path.length === 0) return json;
+  if (Array.isArray(json)) {
+    const index = path[0];
+    if (path.length === 1) {
+      return json.map((item, i) => {
+        if (i === index && typeof item === "object") {
+          return { ...item, component: newType };
+        }
+        return item;
+      });
+    } else {
+      return json.map((item, i) =>
+        i === index ? updateBlockTypeAtPath(item, path.slice(1), newType) : item
+      );
+    }
+  }
+  if (typeof json === "object" && json !== null) {
+    return {
+      ...json,
+      children: updateBlockTypeAtPath(json.children, path, newType),
+    };
+  }
+  return json;
+}
+
+/* 3. Componente para edição inline dos textos – usa contentEditable sem ser controlado completamente */
+const EditableText = React.memo(
+  ({ value, path, onSave, onSelect, autoFocus = false }) => {
+    const spanRef = useRef(null);
+
+    useEffect(() => {
+      if (autoFocus && spanRef.current) {
+        spanRef.current.focus();
+        // Posiciona o cursor no fim
+        const range = document.createRange();
+        range.selectNodeContents(spanRef.current);
+        range.collapse(false);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    }, [autoFocus]);
+
+    const handleBlur = () => {
+      if (
+        spanRef.current &&
+        spanRef.current.textContent !== value &&
+        typeof onSave === "function"
+      ) {
+        onSave(path, spanRef.current.textContent);
+      }
+    };
+
+    return (
+      <span
+        ref={spanRef}
+        contentEditable
+        suppressContentEditableWarning={true}
+        onFocus={() => onSelect && onSelect(path)}
+        onBlur={handleBlur}
+        style={{
+          outline: "1px dashed #aaa",
+          padding: "2px",
+        }}
+      >
+        {value}
+      </span>
+    );
+  }
+);
+
+/* 4. Função recursiva que renderiza a árvore JSON em componentes React
+   Acrescenta um wrapper clicável para permitir a seleção do bloco.
+   Recebe os parâmetros onInlineEdit (para salvar edição), onSelectBlock e selectedPath (para destacar) */
+function renderComponent(
+  json,
+  path = [],
+  onInlineEdit,
+  onSelectBlock,
+  selectedPath
+) {
+  if (typeof json === "string") {
+    const isSelected =
+      selectedPath && path.join("-") === selectedPath.join("-");
+    return (
+      <EditableText
+        key={path.join("-")}
+        value={json}
+        path={path}
+        onSave={onInlineEdit}
+        onSelect={onSelectBlock}
+        autoFocus={isSelected}
+      />
+    );
+  }
+  const { component, props, children } = json;
+  let ComponentType;
+  switch (component.toLowerCase()) {
+    case "title":
+      ComponentType = Title;
+      break;
+    case "paragraph":
+      ComponentType = Paragraph;
+      break;
+    case "topic":
+      ComponentType = Topic;
+      break;
+    default:
+      ComponentType = (compProps) => (
+        <div {...compProps}>{compProps.children}</div>
+      );
+      break;
+  }
+
+  const isSelected = selectedPath && path.join("-") === selectedPath.join("-");
+
+  return (
+    <div
+      key={path.join("-")}
+      onClick={(e) => {
+        e.stopPropagation();
+        onSelectBlock && onSelectBlock(path);
+      }}
+      style={isSelected ? { border: "2px solid yellow", padding: "2px" } : {}}
+    >
+      <ComponentType {...props}>
+        {children &&
+          children.map((child, index) =>
+            renderComponent(
+              child,
+              path.concat(index),
+              onInlineEdit,
+              onSelectBlock,
+              selectedPath
+            )
+          )}
+      </ComponentType>
+    </div>
+  );
+}
+
+/* 5. Componente principal do Editor */
+const PageEditorDemo = () => {
+  const [dsl, setDsl] = useState(`<Title>Meu Título Incrível</Title>
+<Paragraph>Este é um parágrafo muito interessante que fala sobre vários assuntos.</Paragraph>
+<Topic title="Detalhes">Aqui estão alguns detalhes importantes.</Topic>`);
+  const [mode, setMode] = useState("preview"); // "code" ou "preview"
+  const [selectedPath, setSelectedPath] = useState(null);
+  const codeRef = useRef(null);
+
+  // Função para seleção de bloco
+  const handleSelectBlock = (path) => {
+    setSelectedPath(path);
+  };
+
+  // Atualiza o DSL (para nós de texto) a partir do onBlur do EditableText
+  const updateDslAtPath = (path, newText) => {
+    const oldJson = parseDSLToJSON(dsl);
+    const newJson = updateJSONAtPath(oldJson, path, newText);
+    const newDsl = unparseJSON(newJson);
+    setDsl(newDsl);
+  };
+
+  // Insere ou converte um bloco (para ambos os modos)
+  const handleInsertOrConvert = (tagName) => {
+    if (mode === "code") {
+      // Se estiver no mode code, usamos o método anterior de inserção
+      const textarea = codeRef.current;
+      if (!textarea) return;
+      const { selectionStart, selectionEnd } = textarea;
+      const selectedText =
+        dsl.substring(selectionStart, selectionEnd) || "conteúdo";
+      const tagInsertion = `<${tagName}>${selectedText}</${tagName}>`;
+      const newDsl =
+        dsl.slice(0, selectionStart) + tagInsertion + dsl.slice(selectionEnd);
+      setDsl(newDsl);
+      setTimeout(() => {
+        textarea.focus();
+        textarea.selectionStart = textarea.selectionEnd =
+          selectionStart + tagInsertion.length;
+      }, 0);
+    } else {
+      // No modo preview:
+      if (selectedPath !== null) {
+        // Converte o bloco selecionado para o tipo escolhido
+        const oldJson = parseDSLToJSON(dsl);
+        const newJson = updateBlockTypeAtPath(oldJson, selectedPath, tagName);
+        const newDsl = unparseJSON(newJson);
+        setDsl(newDsl);
+        setSelectedPath(null);
+      } else {
+        // Se nenhum bloco estiver selecionado, insere um novo bloco do tipo escolhido (padrão)
+        addNewBlock(tagName);
+      }
+    }
+  };
+
+  // Adiciona um novo bloco do tipo escolhido (por padrão, para inserção no preview)
+  const addNewBlock = (blockType) => {
+    const oldJson = parseDSLToJSON(dsl);
+    const newBlock = { component: blockType, props: {}, children: "" };
+    const newJSON = [...oldJson, newBlock];
+    const newDsl = unparseJSON(newJSON);
+    setDsl(newDsl);
+    // Seleciona o novo bloco para que ele receba autoFocus
+    setSelectedPath([newJSON.length - 1]);
+  };
+
+  // Para o preview, se o usuário der double-click no fundo (background) do container, insere um Paragraph
+  const handlePreviewDoubleClick = (e) => {
+    if (e.target === e.currentTarget) {
+      addNewBlock("Paragraph");
+    }
+  };
+
+  // Muda o conteúdo do DSL no mode "code"
+  const handleCodeChange = (e) => {
+    setDsl(e.target.value);
+  };
+
+  // Obtém a estrutura JSON a partir do DSL atual
+  const jsonStructure = parseDSLToJSON(dsl);
+
+  return (
+    <div
+      style={{
+        maxWidth: "800px",
+        margin: "0 auto",
+        padding: "20px",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      {/* Barra de Ferramentas */}
+      <div
+        style={{
+          marginBottom: "10px",
+          display: "flex",
+          gap: "8px",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* Esses botões funcionam para ambos os modos:
+            Se um bloco estiver selecionado, converte-o; 
+            se não, insere um novo bloco do tipo escolhido. */}
+        <button onClick={() => handleInsertOrConvert("Title")}>
+          Inserir/Converter para Title
+        </button>
+        <button onClick={() => handleInsertOrConvert("Paragraph")}>
+          Inserir/Converter para Paragraph
+        </button>
+        <button onClick={() => handleInsertOrConvert("Topic")}>
+          Inserir/Converter para Topic
+        </button>
+        <button onClick={() => setMode(mode === "code" ? "preview" : "code")}>
+          {mode === "code" ? "Ver Preview" : "Ver Código"}
+        </button>
+      </div>
+
+      {/* Área de edição */}
+      {mode === "code" ? (
+        <textarea
+          ref={codeRef}
+          value={dsl}
+          onChange={handleCodeChange}
+          style={{
+            width: "100%",
+            height: "400px",
+            fontSize: "16px",
+            padding: "10px",
+            boxSizing: "border-box",
+          }}
+        />
+      ) : (
+        // No preview, a área toda responde ao double click para inserção de um novo Paragraph
+        <div
+          onDoubleClick={handlePreviewDoubleClick}
+          style={{
+            width: "100%",
+            minHeight: "400px",
+            border: "1px solid #333",
+            padding: "10px",
+            backgroundColor: "#444",
+          }}
+        >
+          <TopicContent>
+            {jsonStructure.map((node, index) =>
+              renderComponent(
+                node,
+                [index],
+                updateDslAtPath,
+                handleSelectBlock,
+                selectedPath
+              )
+            )}
+          </TopicContent>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PageEditorDemo;

@@ -1,0 +1,153 @@
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import Title from "@/components/layout-elements/Title";
+import Paragraph from "@/components/layout-elements/Paragraph";
+import Topic from "@/components/layout-elements/Topic";
+import TopicContent from "@/components/layout-elements/TopicContent";
+
+// Map dos componentes – se não encontrar, renderiza uma div
+const COMPONENTS = {
+    Title,
+    Paragraph,
+    Topic,
+  };
+  
+  // Tipo padrão para novos blocos
+  const DEFAULT_BLOCK_TYPE = "Paragraph";
+  
+  function PageEditor() {
+    // Nossa estrutura de blocos: cada bloco tem id, type e content.
+    const [blocks, setBlocks] = useState([
+      { id: 1, type: "Title", content: "Meu Título Incrível" },
+      {
+        id: 2,
+        type: "Paragraph",
+        content:
+          "Este é um parágrafo muito interessante que fala sobre vários assuntos.",
+      },
+      {
+        id: 3,
+        type: "Topic",
+        content: "Aqui estão alguns detalhes importantes.",
+      },
+    ]);
+  
+    // Armazena o id do bloco selecionado
+    const [selectedBlockId, setSelectedBlockId] = useState(null);
+  
+    // Armazena referências para cada bloco para facilitar o focus
+    const blockRefs = useRef({});
+  
+    // Quando o usuário pressiona Enter, insere um novo bloco abaixo do atual
+    const handleKeyDown = (e, index, blockId) => {
+      if (e.key === "Enter") {
+        e.preventDefault(); // evita inserir uma nova linha dentro do mesmo bloco
+  
+        // Cria um novo bloco com id único e conteúdo vazio
+        const newBlock = {
+          id: Date.now(), // para exemplo, utiliza o timestamp; em produção use algo mais robusto
+          type: DEFAULT_BLOCK_TYPE,
+          content: "",
+        };
+  
+        // Insere o novo bloco logo após o bloco atual
+        const newBlocks = [
+          ...blocks.slice(0, index + 1),
+          newBlock,
+          ...blocks.slice(index + 1),
+        ];
+        setBlocks(newBlocks);
+  
+        // Define o novo bloco como selecionado e foca nele após renderizar
+        setSelectedBlockId(newBlock.id);
+        setTimeout(() => {
+          blockRefs.current[newBlock.id]?.focus();
+        }, 0);
+      }
+    };
+  
+    // Atualiza o conteúdo do bloco conforme o usuário edita
+    const handleInput = (e, blockId) => {
+      const newContent = e.target.innerText;
+      setBlocks((prevBlocks) =>
+        prevBlocks.map((blk) =>
+          blk.id === blockId ? { ...blk, content: newContent } : blk
+        )
+      );
+    };
+  
+    // Ao clicar em um bloco, marca-o como selecionado
+    const handleBlockClick = (blockId, e) => {
+      e.stopPropagation();
+      setSelectedBlockId(blockId);
+    };
+  
+    // Converte o bloco selecionado para o tipo escolhido via toolbar
+    const convertSelectedBlock = (newType) => {
+      if (!selectedBlockId) return;
+      setBlocks((prevBlocks) =>
+        prevBlocks.map((blk) =>
+          blk.id === selectedBlockId ? { ...blk, type: newType } : blk
+        )
+      );
+    };
+  
+    // Renderiza cada bloco com o componente correspondente.
+    // O bloco é clicável para seleção; o conteúdo é editável.
+    return (
+      <div style={{ maxWidth: "800px", margin: "0 auto", fontFamily: "Arial" }}>
+        {/* Toolbar para conversão */}
+        <div style={{ marginBottom: "10px" }}>
+          <button onClick={() => convertSelectedBlock("Title")}>
+            Converter para Title
+          </button>
+          <button onClick={() => convertSelectedBlock("Paragraph")}>
+            Converter para Paragraph
+          </button>
+          <button onClick={() => convertSelectedBlock("Topic")}>
+            Converter para Topic
+          </button>
+        </div>
+  
+        {/* Lista de blocos */}
+        <div>            
+          {blocks.map((block, index) => {
+            // Seleciona o componente a ser usado
+            const Component = COMPONENTS[block.type] || "div";
+            // Se estiver selecionado, adiciona uma borda para destacar
+            const wrapperStyle =
+              block.id === selectedBlockId
+                ? { border: "1px solid blue", padding: "4px" }
+                : { padding: "4px" };
+  
+            return (
+              <div
+                key={block.id}
+                style={wrapperStyle}
+                onClick={(e) => handleBlockClick(block.id, e)}
+              >
+                {/* O componente envolve o elemento editável */}
+                <Component>
+                  <div
+                    contentEditable
+                    suppressContentEditableWarning
+                    onKeyDown={(e) => handleKeyDown(e, index, block.id)}
+                    onInput={(e) => handleInput(e, block.id)}
+                    ref={(el) => (blockRefs.current[block.id] = el)}
+                    style={{
+                      outline: "none",
+                      minHeight: "1.2em",
+                    }}
+                  >
+                    {block.content}
+                  </div>
+                </Component>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+  
+  export default PageEditor;

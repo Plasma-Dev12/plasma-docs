@@ -1,0 +1,199 @@
+"use client";
+import React, { useState, useRef } from "react";
+import Title from "@/components/layout-elements/Title";
+import Paragraph from "@/components/layout-elements/Paragraph";
+import Topic from "@/components/layout-elements/Topic";
+import Content from "@/components/layout-elements/Content";
+import TopicContent from "@/components/layout-elements/TopicContent";
+
+// ----- Parser: Converte a DSL (HTML-like) em uma estrutura JSON ----- //
+function parseDSLToJSON(dslText) {
+  // Envolve o DSL num elemento "root", para permitir múltiplos nós
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(`<root>${dslText}</root>`, "text/xml");
+
+  // Verifica por erro de parsing (simplificação)
+  if (doc.getElementsByTagName("parsererror").length) {
+    console.error("Erro no parser da DSL");
+    return [];
+  }
+  const nodesArray = Array.from(doc.documentElement.childNodes);
+  const parsed = nodesArray.map(domNodeToJSON).filter((n) => n !== null);
+  return parsed;
+}
+
+function domNodeToJSON(node) {
+  // Se for um nó de texto, retorna o próprio texto (se não for apenas espaço)
+  if (node.nodeType === Node.TEXT_NODE) {
+    const text = node.textContent;
+    return text.trim() ? text : null;
+  }
+  if (node.nodeType === Node.ELEMENT_NODE) {
+    // Converte o nome da tag para ter a primeira letra maiúscula e o resto minúsculo
+    const rawName = node.tagName;
+    const component = rawName.charAt(0) + rawName.slice(1).toLowerCase();
+
+    const props = {};
+    for (let i = 0; i < node.attributes.length; i++) {
+      const attr = node.attributes[i];
+      props[attr.name] = attr.value;
+    }
+    const children = [];
+    for (let i = 0; i < node.childNodes.length; i++) {
+      const child = domNodeToJSON(node.childNodes[i]);
+      if (child !== null) {
+        children.push(child);
+      }
+    }
+    return { component, props, children };
+  }
+  return null;
+}
+
+// ----- Renderizador: Converte a estrutura JSON em componentes React ----- //
+function renderComponent(json) {
+  // Se for texto, retorna-o diretamente
+  if (typeof json === "string") {
+    return json;
+  }
+
+  const { component, props, children } = json;
+
+  let ComponentType;
+  switch (component.toLowerCase()) {
+    case "title":
+      ComponentType = Title;
+      break;
+    case "paragraph":
+      ComponentType = Paragraph;
+      break;
+    case "topic":
+      ComponentType = Topic;
+      break;
+    default:
+      ComponentType = (props) => <div {...props}>{props.children}</div>;
+      break;
+  }
+  return (
+    <ComponentType {...props}>
+      {children &&
+        children.map((child, index) => (
+          <React.Fragment key={index}>{renderComponent(child)}</React.Fragment>
+        ))}
+    </ComponentType>
+  );
+}
+
+// ----- Componente Principal do Editor ----- //
+const PageEditorDemo = () => {
+  // Estado com o código DSL; pode ser salvo no banco depois de parseado
+  const [dsl, setDsl] = useState(`<Title>Meu Título Incrível</Title>
+<Paragraph>Este é um parágrafo muito interessante que fala sobre vários assuntos.</Paragraph>
+<Topic title="Detalhes">Aqui estão alguns detalhes importantes.</Topic>`);
+
+  // Modo atual: "code" ou "preview"
+  const [mode, setMode] = useState("code");
+
+  // Referência para o textarea (modo code)
+  const codeRef = useRef(null);
+
+  // INSERÇÃO DE TAG: Insere (ou envolve a seleção) com a tag solicitada
+  const insertTag = (tagName) => {
+    // Se estivermos em preview, alteramos para code para facilitar a edição
+    if (mode !== "code") {
+      setMode("code");
+      return;
+    }
+    const textarea = codeRef.current;
+    if (!textarea) return;
+
+    const { selectionStart, selectionEnd } = textarea;
+    const selectedText =
+      dsl.substring(selectionStart, selectionEnd) || "conteúdo";
+    const tagInsertion = `<${tagName}>${selectedText}</${tagName}>`;
+    const newDsl =
+      dsl.slice(0, selectionStart) + tagInsertion + dsl.slice(selectionEnd);
+    setDsl(newDsl);
+
+    // Após a inserção, reposiciona o cursor (opcional)
+    setTimeout(() => {
+      textarea.focus();
+      textarea.selectionStart = textarea.selectionEnd =
+        selectionStart + tagInsertion.length;
+    }, 0);
+  };
+
+  // Handler para atualizar o DSL quando em code mode
+  const handleCodeChange = (e) => {
+    setDsl(e.target.value);
+  };
+
+  // Prepara a estrutura JSON para renderização do preview
+  const jsonStructure = parseDSLToJSON(dsl);
+
+  return (
+    <div
+      style={{
+        maxWidth: "800px",
+        margin: "0 auto",
+        padding: "20px",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      {/* Barra de Ferramentas */}
+      <div
+        style={{
+          marginBottom: "10px",
+          display: "flex",
+          gap: "8px",
+          flexWrap: "wrap",
+        }}
+      >
+        <button onClick={() => insertTag("Title")}>Inserir Title</button>
+        <button onClick={() => insertTag("Paragraph")}>
+          Inserir Paragraph
+        </button>
+        <button onClick={() => insertTag("Topic")}>Inserir Topic</button>
+        <button onClick={() => setMode(mode === "code" ? "preview" : "code")}>
+          {mode === "code" ? "Ver Preview" : "Ver Código"}
+        </button>
+      </div>
+
+      {/* Editor / Preview */}
+      {mode === "code" ? (
+        <textarea
+          ref={codeRef}
+          value={dsl}
+          onChange={handleCodeChange}
+          style={{
+            width: "100%",
+            height: "400px",
+            fontSize: "16px",
+            padding: "10px",
+            boxSizing: "border-box",
+          }}
+        />
+      ) : (
+        <div
+          style={{
+            width: "100%",
+            minHeight: "400px",
+            border: "1px solid #333",
+            padding: "10px",
+            backgroundColor: "#444",
+          }}
+        >
+          <TopicContent>
+            {jsonStructure.map((node, index) => (
+              <React.Fragment key={index}>
+                {renderComponent(node)}
+              </React.Fragment>
+            ))}
+          </TopicContent>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PageEditorDemo;

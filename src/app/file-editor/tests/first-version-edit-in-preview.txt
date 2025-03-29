@@ -1,0 +1,296 @@
+"use client";
+import React, { useState, useRef } from "react";
+import Title from "@/components/layout-elements/Title";
+import Paragraph from "@/components/layout-elements/Paragraph";
+import Topic from "@/components/layout-elements/Topic";
+import TopicContent from "@/components/layout-elements/TopicContent";
+
+
+/* 
+  1. Função para converter nossa DSL (HTML-like string) em uma árvore JSON.
+  Essa versão utiliza o DOMParser para transformar o texto em uma árvore de nós e depois em JSON.
+*/
+function parseDSLToJSON(dslText) {
+    // Envolvemos em um elemento “root” para suportar múltiplos nós.
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<root>${dslText}</root>`, "text/xml");
+  
+    // Verifica se ocorreu um erro no parse (simplificado)
+    if (doc.getElementsByTagName("parsererror").length) {
+      console.error("Erro no parser da DSL");
+      return [];
+    }
+    const nodesArray = Array.from(doc.documentElement.childNodes);
+    const parsed = nodesArray
+      .map(domNodeToJSON)
+      .filter((n) => n !== null);
+    return parsed;
+  }
+  
+  function domNodeToJSON(node) {
+    // Se for nó de texto, retornamos seu conteúdo, se não for só espaço
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent;
+      return text.trim() ? text : null;
+    }
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      // Utiliza o nome da tag, com a primeira letra maiúscula para compatibilidade com nossos componentes.
+      const rawName = node.tagName;
+      const component = rawName.charAt(0).toUpperCase() + rawName.slice(1).toLowerCase();
+      const props = {};
+      for (let i = 0; i < node.attributes.length; i++) {
+        const attr = node.attributes[i];
+        props[attr.name] = attr.value;
+      }
+      const children = [];
+      for (let i = 0; i < node.childNodes.length; i++) {
+        const child = domNodeToJSON(node.childNodes[i]);
+        if (child !== null) {
+          children.push(child);
+        }
+      }
+      return { component, props, children };
+    }
+    return null;
+  }
+  
+  /*
+    2. Atualização de um nó na árvore JSON a partir de um "path" (vetor de índices).
+    Se o nó é um texto (string) no fim do caminho, substituímos pelo novo texto.
+  */
+  function updateJSONAtPath(json, path, newText) {
+    if (path.length === 0) return json; // nada a atualizar
+  
+    if (Array.isArray(json)) {
+      const index = path[0];
+      return json.map((item, idx) => {
+        if (idx === index) {
+          return updateJSONAtPath(item, path.slice(1), newText);
+        }
+        return item;
+      });
+    } else if (typeof json === "object" && json !== null) {
+      // Aqui, nós atualizamos dentro de "children".
+      return {
+        ...json,
+        children: updateJSONAtPath(json.children, path, newText)
+      };
+    } else if (typeof json === "string") {
+      // Se chegamos a um nó de texto e o path está vazio, substituímos.
+      return newText;
+    }
+    return json;
+  }
+  
+  /*
+    3. Converte a árvore JSON de volta para a nossa DSL.
+    Para cada nó, gera uma tag com seus atributos e filhos.
+  */
+  function unparseJSON(json) {
+    if (Array.isArray(json)) {
+      return json.map(unparseJSON).join("\n");
+    }
+    if (typeof json === "string") {
+      return json;
+    }
+    if (typeof json === "object" && json !== null) {
+      const { component, props, children } = json;
+      const propsEntries = Object.entries(props || {});
+      const propsString = propsEntries.length
+        ? " " +
+          propsEntries
+            .map(([key, value]) => `${key}="${value}"`)
+            .join(" ")
+        : "";
+      const openTag = `<${component}${propsString}>`;
+      const childrenString = children ? unparseJSON(children) : "";
+      return `${openTag}${childrenString}</${component}>`;
+    }
+    return "";
+  }
+  
+  /* 
+    4. Componente para edição inline do texto.
+    Ele usa contentEditable e chama onSave quando o usuário termina a edição (onBlur).
+  */
+  const EditableText = ({ value, path, onSave }) => {
+    const [text, setText] = useState(value);
+  
+    const handleBlur = () => {
+      if (text !== value) {
+        onSave(path, text);
+      }
+    };
+  
+    return (
+      <span
+        contentEditable
+        suppressContentEditableWarning={true}
+        onInput={(e) => setText(e.currentTarget.textContent)}
+        onBlur={handleBlur}
+        style={{ outline: "1px dashed #aaa", padding: "2px" }}
+      >
+        {text}
+      </span>
+    );
+  };
+  
+  /*
+    5. Função recursiva que renderiza a árvore JSON em componentes React.
+    Recebe um parâmetro extra “onInlineEdit” que, quando definido, encapsula nós de texto com EditableText.
+    O parâmetro “path” rastreia a posição do nó na árvore.
+  */
+  function renderComponent(json, path = [], onInlineEdit) {
+    if (typeof json === "string") {
+      // Se estivermos em modo de preview com edição inline, envolvemos o texto.
+      if (onInlineEdit) {
+        return (
+          <EditableText
+            key={path.join("-")}
+            value={json}
+            path={path}
+            onSave={onInlineEdit}
+          />
+        );
+      }
+      return json;
+    }
+    const { component, props, children } = json;
+    let ComponentType;
+    switch (component.toLowerCase()) {
+      case "title":
+        ComponentType = Title;
+        break;
+      case "paragraph":
+        ComponentType = Paragraph;
+        break;
+      case "topic":
+        ComponentType = Topic;
+        break;
+      default:
+        ComponentType = (compProps) => <div {...compProps}>{compProps.children}</div>;
+        break;
+    }
+    return (
+      <ComponentType {...props} key={path.join("-")}>
+        {children &&
+          children.map((child, index) =>
+            renderComponent(child, path.concat(index), onInlineEdit)
+          )}
+      </ComponentType>
+    );
+  }
+  
+  /*
+    6. Componente principal do Editor de Página.
+    Possui dois modos: "code" (edição via textarea) e "preview" (edição inline).
+    Note que na view "preview" passamos a função de alteração "updateDslAtPath" para que o EditableText possa atualizar o DSL.
+  */
+  const PageEditorDemo = () => {
+    const [dsl, setDsl] = useState(`<Title>Meu Título Incrível</Title>
+  <Paragraph>Este é um parágrafo muito interessante que fala sobre vários assuntos.</Paragraph>
+  <Topic title="Detalhes">Aqui estão alguns detalhes importantes.</Topic>`);
+    
+    // Modo atual: "code" ou "preview"
+    const [mode, setMode] = useState("preview");
+    const codeRef = useRef(null);
+  
+    // Função para inserir tags via barra de ferramentas (funciona apenas em "code").
+    const insertTag = (tagName) => {
+      if (mode !== "code") {
+        setMode("code");
+        return;
+      }
+      const textarea = codeRef.current;
+      if (!textarea) return;
+      const { selectionStart, selectionEnd } = textarea;
+      const selectedText = dsl.substring(selectionStart, selectionEnd) || "conteúdo";
+      const tagInsertion = `<${tagName}>${selectedText}</${tagName}>`;
+      const newDsl = dsl.slice(0, selectionStart) + tagInsertion + dsl.slice(selectionEnd);
+      setDsl(newDsl);
+      setTimeout(() => {
+        textarea.focus();
+        textarea.selectionStart = textarea.selectionEnd = selectionStart + tagInsertion.length;
+      }, 0);
+    };
+  
+    // Atualiza o estado DSL quando editado no modo code
+    const handleCodeChange = (e) => {
+      setDsl(e.target.value);
+    };
+  
+    // Função chamada pelo EditableText na view preview.
+    // Ela faz o parse do DSL, atualiza o nó na posição indicada e re-gerar o DSL.
+    const updateDslAtPath = (path, newText) => {
+      const oldJson = parseDSLToJSON(dsl);
+      const newJson = updateJSONAtPath(oldJson, path, newText);
+      const newDsl = unparseJSON(newJson);
+      setDsl(newDsl);
+    };
+  
+    // Prepara a estrutura JSON a partir do DSL atual.
+    const jsonStructure = parseDSLToJSON(dsl);
+  
+    return (
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "0 auto",
+          padding: "20px",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
+        {/* Barra de Ferramentas */}
+        <div
+          style={{
+            marginBottom: "10px",
+            display: "flex",
+            gap: "8px",
+            flexWrap: "wrap",
+          }}
+        >
+          <button onClick={() => insertTag("Title")}>Inserir Title</button>
+          <button onClick={() => insertTag("Paragraph")}>Inserir Paragraph</button>
+          <button onClick={() => insertTag("Topic")}>Inserir Topic</button>
+          <button onClick={() => setMode(mode === "code" ? "preview" : "code")}>
+            {mode === "code" ? "Ver Preview" : "Ver Código"}
+          </button>
+        </div>
+  
+        {/* Área de edição: modo "code" ou "preview" */}
+        {mode === "code" ? (
+          <textarea
+            ref={codeRef}
+            value={dsl}
+            onChange={handleCodeChange}
+            style={{
+              width: "100%",
+              height: "400px",
+              fontSize: "16px",
+              padding: "10px",
+              boxSizing: "border-box",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              minHeight: "400px",
+              border: "1px solid #333",
+              padding: "10px",
+              backgroundColor: "#444",
+            }}
+          >
+            <TopicContent>
+
+            {jsonStructure.map((node, index) =>
+              renderComponent(node, [index], updateDslAtPath)
+              )}
+            </TopicContent>
+          </div>
+        )}
+      </div>
+    );
+  };
+  
+  export default PageEditorDemo;
