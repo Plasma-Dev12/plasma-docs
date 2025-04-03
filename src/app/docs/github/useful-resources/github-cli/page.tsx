@@ -93,6 +93,22 @@ export default function GithubDocs() {
           </LearnMoreLink>
         </Spacer>
         <Spacer>
+          <SubTopic>Instalar o gh portátil</SubTopic>
+          <Paragraph>
+            Você também consegue baixer o gh portátil, essa solução foi
+            desenvolvida para caso o sistema da sua instutuição não permita a
+            instalação do gh sem uma conta de administrador.
+          </Paragraph>
+          <br />
+          <LearnMoreLink
+            text="Instale o gh portátil aqui:"
+            link="https://github.com/cli/cli/releases"
+            _blank
+          >
+            GithubCLI portátil
+          </LearnMoreLink>
+        </Spacer>
+        <Spacer>
           <SubTopic>Verificar se instalou</SubTopic>
           <Paragraph indent={false}>
             Para verificar se o GitHub CLI foi instalado corretamente, execute o
