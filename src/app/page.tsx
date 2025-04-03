@@ -5,7 +5,7 @@ import DevelopersComponent from "@/components/DevelopersComponent";
 import Button from "@/components/Button";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { ArrowRight, BookOpen, Code } from "lucide-react";
+import { BookOpen, Code } from "lucide-react";
 
 export default function Home() {
   const handleScroll = () => {
