@@ -54,7 +54,7 @@ export default function AnchorLinks({ fixed = true }: AnchorLinksProps) {
         >
           Neste artigo
         </span>
-        <ul className="flex flex-col mt-3 gap-3">
+        <ul style={{ maxHeight: "calc(100vh - 280px)" }} className="flex flex-col mt-3 gap-3 overflow-y-auto">
           {headings.map((heading) => (
             <li
               key={heading.id}
