@@ -130,7 +130,7 @@ interface CallToActionProps {
   children: React.ReactNode;
 }
 
-export function CallToAction({
+function CallToAction({
   title,
   description,
   buttonText,
