@@ -5,15 +5,11 @@
       "descricao": "Ir para Notificações"
     },
     {
-      "atalho": "g + p",
-      "descricao": "Ir para Repositórios"
-    },
-    {
       "atalho": "g + i",
       "descricao": "Ir para Issues"
     },
     {
-      "atalho": "g + m",
+      "atalho": "g + p",
       "descricao": "Ir para Pull Requests"
     },
     {
@@ -22,7 +18,7 @@
     },
     {
       "atalho": "g + d",
-      "descricao": "Ir para Repositórios Seguidos"
+      "descricao": "Ir para Página Inicial"
     }
   ],
   "Edição e Comandos Gerais": [
@@ -37,17 +33,9 @@
     {
       "atalho": "w",
       "descricao": "Alternar entre branches e tags"
-    },
-    {
-      "atalho": "y",
-      "descricao": "Fixar a URL do repositório para um commit específico"
     }
   ],
-  "Gerenciamento de Issues e Pull Requests": [
-    {
-      "atalho": "c",
-      "descricao": "Criar uma nova Issue ou Pull Request"
-    },
+  "Acessar o Editor de código do GitHub": [
     {
       "atalho": "Shift + .",
       "descricao": "Alternar entre arquivos e código-fonte"
