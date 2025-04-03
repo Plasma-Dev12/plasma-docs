@@ -92,9 +92,10 @@ export default function Home() {
               <CallToAction
                 title="Visite a Plasma"
                 description="Visite a nossa landing page e conheça os desenvolvedores e nossos projetos."
-                urlLink="https://devplasma.vercel.app/"
+                urlLink="/"
                 buttonText="Acessar a Plasma Dev"
               >
+{/*                 urlLink="https://devplasma.vercel.app/" */}
                 <Code className="size-6" />
               </CallToAction>
             </div>
