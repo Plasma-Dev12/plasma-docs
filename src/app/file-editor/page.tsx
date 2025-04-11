@@ -8,6 +8,17 @@ import ListItem from "@/components/layout-elements/ListItem";
 import Spacer from "@/components/layout-elements/Spacer";
 import Content from "@/components/layout-elements/Content";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox"
+
+
 // ----------------- Tipos e Interfaces -----------------
 interface Block {
   id: number;
@@ -69,7 +80,12 @@ const COMPONENT_META: Record<string, ComponentMeta> = {
     displayName: "List",
     defaultProps: { type: "disc", spacer: true, compact: false },
     editableProps: [
-      { key: "type", label: "List Type", type: "select", options: ["disc", "decimal", "topics"] },
+      {
+        key: "type",
+        label: "List Type",
+        type: "select",
+        options: ["disc", "decimal", "topics"],
+      },
       { key: "spacer", label: "Spacer", type: "checkbox" },
       { key: "compact", label: "Compact", type: "checkbox" },
     ],
@@ -111,7 +127,10 @@ function updateBlockById(
     if (block.id === id) {
       return updater(block);
     } else if (block.children && block.children.length > 0) {
-      return { ...block, children: updateBlockById(block.children, id, updater) };
+      return {
+        ...block,
+        children: updateBlockById(block.children, id, updater),
+      };
     } else {
       return block;
     }
@@ -125,7 +144,10 @@ function removeBlockById(blocks: Block[], id: number): Block[] {
       // ignora
       continue;
     } else if (block.children && block.children.length > 0) {
-      newBlocks.push({ ...block, children: removeBlockById(block.children, id) });
+      newBlocks.push({
+        ...block,
+        children: removeBlockById(block.children, id),
+      });
     } else {
       newBlocks.push(block);
     }
@@ -133,7 +155,11 @@ function removeBlockById(blocks: Block[], id: number): Block[] {
   return newBlocks;
 }
 
-function insertBlockAfter(blocks: Block[], id: number, newBlock: Block): Block[] {
+function insertBlockAfter(
+  blocks: Block[],
+  id: number,
+  newBlock: Block
+): Block[] {
   let found = false;
   const newBlocks: Block[] = [];
   for (let block of blocks) {
@@ -193,7 +219,8 @@ export default function PageEditor() {
         {
           id: 3,
           type: "Paragraph",
-          content: "Este é um parágrafo muito interessante que fala sobre vários assuntos.",
+          content:
+            "Este é um parágrafo muito interessante que fala sobre  vários assuntos. Este é um parágrafo muito interessante que fala sobre  vários assuntos.Este é um parágrafo muito interessante que fala sobre  vários assuntos.",
           props: {},
           children: [],
         },
@@ -233,7 +260,10 @@ export default function PageEditor() {
   ) => {
     const newContent = e.target.innerText;
     setBlocks((prev) =>
-      updateBlockById(prev, blockId, (block) => ({ ...block, content: newContent }))
+      updateBlockById(prev, blockId, (block) => ({
+        ...block,
+        content: newContent,
+      }))
     );
   };
 
@@ -255,7 +285,10 @@ export default function PageEditor() {
       setTimeout(() => {
         blockRefs.current[newBlock.id]?.focus();
       }, 0);
-    } else if (e.key === "Backspace" && e.currentTarget.innerText.trim() === "") {
+    } else if (
+      e.key === "Backspace" &&
+      e.currentTarget.innerText.trim() === ""
+    ) {
       e.preventDefault();
       const flat = flattenBlocks(blocks);
       const currentIndex = flat.findIndex((b) => b.id === blockId);
@@ -332,7 +365,7 @@ export default function PageEditor() {
       <div
         key={block.id}
         style={{
-          border: isSelected ? "1px dashed white" : "none",
+          // border: isSelected ? "1px dashed white" : "none",
           padding: "4px",
           marginBottom: "4px",
         }}
@@ -340,22 +373,22 @@ export default function PageEditor() {
           e.stopPropagation();
           setSelectedBlockId(block.id);
         }}
+        className="editable-inline"
       >
-        <Component {...block.props}>
-          {meta.contentEditable ? (
-            <span
-              contentEditable
-              suppressContentEditableWarning
-              ref={(el) => {
-                blockRefs.current[block.id] = el;
-                return;
-              }}
-              onBlur={(e) => handleBlockContentBlur(e, block.id)}
-              onKeyDown={(e) => handleBlockKeyDown(e, block.id)}
-              style={{ minHeight: "1.2em", outline: "none", display: "inline-block" }}
-            >
-              {block.content}
-            </span>
+        <Component {...block.props}
+         contentEditable
+         suppressContentEditableWarning
+         ref={(el) => {
+           blockRefs.current[block.id] = el;
+           return;
+         }}
+         onBlur={(e) => handleBlockContentBlur(e, block.id)}
+         onKeyDown={(e) => handleBlockKeyDown(e, block.id)}              
+         // style={{ minHeight: "1.2em", outline: "none", display: "inline", textIndent: "16px" }}
+         // className="min-h-[1.2em] outline-none inline"  
+        >
+          {meta.contentEditable ? (            
+              block.content
           ) : (
             block.content
           )}
@@ -373,91 +406,80 @@ export default function PageEditor() {
   return (
     <div className="flex flex-row mt-24 w-fit mx-auto text-[#F5F5F5]">
       {/* Área do Editor */}
-      <div className="p-5 w-[800px] mr-[420px]"              
+      <div
+        className="p-5 w-[800px] mr-[420px]"
         onClick={() => setSelectedBlockId(null)}
       >
         {blocks.map((block) => renderBlock(block))}
       </div>
 
       {/* Sidebar de Propriedades e Ações */}
-      <div className="p-5 border-1 fixed w-[400px] h-fit border-gray-300 ml-5"
-      style={{right: "calc((100% - 1220px)/2)"}}>
-        <h3>Propriedades do Bloco</h3>
+      <div
+        className="p-5 fixed w-[400px] h-fit bg-[#F5F5F5]/10 rounded-lg ml-5"
+        style={{ right: "calc((100% - 1220px)/2)" }}
+      >
+        <h3 className="font-bold text-xl">Propriedades do Bloco</h3>
         {selectedBlock ? (
-          <>
-            {/* Área para inserir um novo componente filho se for suportado */}
-            {COMPONENT_META[selectedBlock.type]?.supportsChildren ? (
-              <div className="mb-5 p-2 border-b border-gray-300">                              
-                <h4>Novo Componente Filho</h4>
-                <label>
-                  Tipo:{" "}
-                  <select
-                    value={newChildType}
-                    onChange={(e) => setNewChildType(e.target.value)}
-                  >
-                    {Object.keys(COMPONENT_META).map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <button onClick={handleAddNewChild} className="ml-2">
-                  Adicionar
-                </button>
-              </div>
-            ) : (
-              <div className="mb-5">
-                <p>O bloco selecionado não suporta filhos.</p>
-              </div>
-            )}
+          <>            
             {/* Seletor para alterar o tipo do componente */}
-            <div className="mb-2">
-              <label>
+            <div className="py-5 mb-5 border-b border-gray-300">
+              <label className="flex justify-between items-center gap-2">
                 <strong>Tipo do Componente:</strong>{" "}
-                <select
+                <Select
                   value={selectedBlock.type}
-                  onChange={(e) => handleBlockTypeChange(e.target.value)}
+                  onValueChange={handleBlockTypeChange}
                 >
-                  {Object.keys(COMPONENT_META).map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger size="sm" className="w-[180px]">
+                    <SelectValue placeholder="Select Type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(COMPONENT_META).map((type) => (
+                      <SelectItem key={type} value={type}>
+                        {type}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </label>
             </div>
-            <p>
-              <strong>Tipo atual:</strong> {selectedBlock.type}
-            </p>
             {COMPONENT_META[selectedBlock.type] &&
             COMPONENT_META[selectedBlock.type].editableProps.length > 0 ? (
               COMPONENT_META[selectedBlock.type].editableProps.map((prop) => (
                 <div key={prop.key} className="mb-2">
-                  <label>
-                    {prop.label}:{" "}
+                  <label className="flex items-center gap-2">
+                    <span className="flex-1 whitespace-nowrap">{prop.label}:</span>{" "}
                     {prop.type === "select" ? (
-                      <select
+                      <Select
                         value={selectedBlock.props[prop.key] || ""}
-                        onChange={(e) => handlePropChange(prop.key, e.target.value)}
+                        onValueChange={(value) =>
+                          handlePropChange(prop.key, value)
+                        }
                       >
-                        {prop.options?.map((opt) => (
-                          <option key={opt} value={opt}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
+                        <SelectTrigger size="sm" className="w-[180px]">
+                          <SelectValue placeholder="Select option" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {prop.options?.map((opt) => (
+                            <SelectItem key={opt} value={opt}>
+                              {opt}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     ) : prop.type === "checkbox" ? (
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         checked={selectedBlock.props[prop.key] || false}
-                        onChange={(e) => handlePropChange(prop.key, e.target.checked)}
+                        onCheckedChange={(e) => 
+                            handlePropChange(prop.key, e)                            
+                        }
                       />
                     ) : (
                       <input
                         type="text"
                         value={selectedBlock.props[prop.key] || ""}
-                        onChange={(e) => handlePropChange(prop.key, e.target.value)}
+                        onChange={(e) =>
+                          handlePropChange(prop.key, e.target.value)
+                        }
                       />
                     )}
                   </label>
@@ -466,11 +488,44 @@ export default function PageEditor() {
             ) : (
               <p>Sem propriedades editáveis.</p>
             )}
+            {/* Área para inserir um novo componente filho se for suportado */}
+            {COMPONENT_META[selectedBlock.type]?.supportsChildren ? (
+              <div className="mt-5 pt-5 flex flex-col w-full justify-end border-t border-gray-300">
+                <div className="mb-2">                
+                  <h4 className="font-semibold">Novo Componente Filho</h4>
+                  <label className="flex items-center justify-between gap-2 mt-2">
+                    Tipo:{" "}
+                    <Select
+                      value={newChildType}
+                      onValueChange={setNewChildType}
+                    >
+                      <SelectTrigger size="sm" className="w-[180px]">
+                        <SelectValue placeholder="Select Type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Object.keys(COMPONENT_META).map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </label>
+                </div>
+                <Button size={"sm"} variant="outline" onClick={handleAddNewChild}>
+                  Adicionar
+                </Button>
+              </div>
+            ) : (
+              <div className="mt-2 mb-5">
+                <p>O bloco selecionado não suporta filhos.</p>
+              </div>
+            )}
           </>
         ) : (
-          <p>Selecione um bloco para editar suas propriedades.</p>
+          <p className="mt-2">Selecione um bloco para editar suas propriedades.</p>
         )}
       </div>
     </div>
   );
-};
+}
