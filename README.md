@@ -191,5 +191,5 @@ Este projeto está licenciado sob a Licença MIT.
 
 - **Issues**: Use a aba Issues no GitHub.
 - **Discussions**: Participe das Discussions no GitHub.
-- **Contato**: contact@plasma-dev.dev
+- **Contato**: plasma-dev12@gmail.com
 
