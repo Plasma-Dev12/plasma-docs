@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, ReactElement } from "react";
+import React, { useState, useRef, ReactElement, useEffect } from "react";
 import Title from "@/components/layout-elements/Title";
 import Paragraph from "@/components/layout-elements/Paragraph";
 import Topic from "@/components/layout-elements/Topic";
@@ -7,6 +7,7 @@ import List from "@/components/layout-elements/List";
 import ListItem from "@/components/layout-elements/ListItem";
 import Spacer from "@/components/layout-elements/Spacer";
 import Content from "@/components/layout-elements/Content";
+import CodeHighlight from "@/components/layout-elements/CodeHighlight";
 
 import {
   Select,
@@ -52,6 +53,7 @@ const COMPONENTS: Record<string, React.ElementType> = {
   ListItem,
   Spacer,
   Content,
+  CodeHighlight
 };
 
 const COMPONENT_META: Record<string, ComponentMeta> = {
@@ -112,6 +114,13 @@ const COMPONENT_META: Record<string, ComponentMeta> = {
     editableProps: [],
     contentEditable: false,
     supportsChildren: true,
+  },
+  CodeHighlight: {
+    displayName: "CodeHighlight",
+    defaultProps: {},
+    editableProps: [],
+    contentEditable: true,
+    supportsChildren: false,
   },
 };
 
@@ -252,6 +261,30 @@ export default function PageEditor() {
   const [selectedBlockId, setSelectedBlockId] = useState<number | null>(null);
   const [newChildType, setNewChildType] = useState<string>(DEFAULT_BLOCK_TYPE);
   const blockRefs = useRef<Record<number, HTMLElement | null>>({});
+  const [openTypeComponent, setOpenTypeComponent] = useState<boolean>(false);
+
+  const focusBlock = (id: number) => {
+    const element = blockRefs.current[id];
+    if (element) {
+      element.focus(); // Dá foco ao elemento
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.altKey && e.key === "c") { 
+        e.preventDefault();
+        if (!openTypeComponent) {
+          setOpenTypeComponent((prev) => !prev);          
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   // --------- Handlers de Edição ----------
   const handleBlockContentBlur = (
@@ -355,7 +388,7 @@ export default function PageEditor() {
 
   // Busca o bloco selecionado para exibição na sidebar
   const selectedBlock = findBlockById(blocks, selectedBlockId!);
-
+  
   // -------------- Renderiza Recursivamente um Bloco --------------
   const renderBlock = (block: Block): ReactElement => {
     const meta = COMPONENT_META[block.type] || { contentEditable: false };
@@ -376,24 +409,48 @@ export default function PageEditor() {
         className="editable-inline"
       >
         <Component {...block.props}
-         contentEditable
-         suppressContentEditableWarning
-         ref={(el) => {
-           blockRefs.current[block.id] = el;
-           return;
-         }}
-         onBlur={(e) => handleBlockContentBlur(e, block.id)}
-         onKeyDown={(e) => handleBlockKeyDown(e, block.id)}              
-         // style={{ minHeight: "1.2em", outline: "none", display: "inline", textIndent: "16px" }}
-         // className="min-h-[1.2em] outline-none inline"  
-        >
-          {meta.contentEditable ? (            
-              block.content
+          key={block.id}
+          id={block.id}
+          contentEditable
+          suppressContentEditableWarning
+          ref={(el) => {
+            blockRefs.current[block.id] = el;
+            return;
+          }}
+          onBlur={(e) => handleBlockContentBlur(e, block.id)}
+          onKeyDown={(e) => handleBlockKeyDown(e, block.id)}
+          style={{width: "100%", textAlign: "justify"}}
+          >
+          {meta.contentEditable ? (
+            <span
+              key={block.id}
+              contentEditable
+              suppressContentEditableWarning
+              ref={(el) => {
+                blockRefs.current[block.id] = el;
+                return;
+              }}
+              onBlur={(e) => handleBlockContentBlur(e, block.id)}
+              onKeyDown={(e) => handleBlockKeyDown(e, block.id)}
+              style={{ 
+                minHeight: "1.2em", 
+                outline: "none",
+                display: "inline",
+                alignItems: "space-between",
+                textAlign: "justify",
+                flexDirection: "row",
+                maxWidth: "100%",
+                flexWrap: "wrap",
+                ...(block.type === "Paragraph" && { marginLeft: "16px" }) 
+              }}
+            >
+              {(block.content)}
+            </span>
           ) : (
             block.content
           )}
           {block.children && block.children.length > 0 && (
-            <div style={{ paddingLeft: "16px" }}>
+            <div key={block.id} style={{ paddingLeft: "16px" }}>
               {block.children.map((child) => renderBlock(child))}
             </div>
           )}
@@ -420,7 +477,7 @@ export default function PageEditor() {
       >
         <h3 className="font-bold text-xl">Propriedades do Bloco</h3>
         {selectedBlock ? (
-          <>            
+          <>
             {/* Seletor para alterar o tipo do componente */}
             <div className="py-5 mb-5 border-b border-gray-300">
               <label className="flex justify-between items-center gap-2">
@@ -428,6 +485,13 @@ export default function PageEditor() {
                 <Select
                   value={selectedBlock.type}
                   onValueChange={handleBlockTypeChange}
+                  open={openTypeComponent}               
+                  onOpenChange={(open) => {
+                    if (!open) {
+                      focusBlock(selectedBlockId!);
+                    }
+                    setOpenTypeComponent(open);
+                  }}
                 >
                   <SelectTrigger size="sm" className="w-[180px]">
                     <SelectValue placeholder="Select Type" />
@@ -443,17 +507,17 @@ export default function PageEditor() {
               </label>
             </div>
             {COMPONENT_META[selectedBlock.type] &&
-            COMPONENT_META[selectedBlock.type].editableProps.length > 0 ? (
+              COMPONENT_META[selectedBlock.type].editableProps.length > 0 ? (
               COMPONENT_META[selectedBlock.type].editableProps.map((prop) => (
                 <div key={prop.key} className="mb-2">
                   <label className="flex items-center gap-2">
                     <span className="flex-1 whitespace-nowrap">{prop.label}:</span>{" "}
-                    {prop.type === "select" ? (
+                    {prop.type === "select" ? (                      
                       <Select
                         value={selectedBlock.props[prop.key] || ""}
                         onValueChange={(value) =>
                           handlePropChange(prop.key, value)
-                        }
+                        }                        
                       >
                         <SelectTrigger size="sm" className="w-[180px]">
                           <SelectValue placeholder="Select option" />
@@ -469,8 +533,8 @@ export default function PageEditor() {
                     ) : prop.type === "checkbox" ? (
                       <Checkbox
                         checked={selectedBlock.props[prop.key] || false}
-                        onCheckedChange={(e) => 
-                            handlePropChange(prop.key, e)                            
+                        onCheckedChange={(e) =>
+                          handlePropChange(prop.key, e)
                         }
                       />
                     ) : (
@@ -491,7 +555,7 @@ export default function PageEditor() {
             {/* Área para inserir um novo componente filho se for suportado */}
             {COMPONENT_META[selectedBlock.type]?.supportsChildren ? (
               <div className="mt-5 pt-5 flex flex-col w-full justify-end border-t border-gray-300">
-                <div className="mb-2">                
+                <div className="mb-2">
                   <h4 className="font-semibold">Novo Componente Filho</h4>
                   <label className="flex items-center justify-between gap-2 mt-2">
                     Tipo:{" "}
@@ -525,7 +589,7 @@ export default function PageEditor() {
         ) : (
           <p className="mt-2">Selecione um bloco para editar suas propriedades.</p>
         )}
-      </div>
+      </div>        
     </div>
   );
 }
